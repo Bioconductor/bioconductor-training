@@ -42,5 +42,6 @@ lessons are developed as modules in their own repositories.
 
 ## Contact
 
-If you are interested in this project, please contact the group via
-the google group or individual members on slack or by email.
+If you are interested in this project and want to get in touch or
+participate, please contact the group via the google group or
+individual members on slack or by email.
