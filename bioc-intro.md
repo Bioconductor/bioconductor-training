@@ -171,6 +171,6 @@ names(mcols(gff.exon))
 
 The goal of this course is to bring newcomers, with no prior
 experience of R, to be able to perform standard data science tasks and
-visualisation using the `tidyvers` and familiarise themselves with
+visualisation using the `tidyverse` and familiarise themselves with
 other concepts so that they now feel confident to start learning
 Bioconductor with the next courses.
