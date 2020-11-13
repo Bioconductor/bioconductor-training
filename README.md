@@ -1,10 +1,18 @@
-# Bioconductor teaching working group
+# The Bioconductor teaching committee
 
 
-The goal of the Bioconductor teaching working group is to define a
-curriculum and implement online lessons for beginner and more
-advanced R users who want to learn to analyse their data with
-Bioconductor packages.
+The Bioconductor teaching committee is a collaborative effort to 
+consolidate Bioconductor-focused training material and establish 
+a community of Bioconductor trainers. We define a curriculum and 
+implement online lessons for beginner and more advanced R users 
+who want to learn to analyse their data with Bioconductor packages.
+
+The Bioconductor teaching committee reports to the Bioconductor 
+[Community Advisory Board](http://bioconductor.org/about/community-advisory-board/). 
+It is currently chaired by Charlotte Soneson and Laurent Gatto. 
+Membership is open to everybody interested in contributing and 
+joining the discussion during the monthly meetings (announced on 
+the Google group, see below).
 
 This meta-repository is used for general discussions. The respective
 lessons are developed as modules in their own repositories.
@@ -17,8 +25,8 @@ lessons are developed as modules in their own repositories.
   are no pre-requisites for this module, and the materials assume no
   prior knowledge about R and Bioconductor. It introduces R, RStudio,
   teaches data cleaning, management, analysis, and visualisation and
-  introduces some Bioconductor concepts. Notes in `bioc-intro.md` in
-  this repo.
+  introduces some Bioconductor concepts. Notes are collated in 
+  `bioc-intro.md` in this repo.
 
 - [bioc-project](https://github.com/carpentries-incubator/bioc-project)
   The **Bioconductor project** lesson provides an introduction to the
@@ -44,6 +52,7 @@ lessons are developed as modules in their own repositories.
   doc](https://docs.google.com/document/d/1s2QMk5XA-uhBVprAO3ZDk1Yfv1cnUWLp9zdvYq9Feu4/edit#).
 
 ## Discussions
+
 - The [Google group](https://groups.google.com/g/bioconductor-teaching/).
 - The `education-and-training` channel on the [Bioconductor comunity
   slack](https://bioc-community.herokuapp.com/).
