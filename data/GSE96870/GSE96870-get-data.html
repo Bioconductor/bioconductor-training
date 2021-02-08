@@ -216,7 +216,11 @@ summary {
 ## )
 ## ℹ Use `spec()` for the full column specifications.</code></pre>
 <pre><code>## File stored at:</code></pre>
+<<<<<<< Updated upstream
 <pre><code>## /var/folders/56/nc50f0qd379g3p4k2grlnsdw0000gp/T//RtmpXq1j8U/GPL17021.soft</code></pre>
+=======
+<pre><code>## C:\Users\jenny\AppData\Local\Temp\RtmpeMjJLm/GPL17021.soft</code></pre>
+>>>>>>> Stashed changes
 <pre class="r"><code>meta &lt;- pData(geo$GSE96870_series_matrix.txt.gz) %&gt;%
     dplyr::select(title, geo_accession, organism_ch1,
                   `age:ch1`, `gender:ch1`, `infection:ch1`, 
@@ -239,6 +243,9 @@ head(meta)</code></pre>
 ## GSM2545339  Influenza A C57BL/6 Day 4 Cerebellum
 ## GSM2545340  Influenza A C57BL/6 Day 4 Cerebellum
 ## GSM2545341  Influenza A C57BL/6 Day 8 Cerebellum</code></pre>
+<pre class="r"><code># The GEO metadata currently contains one error; fix it here:
+
+meta[&quot;GSM2545367&quot;,c(&quot;infection&quot;,&quot;time&quot;)] &lt;- c(&quot;Non-Infected&quot;,&quot;Day 0&quot;)</code></pre>
 </div>
 <div id="get-counts" class="section level1">
 <h1>Get counts</h1>
@@ -407,7 +414,116 @@ se</code></pre>
 </div>
 <div id="add-gene-annotations" class="section level1">
 <h1>Add gene annotations</h1>
+<<<<<<< Updated upstream
 <p>TODO - make sure to get the right annotation version (<code>ref_GRCm38.p3_top_level_rtracklayer.gtf</code>)</p>
+=======
+<p>ref_GRCm38.p3_top_level_rtracklayer.gtf is listed in the header row of the featCounts.txt.gz files. Jenny just converted NCBI’s ref_GRCm38.p3_top_level.gff3 to gtf format using rtracklayer. This corresponds to NCBI’s <a href="https://www.ncbi.nlm.nih.gov/genome/annotation_euk/Mus_musculus/105/">Annotation Release 105</a>. However, NCBI reorganized their ftp site a few years ago and the old one, <a href="https://ftp.ncbi.nih.gov/genomes/Mus_musculus" class="uri">https://ftp.ncbi.nih.gov/genomes/Mus_musculus</a> is no longer available. The <a href="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.23_GRCm38.p3/">current site for GRCm38.p3</a> does have a GCF_000001635.23_GRCm38.p3_genomic.gff.gz file, but it does not contain all the genes that ref_GRCm38.p3_top_level.gff3 did (see below). Jenny has a publicly-available copy of ref_GRCm38.p3_top_level_rtracklayer.gtf, if we want to use that.</p>
+<pre class="r"><code>library(rtracklayer)
+
+#Check current NCBI GRCm38.p3 gff:
+gff0 &lt;- import(&quot;https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.23_GRCm38.p3/GCF_000001635.23_GRCm38.p3_genomic.gff.gz&quot;)
+gff0 &lt;- gff0[gff0$type == &quot;exon&quot;]
+gff0 &lt;- gff0[!duplicated(gff0$gene)]
+sum(rownames(counts) %in% gff0$gene)</code></pre>
+<pre><code>## [1] 41115</code></pre>
+<pre class="r"><code>sum(!rownames(counts) %in% gff0$gene)</code></pre>
+<pre><code>## [1] 671</code></pre>
+<pre class="r"><code>missing_genes &lt;- rownames(counts)[!rownames(counts) %in% gff0$gene] 
+DataFrame(missing_genes)</code></pre>
+<pre><code>## DataFrame with 671 rows and 1 column
+##        missing_genes
+##          &lt;character&gt;
+## 1              Trbv1
+## 2              Trbv2
+## 3              Trbv3
+## 4              Trbv4
+## 5              Trbv5
+## ...              ...
+## 667        LOC630251
+## 668 Vhvgam3.8.a4.102
+## 669     LOC101056255
+## 670        LOC634749
+## 671        LOC641025</code></pre>
+<pre class="r"><code>#Try with gtf file used to make the counts:
+gff0 &lt;- import(&quot;https://uofi.box.com/shared/static/tj2b11uq5uym15fisqj9dg9nlcxlgimb.gz&quot;, format = &quot;gtf&quot;)
+gff0 &lt;- gff0[gff0$type == &quot;exon&quot;]
+gff0 &lt;- gff0[!duplicated(gff0$gene)]
+sum(rownames(counts) %in% gff0$gene)</code></pre>
+<pre><code>## [1] 41786</code></pre>
+<pre class="r"><code>sum(!rownames(counts) %in% gff0$gene)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>names(mcols(gff0))</code></pre>
+<pre><code>##  [1] &quot;source&quot;                    &quot;type&quot;                     
+##  [3] &quot;score&quot;                     &quot;phase&quot;                    
+##  [5] &quot;ID&quot;                        &quot;Dbxref&quot;                   
+##  [7] &quot;Name&quot;                      &quot;chromosome&quot;               
+##  [9] &quot;gbkey&quot;                     &quot;genome&quot;                   
+## [11] &quot;mol_type&quot;                  &quot;strain&quot;                   
+## [13] &quot;description&quot;               &quot;gene&quot;                     
+## [15] &quot;gene_synonym&quot;              &quot;Parent&quot;                   
+## [17] &quot;product&quot;                   &quot;transcript_id&quot;            
+## [19] &quot;protein_id&quot;                &quot;pseudo&quot;                   
+## [21] &quot;ncrna_class&quot;               &quot;Note&quot;                     
+## [23] &quot;end_range&quot;                 &quot;partial&quot;                  
+## [25] &quot;exception&quot;                 &quot;transl_except&quot;            
+## [27] &quot;start_range&quot;               &quot;anticodon&quot;                
+## [29] &quot;Target&quot;                    &quot;assembly_bases_aln&quot;       
+## [31] &quot;assembly_bases_seq&quot;        &quot;bit_score&quot;                
+## [33] &quot;blast_aligner&quot;             &quot;common_component&quot;         
+## [35] &quot;e_value&quot;                   &quot;filter_score&quot;             
+## [37] &quot;for_remapping&quot;             &quot;gap_count&quot;                
+## [39] &quot;hsp_percent_coverage&quot;      &quot;matchable_bases&quot;          
+## [41] &quot;matched_bases&quot;             &quot;num_ident&quot;                
+## [43] &quot;num_mismatch&quot;              &quot;pct_coverage&quot;             
+## [45] &quot;pct_coverage_hiqual&quot;       &quot;pct_identity_gap&quot;         
+## [47] &quot;pct_identity_gapopen_only&quot; &quot;pct_identity_ungap&quot;       
+## [49] &quot;rank&quot;                      &quot;score.1&quot;                  
+## [51] &quot;weighted_identity&quot;         &quot;lxr_locAcc_currStat_120&quot;  
+## [53] &quot;consensus_splices&quot;         &quot;exon_identity&quot;            
+## [55] &quot;identity&quot;                  &quot;idty&quot;                     
+## [57] &quot;matches&quot;                   &quot;product_coverage&quot;         
+## [59] &quot;splices&quot;                   &quot;Gap&quot;                      
+## [61] &quot;map&quot;                       &quot;merge_aligner&quot;            
+## [63] &quot;inversion_merge_aligner&quot;   &quot;Is_circular&quot;              
+## [65] &quot;codons&quot;                    &quot;transl_table&quot;</code></pre>
+<pre class="r"><code>#Pull out ENTREZID from Dbxref
+
+gff0$ENTREZID &lt;- strsplit(gff0$Dbxref, &quot;,&quot;) %&gt;% sapply(function(x) x[grep(&quot;GeneID&quot;, x)]) %&gt;% gsub(&quot;GeneID:&quot;,&quot;&quot;, .)
+
+#keep gene, ENTREZID, product and gbkey
+
+temp &lt;- mcols(gff0)[,c(&quot;gene&quot;,&quot;ENTREZID&quot;,&quot;product&quot;,&quot;gbkey&quot;)]
+
+#what were the missing genes?
+
+table(temp$gbkey)</code></pre>
+<pre><code>## 
+##      C_region     D_segment          exon     J_segment      misc_RNA 
+##            20            23          4008            94          1988 
+##          mRNA         ncRNA precursor_RNA          rRNA          tRNA 
+##         21198         12285          1187            35           413 
+##     V_segment 
+##           535</code></pre>
+<pre class="r"><code>table(temp$gbkey[temp$gene %in% missing_genes])</code></pre>
+<pre><code>## 
+##  C_region D_segment J_segment V_segment 
+##        20        23        94       534</code></pre>
+<pre class="r"><code>#Add to SummarizedExperiment
+
+temp &lt;- temp[match(rownames(se), temp$gene), ]
+stopifnot(all(temp$gene == rownames(se)))
+rowData(se) &lt;- temp
+head(rowData(se))</code></pre>
+<pre><code>## DataFrame with 6 rows and 4 columns
+##                      gene    ENTREZID                product       gbkey
+##               &lt;character&gt; &lt;character&gt;            &lt;character&gt; &lt;character&gt;
+## Xkr4                 Xkr4      497097 X Kell blood group p..        mRNA
+## LOC105243853 LOC105243853   105243853 uncharacterized LOC1..       ncRNA
+## LOC105242387 LOC105242387   105242387 uncharacterized LOC1..       ncRNA
+## LOC105242467 LOC105242467   105242467 lipoxygenase homolog..        mRNA
+## Rp1                   Rp1       19888 retinitis pigmentosa..        mRNA
+## Sox17               Sox17       20671 SRY (sex determining..        mRNA</code></pre>
+>>>>>>> Stashed changes
 </div>
 <div id="save-summarizedexperiment" class="section level1">
 <h1>Save SummarizedExperiment</h1>

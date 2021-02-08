@@ -34,6 +34,10 @@ meta <- pData(geo$GSE96870_series_matrix.txt.gz) %>%
                   time = `time:ch1`, tissue = `tissue:ch1`,
                   infection = `infection:ch1`, organism = organism_ch1)
 head(meta)
+
+# The GEO metadata currently contains one error; fix it here:
+
+meta["GSM2545367",c("infection","time")] <- c("Non-Infected","Day 0")
 ```
 
 # Get counts
@@ -78,7 +82,51 @@ se
 
 # Add gene annotations
 
-TODO - make sure to get the right annotation version (`ref_GRCm38.p3_top_level_rtracklayer.gtf`)
+ref_GRCm38.p3_top_level_rtracklayer.gtf is listed in the header row of the featCounts.txt.gz files. Jenny just converted NCBI's ref_GRCm38.p3_top_level.gff3 to gtf format using rtracklayer. This corresponds to NCBI's [Annotation Release 105](https://www.ncbi.nlm.nih.gov/genome/annotation_euk/Mus_musculus/105/). However, NCBI reorganized their ftp site a few years ago and the old one, https://ftp.ncbi.nih.gov/genomes/Mus_musculus is no longer available. The [current site for GRCm38.p3](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.23_GRCm38.p3/) does have a GCF_000001635.23_GRCm38.p3_genomic.gff.gz file, but it does not contain all the genes that ref_GRCm38.p3_top_level.gff3 did (see below). Jenny has a publicly-available copy of ref_GRCm38.p3_top_level_rtracklayer.gtf, if we want to use that. 
+
+```{r}
+library(rtracklayer)
+
+#Check current NCBI GRCm38.p3 gff:
+gff0 <- import("https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.23_GRCm38.p3/GCF_000001635.23_GRCm38.p3_genomic.gff.gz")
+gff0 <- gff0[gff0$type == "exon"]
+gff0 <- gff0[!duplicated(gff0$gene)]
+sum(rownames(counts) %in% gff0$gene)
+sum(!rownames(counts) %in% gff0$gene)
+missing_genes <- rownames(counts)[!rownames(counts) %in% gff0$gene] 
+DataFrame(missing_genes)
+
+#Try with gtf file used to make the counts:
+gff0 <- import("https://uofi.box.com/shared/static/tj2b11uq5uym15fisqj9dg9nlcxlgimb.gz", format = "gtf")
+gff0 <- gff0[gff0$type == "exon"]
+gff0 <- gff0[!duplicated(gff0$gene)]
+sum(rownames(counts) %in% gff0$gene)
+sum(!rownames(counts) %in% gff0$gene)
+
+names(mcols(gff0))
+
+#Pull out ENTREZID from Dbxref
+
+gff0$ENTREZID <- strsplit(gff0$Dbxref, ",") %>% sapply(function(x) x[grep("GeneID", x)]) %>% gsub("GeneID:","", .)
+
+#keep gene, ENTREZID, product and gbkey
+
+temp <- mcols(gff0)[,c("gene","ENTREZID","product","gbkey")]
+
+#what were the missing genes?
+
+table(temp$gbkey)
+table(temp$gbkey[temp$gene %in% missing_genes])
+
+#Add to SummarizedExperiment
+
+temp <- temp[match(rownames(se), temp$gene), ]
+stopifnot(all(temp$gene == rownames(se)))
+rowData(se) <- temp
+head(rowData(se))
+
+```
+
 
 # Save SummarizedExperiment
 
