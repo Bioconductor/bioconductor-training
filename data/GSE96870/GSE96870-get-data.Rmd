@@ -1,0 +1,94 @@
+---
+title: "GSE96870, data preparation"
+output: html_document
+date: "`r Sys.Date()`"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Load packages
+
+```{r}
+suppressPackageStartupMessages({
+    library(GEOquery)
+    library(SummarizedExperiment)
+    library(dplyr)
+    library(DESeq2)
+    library(tibble)
+})
+```
+
+# Get sample metadata
+
+```{r}
+geo <- GEOquery::getGEO(GEO = "GSE96870")
+meta <- pData(geo$GSE96870_series_matrix.txt.gz) %>%
+    dplyr::select(title, geo_accession, organism_ch1,
+                  `age:ch1`, `gender:ch1`, `infection:ch1`, 
+                  `strain:ch1`, `time:ch1`, `tissue:ch1`) %>%
+    dplyr::rename(age = `age:ch1`, sex = `gender:ch1`, strain = `strain:ch1`,
+                  time = `time:ch1`, tissue = `tissue:ch1`,
+                  infection = `infection:ch1`, organism = organism_ch1)
+head(meta)
+```
+
+# Get counts
+
+```{r}
+rawtar <- getGEOSuppFiles(GEO = "GSE96870")
+datadir <- file.path(tempdir(), "GSE96870")
+untar("GSE96870/GSE96870_RAW.tar", exdir = datadir)
+```
+
+# Read counts into SummarizedExperiment
+
+```{r}
+count_files <- unique(list.files(path = datadir, pattern = "_featCounts.txt.gz"))
+names(count_files) <- sapply(strsplit(count_files, "_"), .subset, 1)
+count_files
+counts <- Reduce(function(...) dplyr::full_join(..., by = "gene"), 
+                 lapply(names(count_files), function(nm) {
+                     ctf <- read.delim(file.path(datadir, count_files[nm]), header = TRUE, skip = 1) %>%
+                         dplyr::select(Geneid, contains("alignments")) %>%
+                         setNames(c("gene", nm))
+                 })) %>%
+    as.data.frame() %>%
+    tibble::column_to_rownames("gene") %>%
+    as.matrix()
+dim(counts)
+head(counts, 3)
+```
+
+# Create SummarizedExperiment
+
+```{r}
+stopifnot(all(rownames(meta) %in% colnames(counts)))
+meta <- meta[match(colnames(counts), rownames(meta)), ]
+stopifnot(all(rownames(meta) == colnames(counts)))
+se <- SummarizedExperiment::SummarizedExperiment(
+    assays = list(counts = counts),
+    colData = meta
+)
+se
+```
+
+# Add gene annotations
+
+TODO - make sure to get the right annotation version (`ref_GRCm38.p3_top_level_rtracklayer.gtf`)
+
+# Save SummarizedExperiment
+
+```{r}
+saveRDS(se, file = "GSE96870_se.rds")
+```
+
+# Session info
+
+```{r}
+sessionInfo()
+```
+
