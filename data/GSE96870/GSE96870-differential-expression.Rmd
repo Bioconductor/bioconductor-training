@@ -1,0 +1,143 @@
+---
+title: "GSE96870, differential expression analysis"
+output: html_document
+date: "`r Sys.Date()`"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Load packages
+
+```{r}
+suppressPackageStartupMessages({
+    library(SummarizedExperiment)
+    library(DESeq2)
+    library(ggplot2)
+    library(ExploreModelMatrix)
+    library(cowplot)
+    library(ComplexHeatmap)
+})
+```
+
+# Read data
+
+```{r}
+se <- readRDS("GSE96870_se.rds")
+se
+```
+
+# Summary stats
+
+```{r}
+sort(colSums(assay(se, "counts")))
+```
+
+# Set factor  levels
+
+```{r}
+se$sex <- factor(se$sex, levels = c("Female", "Male"))
+se$infection <- factor(gsub(" ", "", gsub("-", "", se$infection)), 
+                       levels = c("NonInfected", "InfluenzaA"))
+se$time <- factor(gsub(" ", "", se$time), levels = c("Day0", "Day4", "Day8"))
+se$tissue <- factor(gsub(" ", "", se$tissue), levels = c("Cerebellum", "Spinalcord"))
+```
+
+# Explore the design
+
+```{r, fig.width = 10, fig.height = 8}
+res <- ExploreModelMatrix::VisualizeDesign(sampleData = colData(se),
+                                           designFormula = ~ tissue + sex + time)
+cowplot::plot_grid(plotlist = res$plotlist, nrow = 2)
+cowplot::plot_grid(plotlist = res$cooccurrenceplots, nrow = 2)
+```
+
+# Create DESeqDataSet
+
+```{r}
+dds <- DESeq2::DESeqDataSet(se, design = ~ tissue + sex + time)
+```
+
+# PCA (variance-stabilized values)
+
+```{r}
+vsd <- DESeq2::vst(dds, blind = TRUE)
+pcaData <- DESeq2::plotPCA(vsd, intgroup = c("sex", "time", "tissue"),
+                           returnData = TRUE)
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+ggplot(pcaData, aes(x = PC1, y = PC2)) + 
+    geom_point(aes(color = sex, shape = time, size = tissue)) + 
+    theme_minimal() + 
+    xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+    ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+    coord_fixed()
+```
+
+# Subset to cerebellum samples and redo PCA
+
+```{r}
+dds <- DESeq2::DESeqDataSet(se[, se$tissue == "Cerebellum"], 
+                            design = ~ sex + time)
+vsd <- DESeq2::vst(dds, blind = TRUE)
+pcaData <- DESeq2::plotPCA(vsd, intgroup = c("sex", "time"),
+                           returnData = TRUE)
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+ggplot(pcaData, aes(x = PC1, y = PC2)) + 
+    geom_point(aes(color = sex, shape = time), size = 3) + 
+    theme_minimal() + 
+    xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+    ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+    coord_fixed()
+```
+
+# Differential expression
+
+```{r}
+dds <- DESeq2::DESeq(dds)
+
+## Day 8 vs Day 0
+resTime <- DESeq2::results(dds, contrast = c("time", "Day8", "Day0"))
+summary(resTime)
+head(resTime[order(resTime$pvalue), ])
+
+## Male vs Female
+resSex <- DESeq2::results(dds, contrast = c("sex", "Male", "Female"))
+summary(resSex)
+head(resSex[order(resSex$pvalue), ])
+```
+
+# MA plot
+
+TODO: Add shrinkage
+
+```{r}
+DESeq2::plotMA(resTime)
+DESeq2::plotMA(resSex)
+```
+
+# Heatmap
+
+```{r, fig.width = 10}
+genes <- rownames(head(resTime[order(resTime$pvalue), ], 10))
+heatmapData <- assay(vsd)[genes, ]
+heatmapData <- t(scale(t(heatmapData)))
+heatmapColAnnot <- data.frame(colData(vsd)[, c("time", "sex")])
+
+idx <- order(vsd$time)
+heatmapData <- heatmapData[, idx]
+heatmapColAnnot <- HeatmapAnnotation(df = heatmapColAnnot[idx, ])
+ComplexHeatmap::Heatmap(heatmapData, 
+                        top_annotation = heatmapColAnnot,
+                        cluster_rows = TRUE, cluster_columns = FALSE)
+```
+
+
+# Session info
+
+```{r}
+sessionInfo()
+```
+
