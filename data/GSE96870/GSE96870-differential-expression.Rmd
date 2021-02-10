@@ -167,6 +167,27 @@ ggplot(pcaData, aes(x = PC1, y = PC2)) +
 Glimma::glimmaMDS(dds2, top = 5000)
 ```
 
+
+# Paired mouse data
+
+Although it often is best to analyze different tissues separately, the cerebellum and spinalcord samples did come from the same mice (although a few samples were lost) nested within time. This could be useful to teach a paired analysis, although likely would be best to reduce the number of factors. Females at Day 0 and Day 4 has all 4 replicates with both tissues.  
+
+
+```{r, fig.width = 10, fig.height = 8}
+res2 <- ExploreModelMatrix::VisualizeDesign(sampleData = colData(se),
+                                           designFormula = ~ sex + time + mouse)
+cowplot::plot_grid(plotlist = res2$cooccurrenceplots, nrow = 2)
+```
+
+```{r}
+dds3 <- DESeq2::DESeqDataSet(se[, se$sex == "Female" & se$time %in% c("Day0","Day4")], 
+                            design = ~ time + tissue)
+Glimma::glimmaMDS(dds3, top = 5000)
+
+```
+
+
+
 # Session info
 
 ```{r}
