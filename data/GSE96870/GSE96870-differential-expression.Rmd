@@ -44,6 +44,7 @@ se$infection <- factor(gsub(" ", "", gsub("-", "", se$infection)),
                        levels = c("NonInfected", "InfluenzaA"))
 se$time <- factor(gsub(" ", "", se$time), levels = c("Day0", "Day4", "Day8"))
 se$tissue <- factor(gsub(" ", "", se$tissue), levels = c("Cerebellum", "Spinalcord"))
+se$mouse <- factor(as.numeric(se$mouse))
 ```
 
 # Explore the design
@@ -134,6 +135,37 @@ ComplexHeatmap::Heatmap(heatmapData,
                         cluster_rows = TRUE, cluster_columns = FALSE)
 ```
 
+# MDS plot
+
+The PCA plot on Cerebellum had PC1 splitting by sex and PC2 splitting by time. However, the DE results showed that time had thousands of gene expression changes compared with only dozens for sex. Try Glimma's interactive MDS plot; set colour_by = time and shape_by = sex. Dim 1 separates by time and dim 1 separates by sex.
+
+```{r}
+Glimma::glimmaMDS(dds, top = 5000)
+```
+
+
+# Subset to Spinalcord samples and redo PCA and MDS
+
+Definite outlier in Spinalcord samples. Very useful for teaching purposes.
+
+```{r}
+dds2 <- DESeq2::DESeqDataSet(se[, se$tissue == "Spinalcord"], 
+                            design = ~ sex + time)
+vsd <- DESeq2::vst(dds2, blind = TRUE)
+pcaData <- DESeq2::plotPCA(vsd, intgroup = c("sex", "time"),
+                           returnData = TRUE)
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+ggplot(pcaData, aes(x = PC1, y = PC2)) + 
+    geom_point(aes(color = sex, shape = time), size = 3) + 
+    theme_minimal() + 
+    xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+    ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+    coord_fixed()
+```
+
+```{r}
+Glimma::glimmaMDS(dds2, top = 5000)
+```
 
 # Session info
 
