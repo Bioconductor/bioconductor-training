@@ -2,7 +2,7 @@
 title: "GSE96870, data preparation"
 output: html_document
 date: "`r Sys.Date()`"
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
 
@@ -14,11 +14,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 suppressPackageStartupMessages({
-    library(GEOquery)
-    library(SummarizedExperiment)
-    library(dplyr)
-    library(DESeq2)
-    library(tibble)
+	library(GEOquery)
+	library(SummarizedExperiment)
+	library(dplyr)
+	library(DESeq2)
+	library(tibble)
 })
 ```
 
@@ -27,13 +27,13 @@ suppressPackageStartupMessages({
 ```{r}
 geo <- GEOquery::getGEO(GEO = "GSE96870")
 meta <- pData(geo$GSE96870_series_matrix.txt.gz) %>%
-    dplyr::select(title, geo_accession, organism_ch1,
-                  `age:ch1`, `gender:ch1`, `infection:ch1`, 
-                  `strain:ch1`, `time:ch1`, `tissue:ch1`, `mouse id:ch1`) %>%
-    dplyr::rename(age = `age:ch1`, sex = `gender:ch1`, strain = `strain:ch1`,
-                  time = `time:ch1`, tissue = `tissue:ch1`,
-                  infection = `infection:ch1`, organism = organism_ch1,
-                  mouse = `mouse id:ch1`)
+	dplyr::select(title, geo_accession, organism_ch1,
+				  `age:ch1`, `gender:ch1`, `infection:ch1`,
+				  `strain:ch1`, `time:ch1`, `tissue:ch1`, `mouse id:ch1`) %>%
+	dplyr::rename(age = `age:ch1`, sex = `gender:ch1`, strain = `strain:ch1`,
+				  time = `time:ch1`, tissue = `tissue:ch1`,
+				  infection = `infection:ch1`, organism = organism_ch1,
+				  mouse = `mouse id:ch1`)
 head(meta)
 
 
@@ -53,15 +53,15 @@ untar("GSE96870/GSE96870_RAW.tar", exdir = datadir)
 count_files <- unique(list.files(path = datadir, pattern = "_featCounts.txt.gz"))
 names(count_files) <- sapply(strsplit(count_files, "_"), .subset, 1)
 count_files
-counts <- Reduce(function(...) dplyr::full_join(..., by = "gene"), 
-                 lapply(names(count_files), function(nm) {
-                     ctf <- read.delim(file.path(datadir, count_files[nm]), header = TRUE, skip = 1) %>%
-                         dplyr::select(Geneid, contains("alignments")) %>%
-                         setNames(c("gene", nm))
-                 })) %>%
-    as.data.frame() %>%
-    tibble::column_to_rownames("gene") %>%
-    as.matrix()
+counts <- Reduce(function(...) dplyr::full_join(..., by = "gene"),
+				 lapply(names(count_files), function(nm) {
+					 ctf <- read.delim(file.path(datadir, count_files[nm]), header = TRUE, skip = 1) %>%
+						 dplyr::select(Geneid, contains("alignments")) %>%
+						 setNames(c("gene", nm))
+				 })) %>%
+	as.data.frame() %>%
+	tibble::column_to_rownames("gene") %>%
+	as.matrix()
 dim(counts)
 head(counts, 3)
 ```
@@ -73,31 +73,44 @@ stopifnot(all(rownames(meta) %in% colnames(counts)))
 meta <- meta[match(colnames(counts), rownames(meta)), ]
 stopifnot(all(rownames(meta) == colnames(counts)))
 se <- SummarizedExperiment::SummarizedExperiment(
-    assays = list(counts = counts),
-    colData = meta
+	assays = list(counts = counts),
+	colData = meta
 )
 se
 ```
 
 # Add gene annotations
 
-ref_GRCm38.p3_top_level_rtracklayer.gtf is listed in the header row of the featCounts.txt.gz files. Jenny just converted NCBI's ref_GRCm38.p3_top_level.gff3 to gtf format using rtracklayer. This corresponds to NCBI's [Annotation Release 105](https://www.ncbi.nlm.nih.gov/genome/annotation_euk/Mus_musculus/105/). However, NCBI reorganized their ftp site a few years ago and the old one, https://ftp.ncbi.nih.gov/genomes/Mus_musculus is no longer available. The [current site for GRCm38.p3](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.23_GRCm38.p3/) does have a GCF_000001635.23_GRCm38.p3_genomic.gff.gz file, but it does not contain all the genes that ref_GRCm38.p3_top_level.gff3 did (missing all C_region and D/J/V segments). Jenny has a publicly-available copy of ref_GRCm38.p3_top_level_rtracklayer.gtf, if we want to use that. 
+`ref_GRCm38.p3_top_level_rtracklayer.gtf` is listed in the header row
+of the `featCounts.txt.gz files`. Jenny just converted NCBI's
+`ref_GRCm38.p3_top_level.gff3` to gtf format using rtracklayer. This
+corresponds to NCBI's [Annotation Release
+105](https://www.ncbi.nlm.nih.gov/genome/annotation_euk/Mus_musculus/105/). However,
+NCBI reorganized their ftp site a few years ago and the old one,
+https://ftp.ncbi.nih.gov/genomes/Mus_musculus is no longer
+available. The [current site for
+GRCm38.p3](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.23_GRCm38.p3/)
+does have a `GCF_000001635.23_GRCm38.p3_genomic.gff.gz` file, but it
+does not contain all the genes that `ref_GRCm38.p3_top_level.gff3` did
+(missing all C_region and D/J/V segments). Jenny has a
+publicly-available copy of `ref_GRCm38.p3_top_level_rtracklayer.gtf`,
+if we want to use that.
 
 ```{r}
 library(rtracklayer)
 
-#Comment out checking on current NCBI gff - knitting takes too long.
-#Eventually can remove this altogether
-# #Check current NCBI GRCm38.p3 gff:
+# Comment out checking on current NCBI gff - knitting takes too long.
+# Eventually can remove this altogether
+# # Check current NCBI GRCm38.p3 gff:
 # gff0 <- import("https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.23_GRCm38.p3/GCF_000001635.23_GRCm38.p3_genomic.gff.gz")
 # gff0 <- gff0[gff0$type == "exon"]
 # gff0 <- gff0[!duplicated(gff0$gene)]
 # sum(rownames(counts) %in% gff0$gene)
 # sum(!rownames(counts) %in% gff0$gene)
-# missing_genes <- rownames(counts)[!rownames(counts) %in% gff0$gene] 
+# missing_genes <- rownames(counts)[!rownames(counts) %in% gff0$gene]
 # DataFrame(missing_genes)
 
-#Try with gtf file used to make the counts:
+# Try with gtf file used to make the counts:
 gff0 <- import("https://uofi.box.com/shared/static/tj2b11uq5uym15fisqj9dg9nlcxlgimb.gz", format = "gtf")
 gff0 <- gff0[gff0$type == "exon"]
 gff0 <- gff0[!duplicated(gff0$gene)]
@@ -106,18 +119,18 @@ sum(!rownames(counts) %in% gff0$gene)
 
 names(mcols(gff0))
 
-#Pull out ENTREZID from Dbxref
+# Pull out ENTREZID from Dbxref
 
 gff0$ENTREZID <- strsplit(gff0$Dbxref, ",") %>% sapply(function(x) x[grep("GeneID", x)]) %>% gsub("GeneID:","", .)
 
-#keep gene, ENTREZID, product and gbkey
+# keep gene, ENTREZID, product and gbkey
 
-temp <- mcols(gff0)[,c("gene","ENTREZID","product","gbkey")]
+temp <- mcols(gff0)[, c("gene","ENTREZID","product","gbkey")]
 
-#What types of genes?
+# What types of genes?
 
 table(temp$gbkey)
-#table(temp$gbkey[temp$gene %in% missing_genes])
+# table(temp$gbkey[temp$gene %in% missing_genes])
 
 #Add to SummarizedExperiment
 
@@ -140,4 +153,3 @@ saveRDS(se, file = "GSE96870_se.rds")
 ```{r}
 sessionInfo()
 ```
-
