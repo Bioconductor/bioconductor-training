@@ -2,7 +2,7 @@
 title: "GSE96870, differential expression analysis"
 output: html_document
 date: "`r Sys.Date()`"
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
 
@@ -14,12 +14,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 suppressPackageStartupMessages({
-    library(SummarizedExperiment)
-    library(DESeq2)
-    library(ggplot2)
-    library(ExploreModelMatrix)
-    library(cowplot)
-    library(ComplexHeatmap)
+	library(SummarizedExperiment)
+	library(DESeq2)
+	library(ggplot2)
+	library(ExploreModelMatrix)
+	library(cowplot)
+	library(ComplexHeatmap)
 })
 ```
 
@@ -40,8 +40,8 @@ sort(colSums(assay(se, "counts")))
 
 ```{r}
 se$sex <- factor(se$sex, levels = c("Female", "Male"))
-se$infection <- factor(gsub(" ", "", gsub("-", "", se$infection)), 
-                       levels = c("NonInfected", "InfluenzaA"))
+se$infection <- factor(gsub(" ", "", gsub("-", "", se$infection)),
+					   levels = c("NonInfected", "InfluenzaA"))
 se$time <- factor(gsub(" ", "", se$time), levels = c("Day0", "Day4", "Day8"))
 se$tissue <- factor(gsub(" ", "", se$tissue), levels = c("Cerebellum", "Spinalcord"))
 se$mouse <- factor(as.numeric(se$mouse))
@@ -51,7 +51,7 @@ se$mouse <- factor(as.numeric(se$mouse))
 
 ```{r, fig.width = 10, fig.height = 8}
 res <- ExploreModelMatrix::VisualizeDesign(sampleData = colData(se),
-                                           designFormula = ~ tissue + sex + time)
+										   designFormula = ~ tissue + sex + time)
 cowplot::plot_grid(plotlist = res$plotlist, nrow = 2)
 cowplot::plot_grid(plotlist = res$cooccurrenceplots, nrow = 2)
 ```
@@ -67,31 +67,31 @@ dds <- DESeq2::DESeqDataSet(se, design = ~ tissue + sex + time)
 ```{r}
 vsd <- DESeq2::vst(dds, blind = TRUE)
 pcaData <- DESeq2::plotPCA(vsd, intgroup = c("sex", "time", "tissue"),
-                           returnData = TRUE)
+						   returnData = TRUE)
 percentVar <- round(100 * attr(pcaData, "percentVar"))
-ggplot(pcaData, aes(x = PC1, y = PC2)) + 
-    geom_point(aes(color = sex, shape = time, size = tissue)) + 
-    theme_minimal() + 
-    xlab(paste0("PC1: ", percentVar[1], "% variance")) +
-    ylab(paste0("PC2: ", percentVar[2], "% variance")) +
-    coord_fixed()
+ggplot(pcaData, aes(x = PC1, y = PC2)) +
+	geom_point(aes(color = sex, shape = time, size = tissue)) +
+	theme_minimal() +
+	xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+	ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+	coord_fixed()
 ```
 
 # Subset to cerebellum samples and redo PCA
 
 ```{r}
-dds <- DESeq2::DESeqDataSet(se[, se$tissue == "Cerebellum"], 
-                            design = ~ sex + time)
+dds <- DESeq2::DESeqDataSet(se[, se$tissue == "Cerebellum"],
+							design = ~ sex + time)
 vsd <- DESeq2::vst(dds, blind = TRUE)
 pcaData <- DESeq2::plotPCA(vsd, intgroup = c("sex", "time"),
-                           returnData = TRUE)
+						   returnData = TRUE)
 percentVar <- round(100 * attr(pcaData, "percentVar"))
-ggplot(pcaData, aes(x = PC1, y = PC2)) + 
-    geom_point(aes(color = sex, shape = time), size = 3) + 
-    theme_minimal() + 
-    xlab(paste0("PC1: ", percentVar[1], "% variance")) +
-    ylab(paste0("PC2: ", percentVar[2], "% variance")) +
-    coord_fixed()
+ggplot(pcaData, aes(x = PC1, y = PC2)) +
+	geom_point(aes(color = sex, shape = time), size = 3) +
+	theme_minimal() +
+	xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+	ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+	coord_fixed()
 ```
 
 # Differential expression
@@ -108,6 +108,15 @@ head(resTime[order(resTime$pvalue), ])
 resSex <- DESeq2::results(dds, contrast = c("sex", "Male", "Female"))
 summary(resSex)
 head(resSex[order(resSex$pvalue), ])
+```
+
+
+Save results so that specific genes can be selected when creating the
+intro course data.
+
+```{r}
+saveRDS(resTime, file = "resTime.rds")
+saveRDS(resSex, file = "resSex.rds")
 ```
 
 # MA plot
@@ -130,9 +139,9 @@ heatmapColAnnot <- data.frame(colData(vsd)[, c("time", "sex")])
 idx <- order(vsd$time)
 heatmapData <- heatmapData[, idx]
 heatmapColAnnot <- HeatmapAnnotation(df = heatmapColAnnot[idx, ])
-ComplexHeatmap::Heatmap(heatmapData, 
-                        top_annotation = heatmapColAnnot,
-                        cluster_rows = TRUE, cluster_columns = FALSE)
+ComplexHeatmap::Heatmap(heatmapData,
+						top_annotation = heatmapColAnnot,
+						cluster_rows = TRUE, cluster_columns = FALSE)
 ```
 
 # MDS plot
@@ -149,18 +158,18 @@ Glimma::glimmaMDS(dds, top = 5000)
 Definite outlier in Spinalcord samples. Very useful for teaching purposes.
 
 ```{r}
-dds2 <- DESeq2::DESeqDataSet(se[, se$tissue == "Spinalcord"], 
-                            design = ~ sex + time)
+dds2 <- DESeq2::DESeqDataSet(se[, se$tissue == "Spinalcord"],
+							design = ~ sex + time)
 vsd <- DESeq2::vst(dds2, blind = TRUE)
 pcaData <- DESeq2::plotPCA(vsd, intgroup = c("sex", "time"),
-                           returnData = TRUE)
+						   returnData = TRUE)
 percentVar <- round(100 * attr(pcaData, "percentVar"))
-ggplot(pcaData, aes(x = PC1, y = PC2)) + 
-    geom_point(aes(color = sex, shape = time), size = 3) + 
-    theme_minimal() + 
-    xlab(paste0("PC1: ", percentVar[1], "% variance")) +
-    ylab(paste0("PC2: ", percentVar[2], "% variance")) +
-    coord_fixed()
+ggplot(pcaData, aes(x = PC1, y = PC2)) +
+	geom_point(aes(color = sex, shape = time), size = 3) +
+	theme_minimal() +
+	xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+	ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+	coord_fixed()
 ```
 
 ```{r}
@@ -170,18 +179,18 @@ Glimma::glimmaMDS(dds2, top = 5000)
 
 # Paired mouse data
 
-Although it often is best to analyze different tissues separately, the cerebellum and spinalcord samples did come from the same mice (although a few samples were lost) nested within time. This could be useful to teach a paired analysis, although likely would be best to reduce the number of factors. Females at Day 0 and Day 4 has all 4 replicates with both tissues.  
+Although it often is best to analyze different tissues separately, the cerebellum and spinalcord samples did come from the same mice (although a few samples were lost) nested within time. This could be useful to teach a paired analysis, although likely would be best to reduce the number of factors. Females at Day 0 and Day 4 has all 4 replicates with both tissues.
 
 
 ```{r, fig.width = 10, fig.height = 8}
 res2 <- ExploreModelMatrix::VisualizeDesign(sampleData = colData(se),
-                                           designFormula = ~ sex + time + mouse)
+										   designFormula = ~ sex + time + mouse)
 cowplot::plot_grid(plotlist = res2$cooccurrenceplots, nrow = 2)
 ```
 
 ```{r}
-dds3 <- DESeq2::DESeqDataSet(se[, se$sex == "Female" & se$time %in% c("Day0","Day4")], 
-                            design = ~ time + tissue)
+dds3 <- DESeq2::DESeqDataSet(se[, se$sex == "Female" & se$time %in% c("Day0","Day4")],
+							design = ~ time + tissue)
 Glimma::glimmaMDS(dds3, top = 5000)
 
 ```
@@ -193,4 +202,3 @@ Glimma::glimmaMDS(dds3, top = 5000)
 ```{r}
 sessionInfo()
 ```
-

@@ -1,0 +1,108 @@
+---
+title: "GSE96870 for the intro lesson"
+output: html_document
+date: "`r Sys.Date()`"
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Load packages
+
+```{r}
+suppressPackageStartupMessages({
+	library(SummarizedExperiment)
+	library(tidyverse)
+})
+```
+
+# Read data
+
+```{r}
+se <- readRDS("GSE96870_se.rds")
+## subset according to the differential expression vignette
+se <- se[, se$tissue == "Cerebellum"]
+se
+```
+
+# Select a subset of genes
+
+```{r}
+resTime <- data.frame(readRDS("resTime.rds")) %>%
+	rownames_to_column("gene") %>%
+	as_tibble() %>%
+	na.omit() %>%
+	filter(!grepl("^LOC", gene)) %>%
+	filter(!grepl("Rik$", gene))
+
+
+resSex <- data.frame(readRDS("resSex.rds")) %>%
+	rownames_to_column("gene") %>%
+	as_tibble() %>%
+	na.omit() %>%
+	filter(!grepl("^LOC", gene)) %>%
+	filter(!grepl("Rik$", gene))
+```
+
+
+```{r}
+sel_genes <- c(
+	## 500 top time DE
+	resTime %>%
+	arrange(padj) %>%
+	head(500) %>%
+	pull("gene"),
+	## 500 top sex DE
+	resSex %>%
+	arrange(padj) %>%
+	head(500) %>%
+	pull("gene"),
+	## 500 non-DE time
+	resTime %>%
+	filter(padj > 0.2) %>%
+	head(500) %>%
+	pull("gene")
+)
+sel_genes <- unique(sel_genes)
+length(sel_genes)
+```
+
+# Prepare data
+
+```{r}
+x <- MultiAssayExperiment::longFormat(se) %>%
+	as_tibble() %>%
+	rename("gene" = "rowname",
+		   "sample" = "colname",
+		   "expression" = "value") %>%
+	filter(gene %in% sel_genes)
+
+cd <- colData(se) %>%
+	as_tibble() %>%
+	mutate(age = as.numeric(sub(" weeks", "", age))) %>%
+	mutate(time = as.numeric(sub("Day ", "", time))) %>%
+	mutate(infection = sub("[ -]", "", infection)) %>%
+	select(-title)
+```
+
+```{r}
+rnaseq <- full_join(x, cd,
+					by = c("sample" = "geo_accession"))
+rnaseq
+```
+
+# Serialise data
+
+```{r}
+saveRDS(rnaseq, file = "rnaseq.rds")
+write_csv(rnaseq, "rnaseq.csv")
+```
+
+# Session info
+
+```{r}
+sessionInfo()
+```
