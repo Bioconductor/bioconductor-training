@@ -24,7 +24,7 @@ suppressPackageStartupMessages({
 ```{r}
 se <- readRDS("GSE96870_se.rds")
 ## subset according to the differential expression vignette
-se <- se[, se$tissue == "Cerebellum"]
+## se <- se[, se$tissue == "Cerebellum"]
 se
 ```
 
@@ -68,6 +68,31 @@ sel_genes <- c(
 )
 sel_genes <- unique(sel_genes)
 length(sel_genes)
+```
+
+```{r}
+sel_genes <- c(
+	head(arrange(resSex, padj), 3)[[1]],
+	head(arrange(resTime, padj), 3)[[1]],
+	head(arrange(resSex, desc(padj)), 3)[[1]])
+```
+
+# Prepare data
+
+```{r}
+
+tab1 <-
+	t(assay(se[sel_genes])) %>%
+	data.frame() %>%
+	rownames_to_column("sample") %>%
+	as_tibble()
+
+tab2 <-
+	colData(se) %>%
+	data.frame() %>%
+	rownames_to_column("sample")
+
+rnaseq <- full_join(tab1, tab2)
 ```
 
 # Prepare data
