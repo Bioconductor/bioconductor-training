@@ -90,6 +90,7 @@ rnaseq_long <-
 
 ```{r}
 saveRDS(rnaseq, file = "rnaseq.rds")
+saveRDS(rnaseq_long, file = "rnaseq_long.rds")
 write_csv(rnaseq, "rnaseq.csv")
 ```
 
