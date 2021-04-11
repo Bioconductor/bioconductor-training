@@ -14,11 +14,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 suppressPackageStartupMessages({
-	library(SummarizedExperiment)
-  library(scRNAseq)
-  library(scater)
-  library(scran)
-	library(tidyverse)
+    library(SummarizedExperiment)
+    library(scRNAseq)
+    library(scater)
+    library(scran)
+    library(tidyverse)
 })
 ```
 
@@ -39,7 +39,7 @@ head(rowData(se))
 
 # Select a subset of genes
 
-Pull from some of those reported in [Bach et al. (2017)](https://www.nature.com/articles/s41467-017-02001-5) 
+Pull from some of those reported in [Bach et al. (2017)](https://www.nature.com/articles/s41467-017-02001-5)
 
 ```{r}
 sel_genes <- c("Krt18", "Krt8", "Krt5", "Krt14", "Acta2", "Pgr", "Esr1", "Prlr","Aldh1a3", "Cd14", "Kit","Wap", "Csn2")
@@ -54,7 +54,7 @@ length(sel_genes)
 #Normalization
 
 set.seed(100)
-clust.se <- quickCluster(se) 
+clust.se <- quickCluster(se)
 se <- computeSumFactors(se, cluster=clust.se, min.mean=0.1)
 se <- logNormCounts(se)
 assayNames(se)
@@ -69,8 +69,20 @@ se_sub
 temp <- assay(se_sub, "logcounts") %>% as.matrix() %>% t()
 colnames(temp) <- rowData(se_sub)$Symbol
 
-rnaseq <- colData(se_sub) %>% as.data.frame() %>% tibble(temp)
+rnaseq <- cbind(colData(se), temp)
 rnaseq
+```
+
+```{r}
+library(tidyverse)
+
+rnaseq_long <-
+    rnaseq %>%
+    as_tibble() %>%
+    pivot_longer(names_to = "gene",
+                 values_to = "expression",
+                 Kit:Acta2)
+
 
 ```
 
