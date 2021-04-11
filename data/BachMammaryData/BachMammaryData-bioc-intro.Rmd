@@ -69,29 +69,15 @@ se_sub
 temp <- assay(se_sub, "logcounts") %>% as.matrix() %>% t()
 colnames(temp) <- rowData(se_sub)$Symbol
 
-rnaseq <- cbind(colData(se), temp)
+rnaseq <- as.tibble(cbind(colData(se), temp))
 rnaseq
-```
-
-```{r}
-library(tidyverse)
-
-rnaseq_long <-
-    rnaseq %>%
-    as_tibble() %>%
-    pivot_longer(names_to = "gene",
-                 values_to = "expression",
-                 Kit:Acta2)
-
-
 ```
 
 # Serialise data
 
 ```{r}
 saveRDS(rnaseq, file = "rnaseq.rds")
-saveRDS(rnaseq_long, file = "rnaseq_long.rds")
-write_csv(rnaseq, "rnaseq.csv")
+write_csv(rnaseq, file = "rnaseq.csv")
 ```
 
 # Session info
