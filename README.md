@@ -44,7 +44,7 @@ lessons are developed as modules in their own repositories.
 
 ## Workshop developer guidelines
 
-- [Wokshop guide](./workshop-guide.md)
+- [Workshop guide](./workshop-guide.md)
 
 ## Notes and meetings
 
