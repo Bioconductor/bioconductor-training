@@ -1,5 +1,8 @@
-# The Bioconductor teaching committee
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/kevinrue/bioconductor-teaching/workflows/R-CMD-check/badge.svg)](https://github.com/kevinrue/bioconductor-teaching/actions)
+<!-- badges: end -->
 
+# The Bioconductor teaching committee
 
 The Bioconductor teaching committee is a collaborative effort to 
 consolidate Bioconductor-focused training material and establish 
