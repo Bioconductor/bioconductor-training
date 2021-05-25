@@ -27,7 +27,7 @@ jobs:
           find . -name '*.html' -exec cp -f {} deploy/html/ \;
 
       - name: Deploy 🚀
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        # if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
