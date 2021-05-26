@@ -1,0 +1,20 @@
+---
+title: "Index"
+output: html_document
+date: "`r Sys.Date()`"
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Current resources
+
+```{r, echo=FALSE, results='asis'}
+html_targets <- basename(list.files("data", ".html$", recursive = TRUE))
+render_blob <- sprintf("- [%s](./%s)", html_targets, html_targets)
+cat(render_blob, sep = "\n")
+```
+
