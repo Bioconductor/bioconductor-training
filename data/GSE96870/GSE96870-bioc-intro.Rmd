@@ -14,8 +14,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 suppressPackageStartupMessages({
-	library(SummarizedExperiment)
-	library(tidyverse)
+    library(SummarizedExperiment)
+    library(tidyverse)
 })
 ```
 
@@ -24,7 +24,7 @@ suppressPackageStartupMessages({
 ```{r}
 se <- readRDS("GSE96870_se.rds")
 ## subset according to the differential expression vignette
-## se <- se[, se$tissue == "Cerebellum"]
+se <- se[, se$tissue == "Cerebellum"]
 se
 ```
 
@@ -32,39 +32,39 @@ se
 
 ```{r}
 resTime <- data.frame(readRDS("resTime.rds")) %>%
-	rownames_to_column("gene") %>%
-	as_tibble() %>%
-	na.omit() %>%
-	filter(!grepl("^LOC", gene)) %>%
-	filter(!grepl("Rik$", gene))
+    rownames_to_column("gene") %>%
+    as_tibble() %>%
+    na.omit() %>%
+    filter(!grepl("^LOC", gene)) %>%
+    filter(!grepl("Rik$", gene))
 
 
 resSex <- data.frame(readRDS("resSex.rds")) %>%
-	rownames_to_column("gene") %>%
-	as_tibble() %>%
-	na.omit() %>%
-	filter(!grepl("^LOC", gene)) %>%
-	filter(!grepl("Rik$", gene))
+    rownames_to_column("gene") %>%
+    as_tibble() %>%
+    na.omit() %>%
+    filter(!grepl("^LOC", gene)) %>%
+    filter(!grepl("Rik$", gene))
 ```
 
 
 ```{r}
 sel_genes <- c(
-	## 500 top time DE
-	resTime %>%
-	arrange(padj) %>%
-	head(500) %>%
-	pull("gene"),
-	## 500 top sex DE
-	resSex %>%
-	arrange(padj) %>%
-	head(500) %>%
-	pull("gene"),
-	## 500 non-DE time
-	resTime %>%
-	filter(padj > 0.2) %>%
-	head(500) %>%
-	pull("gene")
+    ## 500 top time DE
+    resTime %>%
+    arrange(padj) %>%
+    head(500) %>%
+    pull("gene"),
+    ## 500 top sex DE
+    resSex %>%
+    arrange(padj) %>%
+    head(500) %>%
+    pull("gene"),
+    ## 500 non-DE time
+    resTime %>%
+    filter(padj > 0.2) %>%
+    head(500) %>%
+    pull("gene")
 )
 sel_genes <- unique(sel_genes)
 length(sel_genes)
@@ -72,9 +72,9 @@ length(sel_genes)
 
 ```{r}
 sel_genes <- c(
-	head(arrange(resSex, padj), 3)[[1]],
-	head(arrange(resTime, padj), 3)[[1]],
-	head(arrange(resSex, desc(padj)), 3)[[1]])
+    head(arrange(resSex, padj), 3)[[1]],
+    head(arrange(resTime, padj), 3)[[1]],
+    head(arrange(resSex, desc(padj)), 3)[[1]])
 ```
 
 # Prepare data
@@ -82,15 +82,15 @@ sel_genes <- c(
 ```{r}
 
 tab1 <-
-	t(assay(se[sel_genes])) %>%
-	data.frame() %>%
-	rownames_to_column("sample") %>%
-	as_tibble()
+    t(assay(se[sel_genes])) %>%
+    data.frame() %>%
+    rownames_to_column("sample") %>%
+    as_tibble()
 
 tab2 <-
-	colData(se) %>%
-	data.frame() %>%
-	rownames_to_column("sample")
+    colData(se) %>%
+    data.frame() %>%
+    rownames_to_column("sample")
 
 rnaseq <- full_join(tab1, tab2)
 ```
@@ -98,30 +98,32 @@ rnaseq <- full_join(tab1, tab2)
 # Prepare data
 
 ```{r}
-x <- MultiAssayExperiment::longFormat(se) %>%
-	as_tibble() %>%
-	rename("gene" = "rowname",
-		   "sample" = "colname",
-		   "expression" = "value") %>%
-	filter(gene %in% sel_genes)
+se2 <- se[sel_genes, ]
 
-cd <- colData(se) %>%
-	as_tibble() %>%
-	mutate(age = as.numeric(sub(" weeks", "", age))) %>%
-	mutate(time = as.numeric(sub("Day ", "", time))) %>%
-	mutate(infection = sub("[ -]", "", infection)) %>%
-	select(-title)
+x <- MultiAssayExperiment::longFormat(se2) %>%
+    as_tibble() %>%
+    rename("gene" = "rowname",
+           "sample" = "colname",
+           "expression" = "value")
+
+cd <- colData(se2) %>%
+    as_tibble() %>%
+    mutate(age = as.numeric(sub(" weeks", "", age))) %>%
+    mutate(time = as.numeric(sub("Day ", "", time))) %>%
+    mutate(infection = sub("[ -]", "", infection)) %>%
+    select(-title)
 ```
 
 ```{r}
 rnaseq <- full_join(x, cd,
-					by = c("sample" = "geo_accession"))
+                    by = c("sample" = "geo_accession"))
 rnaseq
 ```
 
 # Serialise data
 
 ```{r}
+saveRDS(se2, file = "se2.rds")
 saveRDS(rnaseq, file = "rnaseq.rds")
 write_csv(rnaseq, "rnaseq.csv")
 ```
