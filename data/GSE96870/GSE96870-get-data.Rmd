@@ -141,6 +141,16 @@ head(rowData(se))
 
 ```
 
+# Set factor levels
+
+```{r}
+se$sex <- factor(se$sex, levels = c("Female", "Male"))
+se$infection <- factor(gsub(" ", "", gsub("-", "", se$infection)),
+					   levels = c("NonInfected", "InfluenzaA"))
+se$time <- factor(gsub(" ", "", se$time), levels = c("Day0", "Day4", "Day8"))
+se$tissue <- factor(gsub(" ", "", se$tissue), levels = c("Cerebellum", "Spinalcord"))
+se$mouse <- factor(as.numeric(se$mouse))
+```
 
 # Save SummarizedExperiment
 
