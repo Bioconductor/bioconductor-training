@@ -45,6 +45,37 @@ cowplot::plot_grid(plotlist = res$plotlist, nrow = 2)
 cowplot::plot_grid(plotlist = res$cooccurrenceplots, nrow = 2)
 ```
 
+# Save text files to use for lesson
+
+```{r}
+## Full count matrix
+write.csv(cbind(gene = rownames(se), assay(se, "counts")),
+          file = "GSE96870_counts_all.csv", row.names = FALSE, 
+          quote = FALSE)
+
+## Full colData
+write.csv(cbind(sample = colnames(se), colData(se)),
+          file = "GSE96870_coldata_all.csv", row.names = FALSE, 
+          quote = FALSE)
+
+## Cerebellum count matrix
+se_cereb <- se[, se$tissue == "Cerebellum"]
+write.csv(cbind(gene = rownames(se_cereb), assay(se_cereb, "counts")),
+          file = "GSE96870_counts_cerebellum.csv", row.names = FALSE, 
+          quote = FALSE)
+
+## Cerebellum colData
+write.csv(cbind(sample = colnames(se_cereb), colData(se_cereb)),
+          file = "GSE96870_coldata_cerebellum.csv", row.names = FALSE, 
+          quote = FALSE)
+
+## rowData
+write.csv(cbind(gene = rownames(se), rowData(se)),
+          file = "GSE96870_rowdata.csv", row.names = FALSE, 
+          quote = FALSE)
+```
+
+
 # Create DESeqDataSet
 
 ```{r}

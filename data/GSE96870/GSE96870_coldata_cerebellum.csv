@@ -1,0 +1,23 @@
+sample,title,geo_accession,organism,age,sex,infection,strain,time,tissue,mouse
+GSM2545336,CNS_RNA-seq_10C,GSM2545336,Mus musculus,8 weeks,Female,InfluenzaA,C57BL/6,Day8,Cerebellum,14
+GSM2545337,CNS_RNA-seq_11C,GSM2545337,Mus musculus,8 weeks,Female,NonInfected,C57BL/6,Day0,Cerebellum,9
+GSM2545338,CNS_RNA-seq_12C,GSM2545338,Mus musculus,8 weeks,Female,NonInfected,C57BL/6,Day0,Cerebellum,10
+GSM2545339,CNS_RNA-seq_13C,GSM2545339,Mus musculus,8 weeks,Female,InfluenzaA,C57BL/6,Day4,Cerebellum,15
+GSM2545340,CNS_RNA-seq_14C,GSM2545340,Mus musculus,8 weeks,Male,InfluenzaA,C57BL/6,Day4,Cerebellum,18
+GSM2545341,CNS_RNA-seq_17C,GSM2545341,Mus musculus,8 weeks,Male,InfluenzaA,C57BL/6,Day8,Cerebellum,6
+GSM2545342,CNS_RNA-seq_1C,GSM2545342,Mus musculus,8 weeks,Female,InfluenzaA,C57BL/6,Day8,Cerebellum,5
+GSM2545343,CNS_RNA-seq_20C,GSM2545343,Mus musculus,8 weeks,Male,NonInfected,C57BL/6,Day0,Cerebellum,11
+GSM2545344,CNS_RNA-seq_21C,GSM2545344,Mus musculus,8 weeks,Female,InfluenzaA,C57BL/6,Day4,Cerebellum,22
+GSM2545345,CNS_RNA-seq_22C,GSM2545345,Mus musculus,8 weeks,Male,InfluenzaA,C57BL/6,Day4,Cerebellum,13
+GSM2545346,CNS_RNA-seq_25C,GSM2545346,Mus musculus,8 weeks,Male,InfluenzaA,C57BL/6,Day8,Cerebellum,23
+GSM2545347,CNS_RNA-seq_26C,GSM2545347,Mus musculus,8 weeks,Male,InfluenzaA,C57BL/6,Day8,Cerebellum,24
+GSM2545348,CNS_RNA-seq_27C,GSM2545348,Mus musculus,8 weeks,Female,NonInfected,C57BL/6,Day0,Cerebellum,8
+GSM2545349,CNS_RNA-seq_28C,GSM2545349,Mus musculus,8 weeks,Male,NonInfected,C57BL/6,Day0,Cerebellum,7
+GSM2545350,CNS_RNA-seq_29C,GSM2545350,Mus musculus,8 weeks,Male,InfluenzaA,C57BL/6,Day4,Cerebellum,1
+GSM2545351,CNS_RNA-seq_2C,GSM2545351,Mus musculus,8 weeks,Female,InfluenzaA,C57BL/6,Day8,Cerebellum,16
+GSM2545352,CNS_RNA-seq_30C,GSM2545352,Mus musculus,8 weeks,Female,InfluenzaA,C57BL/6,Day4,Cerebellum,21
+GSM2545353,CNS_RNA-seq_3C,GSM2545353,Mus musculus,8 weeks,Female,NonInfected,C57BL/6,Day0,Cerebellum,4
+GSM2545354,CNS_RNA-seq_4C,GSM2545354,Mus musculus,8 weeks,Male,NonInfected,C57BL/6,Day0,Cerebellum,2
+GSM2545362,CNS_RNA-seq_5C,GSM2545362,Mus musculus,8 weeks,Female,InfluenzaA,C57BL/6,Day4,Cerebellum,20
+GSM2545363,CNS_RNA-seq_6C,GSM2545363,Mus musculus,8 weeks,Male,InfluenzaA,C57BL/6,Day4,Cerebellum,12
+GSM2545380,CNS_RNA-seq_9C,GSM2545380,Mus musculus,8 weeks,Female,InfluenzaA,C57BL/6,Day8,Cerebellum,19
