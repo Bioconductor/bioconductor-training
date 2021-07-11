@@ -1,4 +1,4 @@
-gene,gene.1,ENTREZID,product,gbkey
+symbol,gene,ENTREZID,product,gbkey
 Xkr4,Xkr4,497097,X Kell blood group precursor related family member 4, transcript variant X1,mRNA
 LOC105243853,LOC105243853,105243853,uncharacterized LOC105243853, transcript variant X2,ncRNA
 LOC105242387,LOC105242387,105242387,uncharacterized LOC105242387,ncRNA

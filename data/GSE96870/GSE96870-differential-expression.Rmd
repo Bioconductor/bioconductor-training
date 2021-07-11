@@ -70,7 +70,7 @@ write.csv(cbind(sample = colnames(se_cereb), colData(se_cereb)),
           quote = FALSE)
 
 ## rowData
-write.csv(cbind(gene = rownames(se), rowData(se)),
+write.csv(cbind(symbol = rownames(se), rowData(se)),
           file = "GSE96870_rowdata.csv", row.names = FALSE, 
           quote = FALSE)
 ```
