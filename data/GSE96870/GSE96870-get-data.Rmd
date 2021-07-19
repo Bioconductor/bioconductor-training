@@ -146,7 +146,8 @@ table(gff0$gbkey)
 # add rowRanges to SummarizedExperiment
 
 gff0 <- gff0[match(rownames(se), gff0$gene)]
-stopifnot(all(gff0$gene == rownames(se)))
+names(gff0) <- gff0$gene
+stopifnot(all(names(gff0) == rownames(se)))
 rowRanges(se) <- gff0
 head(rowData(se))
 head(rowRanges(se))

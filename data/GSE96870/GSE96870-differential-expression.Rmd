@@ -15,7 +15,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 suppressPackageStartupMessages({
 	library(SummarizedExperiment)
-  library(rtracklayer)
 	library(DESeq2)
 	library(ggplot2)
 	library(ExploreModelMatrix)
@@ -59,6 +58,13 @@ write.csv(cbind(sample = colnames(se), colData(se)),
           file = "GSE96870_coldata_all.csv", row.names = FALSE, 
           quote = FALSE)
 
+## Full rowRanges, which includes rowData
+write.table(cbind(seqnames = seqnames(rowRanges(se)),
+                  start = start(rowRanges(se)), end = end(rowRanges(se)),
+                  strand = strand(rowRanges(se)), mcols(rowRanges(se))),
+          file = "GSE96870_rowranges_all.tsv", row.names=FALSE, sep="\t",
+          quote=FALSE)
+
 ## Cerebellum count matrix
 se_cereb <- se[, se$tissue == "Cerebellum"]
 write.csv(cbind(gene = rownames(se_cereb), assay(se_cereb, "counts")),
@@ -71,7 +77,11 @@ write.csv(cbind(sample = colnames(se_cereb), colData(se_cereb)),
           quote = FALSE)
 
 ## Cerebellum rowRanges, which includes rowData
-export(rowRanges(se), "GSE96870_rowranges.gtf")
+write.table(cbind(seqnames = seqnames(rowRanges(se_cereb)),
+                  start = start(rowRanges(se_cereb)), end = end(rowRanges(se_cereb)),
+                  strand = strand(rowRanges(se_cereb)), mcols(rowRanges(se_cereb))),
+          file = "GSE96870_rowranges_cerebellum.tsv", row.names=FALSE, sep="\t",
+          quote=FALSE)
 ```
 
 
