@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 suppressPackageStartupMessages({
 	library(SummarizedExperiment)
+  library(rtracklayer)
 	library(DESeq2)
 	library(ggplot2)
 	library(ExploreModelMatrix)
@@ -69,10 +70,8 @@ write.csv(cbind(sample = colnames(se_cereb), colData(se_cereb)),
           file = "GSE96870_coldata_cerebellum.csv", row.names = FALSE, 
           quote = FALSE)
 
-## rowData
-write.table(cbind(symbol = rownames(se), rowData(se)),
-            file = "GSE96870_rowdata.tsv", row.names = FALSE, 
-            quote = FALSE, sep = "\t")
+## Cerebellum rowRanges, which includes rowData
+export(rowRanges(se), "GSE96870_rowranges.gtf")
 ```
 
 
