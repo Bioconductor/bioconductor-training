@@ -58,11 +58,11 @@ write.csv(cbind(sample = colnames(se), colData(se)),
           file = "GSE96870_coldata_all.csv", row.names = FALSE, 
           quote = FALSE)
 
-## Full rowRanges, which includes rowData
+## rowRanges, which includes rowData
 write.table(cbind(seqnames = seqnames(rowRanges(se)),
                   start = start(rowRanges(se)), end = end(rowRanges(se)),
                   strand = strand(rowRanges(se)), mcols(rowRanges(se))),
-          file = "GSE96870_rowranges_all.tsv", row.names=FALSE, sep="\t",
+          file = "GSE96870_rowranges.tsv", row.names=FALSE, sep="\t",
           quote=FALSE)
 
 ## Cerebellum count matrix
@@ -75,13 +75,6 @@ write.csv(cbind(gene = rownames(se_cereb), assay(se_cereb, "counts")),
 write.csv(cbind(sample = colnames(se_cereb), colData(se_cereb)),
           file = "GSE96870_coldata_cerebellum.csv", row.names = FALSE, 
           quote = FALSE)
-
-## Cerebellum rowRanges, which includes rowData
-write.table(cbind(seqnames = seqnames(rowRanges(se_cereb)),
-                  start = start(rowRanges(se_cereb)), end = end(rowRanges(se_cereb)),
-                  strand = strand(rowRanges(se_cereb)), mcols(rowRanges(se_cereb))),
-          file = "GSE96870_rowranges_cerebellum.tsv", row.names=FALSE, sep="\t",
-          quote=FALSE)
 ```
 
 
