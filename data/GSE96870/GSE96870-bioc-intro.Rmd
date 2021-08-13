@@ -100,6 +100,15 @@ rnaseq <- full_join(tab1, tab2)
 ```{r}
 se2 <- se[sel_genes, ]
 
+## TODO
+## - add product (contains NA)
+## - add p-values
+
+## NEW DATA
+## - add other variables such as function/location (see biomart) that
+##   have NAs
+## - chromosome
+
 x <- MultiAssayExperiment::longFormat(se2) %>%
     as_tibble() %>%
     rename("gene" = "rowname",
