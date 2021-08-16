@@ -65,6 +65,7 @@ se <- se[keep, ]
 
 rowData(se) <- cbind(rowData(se), description[keep, ])
 se
+rowData(se)
 ```
 
 # Select a subset of genes
