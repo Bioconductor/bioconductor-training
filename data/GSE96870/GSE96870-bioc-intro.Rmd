@@ -110,13 +110,6 @@ sel_genes <- unique(sel_genes)
 length(sel_genes)
 ```
 
-```{r}
-sel_genes <- c(
-    head(arrange(resSex, padj), 3)[[1]],
-    head(arrange(resTime, padj), 3)[[1]],
-    head(arrange(resSex, desc(padj)), 3)[[1]])
-```
-
 # Prepare data
 
 ```{r}
