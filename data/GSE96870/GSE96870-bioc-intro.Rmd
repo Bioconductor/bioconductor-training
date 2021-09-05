@@ -14,8 +14,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 suppressPackageStartupMessages({
-    library(SummarizedExperiment)
-    library(tidyverse)
+  library(SummarizedExperiment)
+  library(tidyverse)
+  library(org.Mm.eg.db)
+  library(biomaRt)
 })
 ```
 
@@ -25,26 +27,65 @@ suppressPackageStartupMessages({
 se <- readRDS("GSE96870_se.rds")
 ## subset according to the differential expression vignette
 se <- se[, se$tissue == "Cerebellum"]
+
+## Add gene description to rowData
+ensembl <- useDataset("mmusculus_gene_ensembl", useMart("ensembl"))
+
+att1  <- c("external_gene_name",
+          "ensembl_gene_id",
+          "external_synonym",
+          "chromosome_name", 
+          "gene_biotype",
+          "phenotype_description")
+
+description1 <- getBM(attributes = att1,
+                     mart = ensembl,
+                     filters = "external_gene_name",
+                     values = rownames(se))
+
+att2  <- c("external_gene_name",
+           "hsapiens_homolog_associated_gene_name")
+
+description2 <- getBM(attributes = att2,
+                     mart = ensembl,
+                     filters = "external_gene_name",
+                     values = rownames(se))
+
+description <- description1 %>% 
+  filter(!duplicated(external_gene_name)) %>% 
+  left_join(description2 %>% 
+              filter(!duplicated(external_gene_name))) 
+
+description[description == ""] <- NA
+
+rownames(description) <- description$external_gene_name
+
+keep <- rownames(se)[rownames(se) %in% rownames(description)]
+se <- se[keep, ]
+
+rowData(se) <- cbind(rowData(se), description[keep, ])
 se
+rowData(se)
 ```
 
 # Select a subset of genes
 
 ```{r}
 resTime <- data.frame(readRDS("resTime.rds")) %>%
-    rownames_to_column("gene") %>%
-    as_tibble() %>%
-    na.omit() %>%
-    filter(!grepl("^LOC", gene)) %>%
-    filter(!grepl("Rik$", gene))
-
+  rownames_to_column("gene") %>%
+  as_tibble() %>%
+  filter(gene %in% keep) %>% 
+  na.omit() %>%
+  filter(!grepl("^LOC", gene)) %>%
+  filter(!grepl("Rik$", gene))
 
 resSex <- data.frame(readRDS("resSex.rds")) %>%
-    rownames_to_column("gene") %>%
-    as_tibble() %>%
-    na.omit() %>%
-    filter(!grepl("^LOC", gene)) %>%
-    filter(!grepl("Rik$", gene))
+  rownames_to_column("gene") %>%
+  as_tibble() %>%
+  filter(gene %in% keep) %>% 
+  na.omit() %>%
+  filter(!grepl("^LOC", gene)) %>%
+  filter(!grepl("Rik$", gene))
 ```
 
 
@@ -70,17 +111,9 @@ sel_genes <- unique(sel_genes)
 length(sel_genes)
 ```
 
-```{r}
-sel_genes <- c(
-    head(arrange(resSex, padj), 3)[[1]],
-    head(arrange(resTime, padj), 3)[[1]],
-    head(arrange(resSex, desc(padj)), 3)[[1]])
-```
-
 # Prepare data
 
 ```{r}
-
 tab1 <-
     t(assay(se[sel_genes])) %>%
     data.frame() %>%
