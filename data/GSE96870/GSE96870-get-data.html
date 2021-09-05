@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2021-06-12" />
+<meta name="date" content="2021-07-19" />
 
 <title>GSE96870, data preparation</title>
 
@@ -165,7 +165,7 @@ pre code {
 
 
 <h1 class="title toc-ignore">GSE96870, data preparation</h1>
-<h4 class="date">2021-06-12</h4>
+<h4 class="date">2021-07-19</h4>
 
 </div>
 
@@ -186,13 +186,13 @@ pre code {
 <pre><code>## Found 1 file(s)</code></pre>
 <pre><code>## GSE96870_series_matrix.txt.gz</code></pre>
 <pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────
 ## cols(
 ##   .default = col_character()
 ## )
 ## ℹ Use `spec()` for the full column specifications.</code></pre>
 <pre><code>## File stored at:</code></pre>
-<pre><code>## /var/folders/56/nc50f0qd379g3p4k2grlnsdw0000gp/T//Rtmp6EuwU3/GPL17021.soft</code></pre>
+<pre><code>## /var/folders/cv/860bzpnj12v6fjn98d1j5knm0000gp/T//RtmpSYpdcq/GPL17021.soft</code></pre>
 <pre class="r"><code>meta &lt;- pData(geo$GSE96870_series_matrix.txt.gz) %&gt;%
     dplyr::select(title, geo_accession, organism_ch1,
                   `age:ch1`, `gender:ch1`, `infection:ch1`,
@@ -444,13 +444,41 @@ sum(rownames(counts) %in% gff0$gene)</code></pre>
 
 gff0$ENTREZID &lt;- strsplit(gff0$Dbxref, &quot;,&quot;) %&gt;% sapply(function(x) x[grep(&quot;GeneID&quot;, x)]) %&gt;% gsub(&quot;GeneID:&quot;,&quot;&quot;, .)
 
-# keep gene, ENTREZID, product and gbkey
+# read mappings from NCBI species-specific chromosome accessions to standard chromosome names
+chrnames &lt;- read.delim(&quot;https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.23_GRCm38.p3/GCF_000001635.23_GRCm38.p3_assembly_report.txt&quot;,
+                       comment.char = &quot;#&quot;, header = FALSE)
+head(chrnames)</code></pre>
+<pre><code>##   V1                 V2 V3         V4         V5 V6          V7       V8
+## 1  1 assembled-molecule  1 Chromosome CM000994.2  = NC_000067.6 C57BL/6J
+## 2  2 assembled-molecule  2 Chromosome CM000995.2  = NC_000068.7 C57BL/6J
+## 3  3 assembled-molecule  3 Chromosome CM000996.2  = NC_000069.6 C57BL/6J
+## 4  4 assembled-molecule  4 Chromosome CM000997.2  = NC_000070.6 C57BL/6J
+## 5  5 assembled-molecule  5 Chromosome CM000998.2  = NC_000071.6 C57BL/6J
+## 6  6 assembled-molecule  6 Chromosome CM000999.2  = NC_000072.6 C57BL/6J
+##          V9  V10
+## 1 195471971 chr1
+## 2 182113224 chr2
+## 3 160039680 chr3
+## 4 156508116 chr4
+## 5 151834684 chr5
+## 6 149736546 chr6</code></pre>
+<pre class="r"><code># The chr accessions are in V7 and the chr numbers are in V1
+dim(chrnames)</code></pre>
+<pre><code>## [1] 182  10</code></pre>
+<pre class="r"><code>length(seqlevels(gff0))</code></pre>
+<pre><code>## [1] 182</code></pre>
+<pre class="r"><code>sum(seqlevels(gff0) %in% chrnames$V7)</code></pre>
+<pre><code>## [1] 182</code></pre>
+<pre class="r"><code># Use match() to pull the correct chr numbers from V1:
+seqlevels(gff0) &lt;- chrnames$V1[match(seqlevels(gff0), chrnames$V7)]
+standardChromosomes(gff0)</code></pre>
+<pre><code>##  [1] &quot;1&quot;  &quot;2&quot;  &quot;3&quot;  &quot;4&quot;  &quot;5&quot;  &quot;6&quot;  &quot;7&quot;  &quot;8&quot;  &quot;9&quot;  &quot;10&quot; &quot;11&quot; &quot;12&quot; &quot;13&quot; &quot;14&quot; &quot;15&quot;
+## [16] &quot;16&quot; &quot;17&quot; &quot;18&quot; &quot;19&quot; &quot;X&quot;  &quot;Y&quot;  &quot;MT&quot;</code></pre>
+<pre class="r"><code># keep gene, ENTREZID, product and gbkey
+mcols(gff0) &lt;- mcols(gff0)[, c(&quot;gene&quot;,&quot;ENTREZID&quot;,&quot;product&quot;,&quot;gbkey&quot;)]
 
-temp &lt;- mcols(gff0)[, c(&quot;gene&quot;,&quot;ENTREZID&quot;,&quot;product&quot;,&quot;gbkey&quot;)]
-
-# What types of genes?
-
-table(temp$gbkey)</code></pre>
+# what types of genes?
+table(gff0$gbkey)</code></pre>
 <pre><code>## 
 ##      C_region     D_segment          exon     J_segment      misc_RNA 
 ##            20            23          4008            94          1988 
@@ -458,13 +486,12 @@ table(temp$gbkey)</code></pre>
 ##         21198         12285          1187            35           413 
 ##     V_segment 
 ##           535</code></pre>
-<pre class="r"><code># table(temp$gbkey[temp$gene %in% missing_genes])
+<pre class="r"><code># add rowRanges to SummarizedExperiment
 
-#Add to SummarizedExperiment
-
-temp &lt;- temp[match(rownames(se), temp$gene), ]
-stopifnot(all(temp$gene == rownames(se)))
-rowData(se) &lt;- temp
+gff0 &lt;- gff0[match(rownames(se), gff0$gene)]
+names(gff0) &lt;- gff0$gene
+stopifnot(all(names(gff0) == rownames(se)))
+rowRanges(se) &lt;- gff0
 head(rowData(se))</code></pre>
 <pre><code>## DataFrame with 6 rows and 4 columns
 ##                      gene    ENTREZID                product       gbkey
@@ -475,6 +502,26 @@ head(rowData(se))</code></pre>
 ## LOC105242467 LOC105242467   105242467 lipoxygenase homolog..        mRNA
 ## Rp1                   Rp1       19888 retinitis pigmentosa..        mRNA
 ## Sox17               Sox17       20671 SRY (sex determining..        mRNA</code></pre>
+<pre class="r"><code>head(rowRanges(se))</code></pre>
+<pre><code>## GRanges object with 6 ranges and 4 metadata columns:
+##                seqnames          ranges strand |         gene    ENTREZID
+##                   &lt;Rle&gt;       &lt;IRanges&gt;  &lt;Rle&gt; |  &lt;character&gt; &lt;character&gt;
+##           Xkr4        1 3670552-3671742      - |         Xkr4      497097
+##   LOC105243853        1 3357323-3366505      + | LOC105243853   105243853
+##   LOC105242387        1 3658847-3670456      - | LOC105242387   105242387
+##   LOC105242467        1 4233436-4233728      - | LOC105242467   105242467
+##            Rp1        1 4409170-4409241      - |          Rp1       19888
+##          Sox17        1 4496291-4497354      - |        Sox17       20671
+##                               product       gbkey
+##                           &lt;character&gt; &lt;character&gt;
+##           Xkr4 X Kell blood group p..        mRNA
+##   LOC105243853 uncharacterized LOC1..       ncRNA
+##   LOC105242387 uncharacterized LOC1..       ncRNA
+##   LOC105242467 lipoxygenase homolog..        mRNA
+##            Rp1 retinitis pigmentosa..        mRNA
+##          Sox17 SRY (sex determining..        mRNA
+##   -------
+##   seqinfo: 182 sequences from an unspecified genome; no seqlengths</code></pre>
 </div>
 <div id="set-factor-levels" class="section level1">
 <h1>Set factor levels</h1>
@@ -509,9 +556,9 @@ se$mouse &lt;- factor(as.numeric(se$mouse))</code></pre>
 ## 
 ## other attached packages:
 ##  [1] rtracklayer_1.52.0          tibble_3.1.2               
-##  [3] DESeq2_1.32.0               dplyr_1.0.6                
+##  [3] DESeq2_1.32.0               dplyr_1.0.7                
 ##  [5] SummarizedExperiment_1.22.0 GenomicRanges_1.44.0       
-##  [7] GenomeInfoDb_1.28.0         IRanges_2.26.0             
+##  [7] GenomeInfoDb_1.28.1         IRanges_2.26.0             
 ##  [9] S4Vectors_0.30.0            MatrixGenerics_1.4.0       
 ## [11] matrixStats_0.59.0          GEOquery_2.60.0            
 ## [13] Biobase_2.52.0              BiocGenerics_0.38.0        
@@ -522,14 +569,14 @@ se$mouse &lt;- factor(as.numeric(se$mouse))</code></pre>
 ##  [7] bslib_0.2.5.1            assertthat_0.2.1         blob_1.2.1              
 ## [10] Rsamtools_2.8.0          GenomeInfoDbData_1.2.6   yaml_2.2.1              
 ## [13] pillar_1.6.1             RSQLite_2.2.7            lattice_0.20-44         
-## [16] glue_1.4.2               limma_3.48.0             digest_0.6.27           
-## [19] RColorBrewer_1.1-2       XVector_0.32.0           colorspace_2.0-1        
+## [16] glue_1.4.2               limma_3.48.1             digest_0.6.27           
+## [19] RColorBrewer_1.1-2       XVector_0.32.0           colorspace_2.0-2        
 ## [22] htmltools_0.5.1.1        Matrix_1.3-4             XML_3.99-0.6            
 ## [25] pkgconfig_2.0.3          genefilter_1.74.0        zlibbioc_1.38.0         
 ## [28] purrr_0.3.4              xtable_1.8-4             scales_1.1.1            
-## [31] BiocParallel_1.26.0      annotate_1.70.0          KEGGREST_1.32.0         
-## [34] ggplot2_3.3.3            generics_0.1.0           ellipsis_0.3.2          
-## [37] cachem_1.0.5             cli_2.5.0                survival_3.2-11         
+## [31] BiocParallel_1.26.1      annotate_1.70.0          KEGGREST_1.32.0         
+## [34] ggplot2_3.3.5            generics_0.1.0           ellipsis_0.3.2          
+## [37] cachem_1.0.5             cli_3.0.1                survival_3.2-11         
 ## [40] magrittr_2.0.1           crayon_1.4.1             memoise_2.0.0           
 ## [43] evaluate_0.14            fansi_0.5.0              xml2_1.3.2              
 ## [46] tools_4.1.0              hms_1.1.0                BiocIO_1.2.0            
@@ -537,14 +584,13 @@ se$mouse &lt;- factor(as.numeric(se$mouse))</code></pre>
 ## [52] munsell_0.5.0            DelayedArray_0.18.0      AnnotationDbi_1.54.1    
 ## [55] Biostrings_2.60.1        compiler_4.1.0           jquerylib_0.1.4         
 ## [58] rlang_0.4.11             grid_4.1.0               RCurl_1.98-1.3          
-## [61] rstudioapi_0.13          rjson_0.2.20             bitops_1.0-7            
-## [64] rmarkdown_2.8            restfulr_0.0.13          gtable_0.3.0            
-## [67] curl_4.3.1               DBI_1.1.1                R6_2.5.0                
-## [70] GenomicAlignments_1.28.0 knitr_1.33               fastmap_1.1.0           
-## [73] bit_4.0.4                utf8_1.2.1               readr_1.4.0             
-## [76] stringi_1.6.2            Rcpp_1.0.6               vctrs_0.3.8             
-## [79] geneplotter_1.70.0       png_0.1-7                tidyselect_1.1.1        
-## [82] xfun_0.23</code></pre>
+## [61] rjson_0.2.20             bitops_1.0-7             rmarkdown_2.9           
+## [64] restfulr_0.0.13          gtable_0.3.0             curl_4.3.2              
+## [67] DBI_1.1.1                R6_2.5.0                 GenomicAlignments_1.28.0
+## [70] knitr_1.33               fastmap_1.1.0            bit_4.0.4               
+## [73] utf8_1.2.1               readr_1.4.0              stringi_1.7.3           
+## [76] Rcpp_1.0.7               vctrs_0.3.8              geneplotter_1.70.0      
+## [79] png_0.1-7                tidyselect_1.1.1         xfun_0.24</code></pre>
 </div>
 
 

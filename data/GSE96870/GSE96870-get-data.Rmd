@@ -123,22 +123,34 @@ names(mcols(gff0))
 
 gff0$ENTREZID <- strsplit(gff0$Dbxref, ",") %>% sapply(function(x) x[grep("GeneID", x)]) %>% gsub("GeneID:","", .)
 
+# read mappings from NCBI species-specific chromosome accessions to standard chromosome names
+chrnames <- read.delim("https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/635/GCF_000001635.23_GRCm38.p3/GCF_000001635.23_GRCm38.p3_assembly_report.txt",
+                       comment.char = "#", header = FALSE)
+head(chrnames)
+
+# The chr accessions are in V7 and the chr numbers are in V1
+dim(chrnames)
+length(seqlevels(gff0))
+sum(seqlevels(gff0) %in% chrnames$V7)
+
+# Use match() to pull the correct chr numbers from V1:
+seqlevels(gff0) <- chrnames$V1[match(seqlevels(gff0), chrnames$V7)]
+standardChromosomes(gff0)
+
 # keep gene, ENTREZID, product and gbkey
+mcols(gff0) <- mcols(gff0)[, c("gene","ENTREZID","product","gbkey")]
 
-temp <- mcols(gff0)[, c("gene","ENTREZID","product","gbkey")]
+# what types of genes?
+table(gff0$gbkey)
 
-# What types of genes?
+# add rowRanges to SummarizedExperiment
 
-table(temp$gbkey)
-# table(temp$gbkey[temp$gene %in% missing_genes])
-
-#Add to SummarizedExperiment
-
-temp <- temp[match(rownames(se), temp$gene), ]
-stopifnot(all(temp$gene == rownames(se)))
-rowData(se) <- temp
+gff0 <- gff0[match(rownames(se), gff0$gene)]
+names(gff0) <- gff0$gene
+stopifnot(all(names(gff0) == rownames(se)))
+rowRanges(se) <- gff0
 head(rowData(se))
-
+head(rowRanges(se))
 ```
 
 # Set factor levels
