@@ -149,17 +149,22 @@ x <- MultiAssayExperiment::longFormat(se2) %>%
            "expression" = "value")
 
 cd <- colData(se2) %>%
-    as_tibble() %>%
-    mutate(age = as.numeric(sub(" weeks", "", age))) %>%
-    mutate(time = as.numeric(sub("Day ", "", time))) %>%
-    mutate(infection = sub("[ -]", "", infection)) %>%
-    select(-title)
+    as_tibble() %>% 
+    mutate(age = as.numeric(sub(" weeks", "", age))) %>% 
+    mutate(time = as.numeric(sub("Day", "", time))) %>% 
+    mutate(infection = sub("[ -]", "", infection)) %>% 
+    dplyr::select(-title)
+
+rd <- rowData(se2) %>%
+    as_tibble() %>% 
+    select(-external_gene_name)
 ```
 
 ```{r}
+
 rnaseq <- full_join(x, cd,
                     by = c("sample" = "geo_accession"))
-rnaseq
+rnaseq <- full_join(rnaseq, rd)
 ```
 
 # Serialise data
