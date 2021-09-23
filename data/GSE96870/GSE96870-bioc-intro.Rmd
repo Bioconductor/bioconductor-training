@@ -148,7 +148,9 @@ cd <- colData(se2) %>%
 
 rd <- rowData(se2) %>%
   as_tibble() %>% 
-  dplyr::select(-external_gene_name)
+  dplyr::select(-external_gene_name) %>% 
+  dplyr::select(-gbkey)
+
 ```
 
 ```{r}
