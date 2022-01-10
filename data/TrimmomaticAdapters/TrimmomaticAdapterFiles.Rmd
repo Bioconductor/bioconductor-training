@@ -1,0 +1,19 @@
+---
+title: "Download Trimmomatic adapter files"
+author: "Kevin Rue-Albrecht"
+date: "06/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+srcfile <- "https://raw.githubusercontent.com/usadellab/Trimmomatic/main/adapters/TruSeq3-PE-2.fa"
+destfile <- basename(srcfile)
+download.file(
+    url = srcfile,
+    destfile = destfile
+)
+```
