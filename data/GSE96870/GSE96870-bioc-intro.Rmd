@@ -6,7 +6,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-  ```{r setup, include=FALSE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -150,11 +150,6 @@ rd <- rowData(se2) %>%
 rnaseq <- full_join(x, cd,
                     by = c("sample" = "geo_accession"))
 rnaseq <- full_join(rnaseq, rd)
-
-# Removed commas from "product" column which generate a bug when
-# reading the rnaseq.csv file with read.table() and sep = "," argument
-# Example "family with sequence similarity 193, member B" for Fam193b gene
-rnaseq$product <- gsub(pattern = ",", x = rnaseq$product, replacement = "")
 ```
 
 # Serialise data
@@ -162,7 +157,11 @@ rnaseq$product <- gsub(pattern = ",", x = rnaseq$product, replacement = "")
 ```{r}
 saveRDS(se2, file = "se2.rds")
 saveRDS(rnaseq, file = "rnaseq.rds")
-write_csv(rnaseq, "rnaseq.csv")
+
+## writing with quoting to handle cases with a ',' in their product
+## such as "family with sequence similarity 193, member B" for Fam193b
+## and that break import.
+write_csv(rnaseq, "rnaseq.csv", quote = "all")
 ```
 
 # Session info
