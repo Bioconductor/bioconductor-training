@@ -1,0 +1,36 @@
+---
+title: "Subset of GTF file for ACTB"
+author: "Kevin Rue-Albrecht"
+date: '2022-04-26'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rtracklayer)
+```
+
+
+```{r}
+srcfile <- "http://ftp.ensembl.org/pub/release-106/gtf/homo_sapiens/Homo_sapiens.GRCh38.106.chr.gtf.gz"
+destfile <- basename(srcfile)
+download.file(
+    url = srcfile,
+    destfile = destfile
+)
+```
+
+```{r}
+gtf_full_data <- import(destfile)
+names(mcols(gtf_full_data))
+```
+
+```{r}
+actb_subset <- subset(gtf_full_data, gene_name == "ACTB", c("type", "transcript_id", "gene_id", "gene_name"))
+length(actb_subset)
+```
+
+```{r}
+export.gff2(actb_subset, "actb.gtf")
+```
+
