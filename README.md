@@ -45,10 +45,6 @@ lessons are developed as modules in their own repositories.
   RNA-Seq data. It expects good familiarity with R and the
   Bioconductor project.
 
-## Workshop developer guidelines
-
-- [Workshop guide](./workshop-guide.md)
-
 ## Notes and meetings
 
 - Collaborative [Google
