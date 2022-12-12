@@ -44,6 +44,15 @@ lessons are developed as modules in their own repositories.
   Bioconductor** shows how to use Bioconductor packages to analyse
   RNA-Seq data. It expects good familiarity with R and the
   Bioconductor project.
+  
+### New lessons
+
+If you are interested in contributing new lessons or Carpentry modules, 
+feel free to get in touch with the teaching committee via slack of the 
+google group (see below). We would be happy to discuss and/or contribute 
+to anything related to the lesson design, general help with the long-term 
+maintenance, dissemination of the lesson, or any help/topic you can think of. 
+
 
 ## Notes and meetings
 
