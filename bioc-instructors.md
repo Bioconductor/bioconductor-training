@@ -4,3 +4,4 @@
 | Charlotte Soneson | Basel, Switzerland |
 | Kevin Rue-Albrecht | Oxford, United Kingdom |
 |  Robert Castelo |  Barcelona, Spain |
+| Kozo Nishida | Tokyo, Japan |
