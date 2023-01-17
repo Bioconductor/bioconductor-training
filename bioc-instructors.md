@@ -7,4 +7,5 @@
 | Kozo Nishida | Tokyo, Japan | Tokyo University of Agriculture and Technology | https://github.com/kozo2|
 | Peter Hickey | Melbourne, Australia | WEHI | https://www.peterhickey.org/ |
 | Saskia Freytag | Melbourne, Australia | WEHI | https://www.wehi.edu.au/people/saskia-freytag |
+| Helen Lindsay | Lausanne, Switzerland | CHUV | https://www.chuv.ch/en/bdsc/about-us |
 | Jenny Drnevich | Urbana, Illinois, USA | University of Illinois | https://hpcbio.illinois.edu/people |
