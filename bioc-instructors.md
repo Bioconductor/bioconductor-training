@@ -5,3 +5,4 @@
 | Kevin Rue-Albrecht | Oxford, United Kingdom | University of Oxford | https://kevinrue.github.io/ |
 |  Robert Castelo |  Barcelona, Spain | Pompeu Fabra University | https://functionalgenomics.upf.edu |
 | Kozo Nishida | Tokyo, Japan | Riken Institute | https://github.com/kozo2|
+| Peter Hickey | Melbourne, Australia | WEHI | https://www.peterhickey.org/ |
