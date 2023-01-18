@@ -13,6 +13,6 @@
 | Marcel Ramos | New York, New York, USA | CUNY | https://cunyisph.org/team/marcel-ramos/ |
 | Liz Ing-Simmons | London, United Kingdom | MRC London Institute of Medical Sciences | https://liz.rbind.io/ |
 | Nitesh Turaga | USA | Bioconductor Community | https://niteshturaga.com/ |
-
+| Lisa Breckels | Cambridge, United Kingdom | University of Cambridge | https://lmsimp.github.io/ |
 
 
