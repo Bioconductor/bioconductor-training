@@ -15,3 +15,4 @@
 | Nitesh Turaga | USA | Bioconductor Community | https://niteshturaga.com/ |
 | Lisa Breckels | Cambridge, United Kingdom | University of Cambridge | https://lmsimp.github.io/ |
 | Kayla Interdonato | Buffalo, New York, USA | Roswell Park Comprehensive Cancer Center |  |
+| Mikhail Dozmorov | Richmond, Virginia, USA | Virginia Commonwealth University | https://dozmorovlab.github.io/ |
