@@ -16,3 +16,4 @@
 | Lisa Breckels | Cambridge, United Kingdom | University of Cambridge | https://lmsimp.github.io/ |
 | Kayla Interdonato | Buffalo, New York, USA | Roswell Park Comprehensive Cancer Center |  |
 | Mikhail Dozmorov | Richmond, Virginia, USA | Virginia Commonwealth University | https://dozmorovlab.github.io/ |
+| Susan Holmes | Stanford, California, USA and Portugal | Stanford University | https://susan.su.domains/ |
