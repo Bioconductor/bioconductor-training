@@ -17,3 +17,4 @@
 | Kayla Interdonato | Buffalo, New York, USA | Roswell Park Comprehensive Cancer Center |  |
 | Mikhail Dozmorov | Richmond, Virginia, USA | Virginia Commonwealth University | https://dozmorovlab.github.io/ |
 | Susan Holmes | Stanford, California, USA and Portugal | Stanford University | https://susan.su.domains/ |
+| Sonia Barasa | Kenya, Africa | Pan-African Mosquito Control Association |  |
