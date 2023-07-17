@@ -19,3 +19,4 @@
 | Susan Holmes | Stanford, California, USA and Portugal | Stanford University | https://susan.su.domains/ |
 | Sonia Barasa | Kenya, Africa | Pan-African Mosquito Control Association (PAMCA) |  |
 | Maureen Osano | Kenya, Africa | Kenya Medical Research Institute (KEMRI) |  |
+| Javier Carpinteyro-Ponce | Maryland, USA | Carnegie Institution for Science | https://bse.carnegiescience.edu/javier-carpinteyro-ponce |
