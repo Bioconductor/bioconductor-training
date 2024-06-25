@@ -1,4 +1,4 @@
-# The Bioconductor teaching committee
+# The Bioconductor teaching and education committee
 
 The Bioconductor teaching committee is a collaborative effort to
 consolidate Bioconductor-focused training material and establish
