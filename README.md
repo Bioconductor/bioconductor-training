@@ -1,6 +1,6 @@
 # The Bioconductor teaching and education committee
 
-The Bioconductor teaching committee is a collaborative effort to
+The Bioconductor teaching and education committee is a collaborative effort to
 consolidate Bioconductor-focused training material and establish
 a community of Bioconductor trainers. We define a curriculum and
 implement online lessons for beginner and more advanced R users
