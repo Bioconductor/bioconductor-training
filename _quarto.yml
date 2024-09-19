@@ -4,10 +4,11 @@ project:
   render:
     - "*.qmd"
 website:
-  title: "Bioconductor Teaching"
   navbar:
     background: "#3792ad" # Bioconductor.org blue
     left:
+      - text: "Bioconductor Teaching"
+        href: https://bioconductor.org/help/education-training/
       - text: "Instructors"
         href: carpentries/instructors.qmd
       - text: "Workshops"
