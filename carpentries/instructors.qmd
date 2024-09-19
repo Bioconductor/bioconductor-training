@@ -9,13 +9,15 @@ execute:
 ---
 
 ```{r}
+# Load necessary libraries
 library(readr)
 library(dplyr)
 library(tidyr)
 library(reactable)
-library(ggmap)
-library(plotly)
+library(tidygeocoder)
 library(ggplot2)
+library(maps)
+library(plotly)
 ```
 
 ```{r}
@@ -32,9 +34,9 @@ Map and table showing people in the Bioconductor community who are certified Car
 See [this page](workshops.html) for Bioconductor Carpentries Workshops.
 
 ```{r}
-# Get coordinates for mapping
+# Get coordinates for mapping using OpenStreetMap via tidygeocoder
 instructors_geocoded <- instructors |> 
-  mutate_geocode(Location)
+  geocode(Location, method = 'osm', lat = lat, long = lon)
 ```
 
 ```{r}
@@ -57,8 +59,8 @@ world_map <- map_data("world") |>
 lon_range <- range(all$lon, na.rm = TRUE)
 lat_range <- range(all$lat, na.rm = TRUE)
 
-# Increase padding to zoom out by about 10%
-lon_pad <- diff(lon_range) * 0.2  # 20% padding
+# Increase padding to zoom out by about 20%
+lon_pad <- diff(lon_range) * 0.2
 lat_pad <- diff(lat_range) * 0.2  
 
 lon_limits <- c(lon_range[1] - lon_pad, lon_range[2] + lon_pad)
@@ -98,10 +100,10 @@ gg <- ggplot() +
     "In Progress" = "#E69F00"
   )) +
   scale_shape_manual(values = c(
-    "Certified" = 21,             # Filled Circle
-    "Certified - CZI Year 1" = 22,  # Filled Square
-    "Certified - CZI Year 2" = 24,  # Filled Diamond
-    "In Progress" = 21            # Filled Circle
+    "Certified" = 21,
+    "Certified - CZI Year 1" = 22,
+    "Certified - CZI Year 2" = 24,
+    "In Progress" = 21
   )) +
   scale_size_manual(values = c(
     "Certified" = 2,
@@ -110,7 +112,7 @@ gg <- ggplot() +
     "In Progress" = 2
   )) +
   coord_fixed(
-    ratio = 1.3,      
+    ratio = 1.3,
     xlim = lon_limits,
     ylim = lat_limits,
     expand = FALSE
@@ -118,22 +120,22 @@ gg <- ggplot() +
   theme_void() +
   theme(
     panel.background = element_rect(fill = "white", color = NA),
-    legend.position = "bottom",   # Move legend to the bottom
+    legend.position = "bottom",
     legend.title = element_blank(),
-    legend.text = element_text(size = 8),          # Smaller legend text
-    legend.key.size = unit(0.5, "lines"),          # Smaller legend keys
-    legend.margin = margin(t = 0, b = 0, unit = 'pt')  # Reduce legend margins
+    legend.text = element_text(size = 8),
+    legend.key.size = unit(0.5, "lines"),
+    legend.margin = margin(t = 0, b = 0, unit = 'pt')
   )
 
 # Convert to interactive plotly plot
 interactive_map <- ggplotly(gg, tooltip = "text") %>%
   layout(
-    margin = list(l = 20, r = 20, t = 20, b = 50),  # Adjust margins as needed
+    margin = list(l = 20, r = 20, t = 20, b = 50),
     legend = list(
-      orientation = "h",       # Horizontal legend
+      orientation = "h",       
       x = 0.5,
       xanchor = "center",
-      y = -0.1                 # Position below the plot
+      y = -0.1                
     ),
     xaxis = list(
       showline = FALSE,
@@ -185,5 +187,4 @@ reactable(
   defaultSorted = "name",
   defaultPageSize = 100
 )
-
 ```

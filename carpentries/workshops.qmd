@@ -14,11 +14,11 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(reactable)
-library(ggmap)
-library(plotly)
 library(ggplot2)
 library(maps)
 library(htmltools)
+library(tidygeocoder)
+library(plotly)
 ```
 
 Workshops using the [Bioconductor Carpentries training material](https://www.bioconductor.org/help/education-training/) are listed below. If you have taught a workshop using the Bioconductor Carpentries material, please submit a pull request to update the [workshops TSV here](https://github.com/Bioconductor/bioconductor-teaching/blob/devel/carpentries/carpentries_workshops.tsv).
@@ -33,10 +33,14 @@ workshops <- read_delim("carpentries_workshops.tsv", delim = "\t", trim_ws = TRU
 workshops <- workshops %>%
   mutate(Location = paste(city, country, sep = ", "))
 
-# Geocode the locations
+# Geocode all locations using OpenStreetMap via tidygeocoder
 workshops_geocoded <- workshops %>%
-  mutate_geocode(Location)
+  geocode(Location, method = 'osm', lat = lat, long = lon)
 
+```
+
+
+```{r}
 # Calculate coordinate limits based on data to adjust map zoom
 lon_range <- range(workshops_geocoded$lon, na.rm = TRUE)
 lat_range <- range(workshops_geocoded$lat, na.rm = TRUE)
@@ -165,4 +169,5 @@ workshops_geocoded %>%
     ),
     defaultPageSize = 100
   )
+
 ```
