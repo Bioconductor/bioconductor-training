@@ -1,0 +1,175 @@
+---
+title: "Instructors"
+format: html
+editor: visual
+execute:
+  message: false
+  warning: false
+  echo: false
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(reactable)
+library(ggmap)
+library(plotly)
+library(ggplot2)
+```
+
+```{r}
+# Import data from the TSV file and format
+instructors <- read_delim("carpentries_instructors.tsv", delim = "\t", trim_ws = TRUE)
+
+# Add 'Location' by combining city and country for geocoding
+instructors <- instructors |> 
+  mutate(Location = paste(city, country, sep = ", "))
+```
+
+Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the Bioconductor Carpentries training program. If you are certified and don't see your name, please add yourself as described in this GitHub issue.
+
+See this page for Bioconductor Carpentries Workshops.
+
+```{r}
+# Get coordinates for mapping
+instructors_geocoded <- instructors |> 
+  mutate_geocode(Location)
+```
+
+```{r}
+# Combine geocoded data
+all <- instructors_geocoded |> 
+  mutate(Status = factor(status, levels = c(
+    "Certified", 
+    "Certified - CZI Year 1", 
+    "Certified - CZI Year 2", 
+    "In Progress")
+  ))
+```
+
+```{r}
+# Map of instructors
+world_map <- map_data("world") |> 
+  filter(region != "Antarctica")
+
+# Calculate coordinate limits based on data
+lon_range <- range(all$lon, na.rm = TRUE)
+lat_range <- range(all$lat, na.rm = TRUE)
+
+# Increase padding to zoom out by about 10%
+lon_pad <- diff(lon_range) * 0.2  # 20% padding
+lat_pad <- diff(lat_range) * 0.2  
+
+lon_limits <- c(lon_range[1] - lon_pad, lon_range[2] + lon_pad)
+lat_limits <- c(lat_range[1] - lat_pad, lat_range[2] + lat_pad)
+
+gg <- ggplot() +
+  geom_polygon(
+    data = world_map,
+    aes(x = long, y = lat, group = group),
+    fill = "grey85",
+    color = "white"
+  ) +
+  geom_jitter(
+    data = all,
+    aes(
+      x = lon,
+      y = lat,
+      text = paste(name, institution, sep = "\n"),
+      colour = Status,
+      fill = Status,
+      shape = Status,
+      size = Status
+    ),
+    width = 0.5,
+    height = 0.5
+  ) +
+  scale_colour_manual(values = c(
+    "Certified" = "#0072B2",
+    "Certified - CZI Year 1" = "#009E73",
+    "Certified - CZI Year 2" = "#CC79A7",
+    "In Progress" = "#E69F00"
+  )) +
+  scale_fill_manual(values = c(
+    "Certified" = "#0072B2",
+    "Certified - CZI Year 1" = "#009E73",
+    "Certified - CZI Year 2" = "#CC79A7",
+    "In Progress" = "#E69F00"
+  )) +
+  scale_shape_manual(values = c(
+    "Certified" = 21,             # Filled Circle
+    "Certified - CZI Year 1" = 22,  # Filled Square
+    "Certified - CZI Year 2" = 24,  # Filled Diamond
+    "In Progress" = 21            # Filled Circle
+  )) +
+  scale_size_manual(values = c(
+    "Certified" = 2,
+    "Certified - CZI Year 1" = 2,
+    "Certified - CZI Year 2" = 2,
+    "In Progress" = 2
+  )) +
+  coord_fixed(
+    ratio = 1.3,      
+    xlim = lon_limits,
+    ylim = lat_limits,
+    expand = FALSE
+  ) +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = "white", color = NA),
+    legend.position = "bottom",   # Move legend to the bottom
+    legend.title = element_blank(),
+    legend.text = element_text(size = 8),          # Smaller legend text
+    legend.key.size = unit(0.5, "lines"),          # Smaller legend keys
+    legend.margin = margin(t = 0, b = 0, unit = 'pt')  # Reduce legend margins
+  )
+
+# Convert to interactive plotly plot
+interactive_map <- ggplotly(gg, tooltip = "text") %>%
+  layout(
+    margin = list(l = 20, r = 20, t = 20, b = 50),  # Adjust margins as needed
+    legend = list(
+      orientation = "h",       # Horizontal legend
+      x = 0.5,
+      xanchor = "center",
+      y = -0.1                 # Position below the plot
+    ),
+    xaxis = list(
+      showline = FALSE,
+      showticklabels = FALSE,
+      zeroline = FALSE,
+      title_standoff = 5
+    ),
+    yaxis = list(
+      showline = FALSE,
+      showticklabels = FALSE,
+      zeroline = FALSE
+    )
+  ) %>%
+  config(
+    responsive = TRUE,
+    displaylogo = FALSE
+  )
+
+# Display the interactive map
+interactive_map
+```
+
+<br></br>
+
+```{r}
+# Table of instructors
+all |>   
+    select(name, institution, city, country, status) |> 
+  reactable(columns = list(
+    name = colDef(cell = function(value, index) {
+      value
+    }),
+    institution = colDef(),
+    city = colDef(),
+    status = colDef()
+  ), 
+  defaultSorted = "name",
+  defaultPageSize = 100)
+```
