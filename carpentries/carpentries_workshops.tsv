@@ -1,20 +1,24 @@
-date	hosted_by	workshop	city	instructors	country
-March 2024	University of Illinois	bioc-intro	Champaign	Jenny Drnevich, Negin Valizadegan, Yifei Kang	United States
-November 2023	Instituto Evandro Chagas	bioc-rnaseq	Belém	Rodrigo Arcoverde Cerveira da Silva	Brazil
-15 October 2023	BioCAsia2023	bioc-rnaseq	Hong Kong	David Shih	China
-12-13 October 2023	Carnegie Institution	bioc-rnaseq	Baltimore	Javier Carpinteyro-Ponce, Frederick Tan	United States
-9-12 October 2023	University of Bergen	bioc-intro	Bergen	Leo Lahti	Norway
-October 2023	University of Illinois	bioc-intro	Champaign	Jenny Drnevich, Jessica Holmes, Yifei Kang	United States
-18-19 September 2023	EuroBioC2023	bioc-rnaseq	Ghent	Soneson Charlotte, Almut Lütge, Fabricio Almeida-Silva	Belgium
-18-19 September 2023	EuroBioC2023	bioc-intro	Ghent	Laurent Gatto, Charlotte Hutchings, Olly Crook, Givanna Putri, Marcel Ramos Pérez	Belgium
-31 July-1 August 2023	BioC2023	bioc-intro	Boston	Jenny Drnevich, Sehyun Oh	United States
-19-21 June 2023	University of Oulu	bioc-intro	Oulu	Leo Lahti	Finland
-March 2023	University of Illinois	bioc-intro	Champaign	Jenny Drnevich, Jessica Holmes, Negin Valizadegan	United States
-March 2023	UCLouvain	bioc-intro	Brussels	Laurent Gatto	Belgium
-21-24 Feb 2023	Savitribai Phule Pune University	bioc-intro	Pune	Leo Lahti	India
-2023	NA	bioc-intro	Uzhhorod	Laurent Gatto	Ukraine
-12-13 September 2022	EuroBioC2022	bioc-intro	Heidelberg	Charlotte Soneson, Laurent Gatto	Germany
-2022	UCLouvain	bioc-intro	Brussels	Laurent Gatto	Belgium
-July 2024	BioC2024	bioc-rnaseq	Grand Rapids	Jenny Drnevich, Tim Triche, Charllote Hutchings	United States
-September 2024	EuroBioC2024	bioc-intro	Oxford	Oliver Crook, Marcel Ramos-Perez	United Kingdom
-September 2024	EuroBioC2024	bioc-rnaseq	Oxford	Fabricio Almeida-Silva, Robert Ivanek	United Kingdom
+date	hosted_by	host_url	workshop	workshop_url	city	country	instructors
+2-3 September 2024	EuroBioC2024	https://eurobioc2024.bioconductor.org/	bioc-intro	https://bioconductor.github.io/2024-09-02-BiocIntro-EuroBioc/	Oxford	United Kingdom	"Oliver Crook, Marcel Ramos-Perez"
+2-3 September 2024	EuroBioC2024	https://eurobioc2024.bioconductor.org/	bioc-rnaseq	https://bioconductor.github.io/2024-09-02-RNASeq-EuroBioc/	Oxford	United Kingdom	"Fabricio Almeida-Silva, Robert Ivanek"
+22-23 July 2024	BioC2024	https://www.bioc2024.bioconductor.org/	bioc-rnaseq	https://bioconductor.github.io/2024-07-22-BiocRnaseq-Bioc2024/	Grand Rapids	United States	"Jenny Drnevich, Tim Triche, Charlotte Hutchings"
+11-12 July 2024	Karolinska Institute	https://ki.se/en	bioc-rnaseq	https://rodrigarc.github.io/2024-07-11-bioconductor-rnaseq/	Stockholm	Sweden	Rodrigo Arcoverde Cerveira da Silva
+March 2024	University of Illinois	https://illinois.edu/	bioc-intro		Champaign	United States	"Jenny Drnevich, Negin Valizadegan, Yifei Kang"
+November 2023	Instituto Evandro Chagas	https://www.gov.br/iec/pt-br	bioc-rnaseq		Belém	Brazil	Rodrigo Arcoverde Cerveira da Silva
+15 October 2023	BioCAsia2023	https://biocasia2023.bioconductor.org	bioc-rnaseq		Hong Kong	China	David Shih
+12-13 October 2023	Carnegie Institution	https://bse.carnegiescience.edu	bioc-rnaseq		Baltimore	United States	"Javier Carpinteyro-Ponce, Frederick Tan"
+9-12 October 2023	University of Bergen	https://www.uib.no/en	bioc-intro		Bergen	Norway	Leo Lahti
+October 2023	University of Illinois	https://illinois.edu/	bioc-intro		Champaign	United States	"Jenny Drnevich, Jessica Holmes, Yifei Kang"
+18-19 September 2023	EuroBioC2023	https://eurobioc2023.bioconductor.org/	bioc-rnaseq	https://bioconductor.github.io/2023-09-18-RNASeq-EuroBioc/	Ghent	Belgium	"Soneson Charlotte, Almut Lütge, Fabricio Almeida-Silva"
+18-19 September 2023	EuroBioC2023	https://eurobioc2023.bioconductor.org/	bioc-intro	https://bioconductor.github.io/2023-09-18-BiocIntro-EuroBioc/	Ghent	Belgium	"Laurent Gatto, Charlotte Hutchings, Olly Crook, Givanna Putri, Marcel Ramos Pérez"
+31 July-1 August 2023	BioC2023	https://bioc2023.bioconductor.org/	bioc-intro	https://bioconductor.github.io/2023-07-31-BiocRnaseq-Bioc2023/	Boston	United States	"Jenny Drnevich, Sehyun Oh"
+19-21 June 2023	University of Oulu	https://www.oulu.fi/en	bioc-intro		Oulu	Finland	Leo Lahti
+22-26 May 2023	Galaxy Smörgåsbord 2023	https://gallantries.github.io/video-library/events/smorgasbord3/	bioc-intro	https://gallantries.github.io/video-library/modules/bioconductor	Online		Laurent Gatto
+22-26 May 2023	Galaxy Smörgåsbord 2023	https://gallantries.github.io/video-library/events/smorgasbord3/	bioc-project	https://gallantries.github.io/video-library/modules/bioconductor	Online		Kevin Rue-Albrecht
+March 2023	University of Illinois	https://illinois.edu/	bioc-intro		Champaign	United States	"Jenny Drnevich, Jessica Holmes, Negin Valizadegan"
+March 2023	UCLouvain	https://uclouvain.be/en/index.html	bioc-intro		Brussels	Belgium	Laurent Gatto
+21-24 Feb 2023	Savitribai Phule Pune University	http://www.unipune.ac.in/	bioc-intro		Pune	India	Leo Lahti
+2023	NA		bioc-intro		Uzhhorod	Ukraine	Laurent Gatto
+12-13 September 2022	EuroBioC2022	https://eurobioc2022.bioconductor.org/	bioc-intro	https://bioconductor.github.io/2022-09-12-BiocIntro-Heidelberg/	Heidelberg	Germany	"Charlotte Soneson, Laurent Gatto"
+"1, 8, 15, 22 June 2022"	Australian BioCommons	https://www.biocommons.org.au/	bioc-intro	https://zenodo.org/records/6766951	Online		"Saskia Freytag, Adele Barugahare, Maria Doyle, Brendan Ansell"
+2022	UCLouvain	https://uclouvain.be/en/index.html	bioc-intro		Brussels	Belgium	Laurent Gatto

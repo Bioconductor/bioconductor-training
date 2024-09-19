@@ -1,0 +1,17 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+website:
+  title: "Bioconductor Teaching"
+  navbar:
+    background: "#3792ad" # Bioconductor.org blue
+    left:
+      - text: "Instructors"
+        href: carpentries/instructors.qmd
+      - text: "Workshops"
+        href: carpentries/workshops.qmd
+format:
+  html:
+    embed-resources: false

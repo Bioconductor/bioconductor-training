@@ -1,53 +1,57 @@
-name	institution	city	status	country
-Laurent Gatto	UCLouvain	Brussels	Certified	Belgium
-Charlotte Soneson	Friedrich Miescher Institute for Biomedical Research	Basel	Certified	Switzerland
-Kevin Rue-Albrecht	University of Oxford	Oxford	Certified	United Kingdom
-Robert Castelo	Pompeu Fabra University	Barcelona	Certified	Spain
-Kozo Nishida	Tokyo University of Agriculture and Technology	Tokyo	Certified	Japan
-Peter Hickey	WEHI	Melbourne	Certified	Australia
-Saskia Freytag	WEHI	Melbourne	Certified	Australia
-Helen Lindsay	CHUV	Lausanne	Certified	Switzerland
-Jenny Drnevich	University of Illinois	Urbana	Certified	United States
-Pariksheet Nanda	University of Michigan Medical School	Ann Arbor	Certified	United States
-Marcel Ramos	CUNY	New York	Certified	United States
-Liz Ing-Simmons	MRC London Institute of Medical Sciences	London	Certified	United Kingdom
-Nitesh Turaga	Bioconductor Community	Buffalo	Certified	United States
-Lisa Breckels	University of Cambridge	Cambridge	Certified	United States
-Kayla Interdonato	Roswell Park Comprehensive Cancer Center	Buffalo	Certified	United States
-Mikhail Dozmorov	Virginia Commonwealth University	Richmond	Certified	United States
-Susan Holmes	Stanford University	Stanford	Certified	United States
-Sonia Barasa	Pan-African Mosquito Control Association (PAMCA)	Nairobi	Certified	Kenya
-Maureen Osano	Kenya Medical Research Institute (KEMRI)	Nairobi	Certified	Kenya
-Javier Carpinteyro-Ponce	Carnegie Institution for Science	Maryland	Certified	United States
-Fabricio Almeida-Silva	VIB-UGent Center for Plant Systems Biology	Ghent	Certified - CZI Year 1	Belgium
-Anand Ruban Agarvas	University Hospital Heidelberg	Heidelberg	Certified - CZI Year 1	Germany
-Oliver Crook	University of Oxford	Oxford	Certified - CZI Year 1	United Kingdom
-Almut Lütge	University of Zürich	Zurich	Certified - CZI Year 1	Switzerland
-Leo Lahti	University of Turku	Turku	Certified - CZI Year 1	Finland
-Sehyun Oh	City University of New York	New York	Certified - CZI Year 1	United States
-Umar Ahmad	Bauchi State University	Gadau	In Progress	Nigeria
-Chia Sin Liew	University of Nebraska-Lincoln	Nebraska	Certified - CZI Year 1	United States
-Charlotte Hutchings	University of Cambridge	Cambridge	Certified - CZI Year 1	United States
-Roberto Carlos Álvarez Martínez	Universidad Autonoma de Queretaro	Mexico	In Progress	Mexico
-David Shih	University of Hong Kong	Hong Kong	Certified - CZI Year 1	China
-Rodrigo Arcoverde Cerveira da Silva	Karolinska Institute	Stockholm	Certified - CZI Year 1	Sweden
-Javier Carpinteyro Ponce	University of Maryland	Maryland	Certified - CZI Year 1	United States
-Zuguang Gu	German Cancer Research Center	Heidelberg	Certified - CZI Year 1	Germany
-Givanna Putri	Walter and Eliza Hall Institute of Medical Research	Melbourne	Certified - CZI Year 1	Australia
-Zedias Chikwambi	Chinhoyi University of Technology	Chinhoyi	Certified - CZI Year 1	Zimbabwe
-Pageneck Chikondowa	African Institute of Biomedical Science and Technology	Harare	Certified - CZI Year 1	Zimbabwe
-Marie Hidjo	African Institute of Biomedical Science and Technology	Harare	Certified - CZI Year 1	Zimbabwe
-Kevin Stachelek	University of Southern California	Los Angeles	In Progress	United States
-Erick Isaac Navarro Delgado	University of British Columbia	Vancouver	In Progress	Canada
-Pedro Baldoni	Walter and Eliza Hall Institute of Medical Research	Melbourne	Certified - CZI Year 2	Australia
-Princess Rodriguez	University of Vermont	Burlington	In Progress	United States
-Tim Triche	Van Andel Institute	Grand Rapids	Certified - CZI Year 2	United States
-Izabela Mamede	Universidade Federal de Minas Gerais	Belo Horizonte	Certified - CZI Year 2	Brazil
-Jacques Serizay	Institut Pasteur	Paris	In Progress	France
-Robert Ivanek	University of Basel, Swiss Institute of Bioinformatics	Basel	Certified - CZI Year 2	Switzerland
-Hamdi Furkan Kepenek	Abdullah Gül University	Kayseri	In Progress	Turkey
-陈秭如	GuangZhou Lab	Guangzhou	In Progress	China
-Amal Boukteb	National Institute for Agricultural Research of Tunisia (INRAT)	Tunis	Certified - CZI Year 2	Tunisia
-Arnab Mukherjee	Manipal Institute of Technology	Manipal	Certified - CZI Year 2	India
-Harvinder Singh	Department of Translational and Regenerative Medicine, PGIMER	Chandigarh	In Progress	India
-Janani Ravi	University of Colorado Anschutz Medical Campus	Aurora	In Progress	United States
+name	www	institution	city	country	status
+Laurent Gatto	https://lgatto.github.io/about/	UCLouvain	Brussels	Belgium	Certified
+Charlotte Soneson	https://csoneson.github.io/	Friedrich Miescher Institute for Biomedical Research	Basel	Switzerland	Certified
+Kevin Rue-Albrecht	https://kevinrue.github.io/	University of Oxford	Oxford	United Kingdom	Certified
+Robert Castelo	https://functionalgenomics.upf.edu	Pompeu Fabra University	Barcelona	Spain	Certified
+Kozo Nishida	https://github.com/kozo2	Tokyo University of Agriculture and Technology	Tokyo	Japan	Certified
+Peter Hickey	https://www.peterhickey.org/	WEHI	Melbourne	Australia	Certified
+Saskia Freytag	https://www.wehi.edu.au/people/saskia-freytag	WEHI	Melbourne	Australia	Certified
+Helen Lindsay	https://www.chuv.ch/en/bdsc/about-us	CHUV	Lausanne	Switzerland	Certified
+Jenny Drnevich	https://hpcbio.illinois.edu/people	University of Illinois	Urbana	United States	Certified
+Pariksheet Nanda	https://medicine.umich.edu/dept/microbiology-immunology/pariksheet-nanda-phd-0	University of Michigan Medical School	Ann Arbor	United States	Certified
+Marcel Ramos	https://cunyisph.org/team/marcel-ramos/	CUNY	New York	United States	Certified
+Liz Ing-Simmons	https://liz.rbind.io/	MRC London Institute of Medical Sciences	London	United Kingdom	Certified
+Nitesh Turaga	https://niteshturaga.com/	Bioconductor Community	Buffalo	United States	Certified
+Lisa Breckels	https://lmsimp.github.io/	University of Cambridge	Cambridge	United States	Certified
+Kayla Interdonato		Roswell Park Comprehensive Cancer Center	Buffalo	United States	Certified
+Mikhail Dozmorov	https://dozmorovlab.github.io/	Virginia Commonwealth University	Richmond	United States	Certified
+Susan Holmes	https://susan.su.domains/	Stanford University	Stanford	United States	Certified
+Sonia Barasa		Pan-African Mosquito Control Association (PAMCA)	Nairobi	Kenya	Certified
+Maureen Osano		Kenya Medical Research Institute (KEMRI)	Nairobi	Kenya	Certified
+Javier Carpinteyro-Ponce	https://bse.carnegiescience.edu/javier-carpinteyro-ponce	Carnegie Institution for Science	Maryland	United States	Certified
+Fabricio Almeida-Silva		VIB-UGent Center for Plant Systems Biology	Ghent	Belgium	Certified - CZI Year 1
+Anand Ruban Agarvas		University Hospital Heidelberg	Heidelberg	Germany	Certified - CZI Year 1
+Oliver Crook		University of Oxford	Oxford	United Kingdom	Certified - CZI Year 1
+Almut Lütge		University of Zürich	Zurich	Switzerland	Certified - CZI Year 1
+Leo Lahti		University of Turku	Turku	Finland	Certified - CZI Year 1
+Sehyun Oh		City University of New York	New York	United States	Certified - CZI Year 1
+Umar Ahmad		Bauchi State University	Gadau	Nigeria	In Progress
+Chia Sin Liew		University of Nebraska-Lincoln	Nebraska	United States	Certified - CZI Year 1
+Charlotte Hutchings		University of Cambridge	Cambridge	United States	Certified - CZI Year 1
+Roberto Carlos Álvarez Martínez		Universidad Autonoma de Queretaro	Mexico	Mexico	In Progress
+David Shih		University of Hong Kong	Hong Kong	China	Certified - CZI Year 1
+Rodrigo Arcoverde Cerveira da Silva		Karolinska Institute	Stockholm	Sweden	Certified - CZI Year 1
+Javier Carpinteyro Ponce		University of Maryland	Maryland	United States	Certified - CZI Year 1
+Zuguang Gu		German Cancer Research Center	Heidelberg	Germany	Certified - CZI Year 1
+Givanna Putri		Walter and Eliza Hall Institute of Medical Research	Melbourne	Australia	Certified - CZI Year 1
+Zedias Chikwambi		Chinhoyi University of Technology	Chinhoyi	Zimbabwe	Certified - CZI Year 1
+Pageneck Chikondowa		African Institute of Biomedical Science and Technology	Harare	Zimbabwe	Certified - CZI Year 1
+Marie Hidjo		African Institute of Biomedical Science and Technology	Harare	Zimbabwe	Certified - CZI Year 1
+Kevin Stachelek		University of Southern California	Los Angeles	United States	Certified - CZI Year 2
+Erick Isaac Navarro Delgado		University of British Columbia	Vancouver	Canada	Certified - CZI Year 2
+Pedro Baldoni		University of Pittsburgh	Pittsburgh	United States	Certified - CZI Year 2
+Princess Rodriguez		University of Vermont	Burlington	United States	In Progress
+Tim Triche		Van Andel Institute	Grand Rapids	United States	Certified - CZI Year 2
+Izabela Mamede		Universidade Federal de Minas Gerais	Belo Horizonte	Brazil	Certified - CZI Year 2
+Jacques Serizay		Institut Pasteur	Paris	France	In Progress
+Robert Ivanek		"University of Basel, Swiss Institute of Bioinformatics"	Basel	Switzerland	Certified - CZI Year 2
+Hamdi Furkan Kepenek		Abdullah Gül University	Kayseri	Turkey	In Progress
+Ziru Chen		GuangZhou Lab	Guangzhou	China	In Progress
+Amal Boukteb		National Institute for Agricultural Research of Tunisia (INRAT)	Tunis	Tunisia	Certified - CZI Year 2
+Arnab Mukherjee		Manipal Institute of Technology	Manipal	India	Certified - CZI Year 2
+Harvinder Singh		"Department of Translational and Regenerative Medicine, PGIMER"	Chandigarh	India	Certified - CZI Year 2
+Janani Ravi		University of Colorado Anschutz Medical Campus	Aurora	United States	In Progress
+Guerrino Macori		University College Dublin	Dublin	Ireland	Certified
+Ouso Daniel	https://www.linkedin.com/in/ousodaniel/ 	University College Dublin	Dublin	Ireland	Certified
+Amit Mandal		University of Oxford	Oxford	United Kingdom	Certified
+Michael Landi		International Institute of Tropical Agriculture (IITA)	Nairobi	Kenya	Certified
