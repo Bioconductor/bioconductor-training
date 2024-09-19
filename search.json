@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "carpentries/instructors.html",
+    "href": "carpentries/instructors.html",
+    "title": "Instructors",
+    "section": "",
+    "text": "Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the Bioconductor Carpentries training program. If you are a certified Carpentries instructor and don’t see your name listed, or if you wish to update your details, please submit a pull request to update the instructors TSV here.\nSee this page for Bioconductor Carpentries Workshops."
+  },
+  {
+    "objectID": "carpentries/workshops.html",
+    "href": "carpentries/workshops.html",
+    "title": "Workshops",
+    "section": "",
+    "text": "Workshops using the Bioconductor Carpentries training material are listed below. If you have taught a workshop using the Bioconductor Carpentries material, please submit a pull request to update the workshops TSV here.\nSee this page for Bioconductor Carpentries Instructors."
+  }
+]
