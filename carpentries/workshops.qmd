@@ -33,8 +33,12 @@ workshops <- read_delim("carpentries_workshops.tsv", delim = "\t", trim_ws = TRU
 workshops <- workshops %>%
   mutate(Location = paste(city, country, sep = ", "))
 
+# Filter out workshops that are "Online" for mapping purposes only
+workshops_for_map <- workshops %>%
+  filter(city != "Online")
+
 # Geocode all locations using OpenStreetMap via tidygeocoder
-workshops_geocoded <- workshops %>%
+workshops_geocoded <- workshops_for_map %>%
   geocode(Location, method = 'osm', lat = lat, long = lon)
 
 ```
@@ -108,6 +112,7 @@ gg <- ggplot() +
 interactive_map <- ggplotly(gg, tooltip = "text") %>%
   layout(
     margin = list(l = 20, r = 20, t = 20, b = 50),
+    hoverlabel = list(align = "left"),
     legend = list(
       orientation = "h",
       x = 0.5,
@@ -136,7 +141,7 @@ interactive_map
 
 ```{r}
 # Create the reactable table
-workshops_geocoded %>%
+workshops %>%
   select(date, hosted_by, workshop, city, country, instructors) %>%
   reactable(
     columns = list(
