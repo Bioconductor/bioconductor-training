@@ -21,7 +21,9 @@ library(maps)
 library(htmltools)
 ```
 
-Workshops using the Bioconductor Carpentries training material. See this page for Bioconductor Carpentries Instructors.
+Workshops using the [Bioconductor Carpentries training material](https://www.bioconductor.org/help/education-training/) are listed below. If you have taught a workshop using the Bioconductor Carpentries material, please submit a pull request to update the [workshops TSV here](https://github.com/Bioconductor/bioconductor-teaching/blob/devel/carpentries/carpentries_workshops.tsv).
+
+See [this page](instructors.html) for Bioconductor Carpentries Instructors.
 
 ```{r}
 # Read in the workshops data from the TSV file
