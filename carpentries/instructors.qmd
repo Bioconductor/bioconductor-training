@@ -160,16 +160,30 @@ interactive_map
 
 ```{r}
 # Table of instructors
-all |>   
-    select(name, institution, city, country, status) |> 
-  reactable(columns = list(
-    name = colDef(cell = function(value, index) {
-      value
-    }),
+table_data <- all |>   
+  select(name, institution, city, country, status)
+
+# Create the table
+reactable(
+  table_data,
+  columns = list(
+    name = colDef(
+      cell = function(value, index) {
+        url <- all$www[index]
+        if (!is.na(url) && url != "") {
+          htmltools::tags$a(href = url, target = "_blank", as.character(value))
+        } else {
+          as.character(value)
+        }
+      }
+    ),
     institution = colDef(),
     city = colDef(),
+    country = colDef(),
     status = colDef()
   ), 
   defaultSorted = "name",
-  defaultPageSize = 100)
+  defaultPageSize = 100
+)
+
 ```
