@@ -5,10 +5,9 @@ project:
     - "*.qmd"
 website:
   navbar:
-    background: "#3792ad" # Bioconductor.org blue
+    logo: "images/bioconductor-logo.svg"
+    logo-href: "https://bioconductor.org/help/education-training/"
     left:
-      - text: "Bioconductor Teaching"
-        href: https://bioconductor.org/help/education-training/
       - text: "Instructors"
         href: carpentries/instructors.qmd
       - text: "Workshops"
@@ -16,3 +15,4 @@ website:
 format:
   html:
     embed-resources: false
+    css: styles.css
