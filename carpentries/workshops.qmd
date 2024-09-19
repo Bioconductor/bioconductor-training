@@ -1,0 +1,166 @@
+---
+title: "Workshops"
+format: html
+editor: visual
+execute:
+  message: false
+  warning: false
+  echo: false
+---
+
+```{r}
+# Load necessary libraries
+library(readr)
+library(dplyr)
+library(tidyr)
+library(reactable)
+library(ggmap)
+library(plotly)
+library(ggplot2)
+library(maps)
+library(htmltools)
+```
+
+Workshops using the Bioconductor Carpentries training material. See this page for Bioconductor Carpentries Instructors.
+
+```{r}
+# Read in the workshops data from the TSV file
+workshops <- read_delim("carpentries_workshops.tsv", delim = "\t", trim_ws = TRUE)
+
+# Create 'Location' column by combining city and country for geocoding
+workshops <- workshops %>%
+  mutate(Location = paste(city, country, sep = ", "))
+
+# Geocode the locations
+workshops_geocoded <- workshops %>%
+  mutate_geocode(Location)
+
+# Calculate coordinate limits based on data to adjust map zoom
+lon_range <- range(workshops_geocoded$lon, na.rm = TRUE)
+lat_range <- range(workshops_geocoded$lat, na.rm = TRUE)
+
+# Increase padding to zoom out
+lon_pad <- diff(lon_range) * 0.5  # 50% padding
+lat_pad <- diff(lat_range) * 0.5  
+
+lon_limits <- c(lon_range[1] - lon_pad, lon_range[2] + lon_pad)
+lat_limits <- c(lat_range[1] - lat_pad, lat_range[2] + lat_pad)
+
+# Prepare the world map data
+world_map <- map_data("world") %>%
+  filter(region != "Antarctica")
+
+# Create the ggplot object for the map
+gg <- ggplot() +
+  geom_polygon(
+    data = world_map,
+    aes(x = long, y = lat, group = group),
+    fill = "grey85",
+    color = "white"
+  ) +
+  geom_jitter(
+    data = workshops_geocoded,
+    aes(
+      x = lon,
+      y = lat,
+      text = paste0(
+        "<b>Date:</b> ", date, "<br>",
+        "<b>Hosted By:</b> ", hosted_by, "<br>",
+        "<b>Location:</b> ", Location, "<br>",
+        "<b>Workshop:</b> ", workshop, "<br>",
+        "<b>Instructors:</b> ", instructors
+      ),
+      colour = workshop,
+      fill = workshop,
+      shape = workshop,
+      size = workshop
+    ),
+    width = 0.5,
+    height = 0.5
+  ) +
+  scale_colour_brewer(palette = "Set2") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_shape_manual(values = 21:25) +  # Adjust number of shapes as needed
+  scale_size_manual(values = rep(3, length(unique(workshops_geocoded$workshop)))) +
+  coord_fixed(
+    ratio = 1.3,
+    xlim = lon_limits,
+    ylim = lat_limits,
+    expand = FALSE
+  ) +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = "white", color = NA),
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 8),
+    legend.key.size = unit(0.5, "lines"),
+    legend.margin = margin(t = 0, b = 0, unit = 'pt')
+  )
+
+# Convert ggplot to interactive plotly plot
+interactive_map <- ggplotly(gg, tooltip = "text") %>%
+  layout(
+    margin = list(l = 20, r = 20, t = 20, b = 50),
+    legend = list(
+      orientation = "h",
+      x = 0.5,
+      xanchor = "center",
+      y = -0.1
+    ),
+    xaxis = list(
+      showline = FALSE,
+      showticklabels = FALSE,
+      zeroline = FALSE
+    ),
+    yaxis = list(
+      showline = FALSE,
+      showticklabels = FALSE,
+      zeroline = FALSE
+    )
+  ) %>%
+  config(
+    responsive = TRUE,
+    displaylogo = FALSE
+  )
+
+# Display the interactive map
+interactive_map
+```
+
+```{r}
+# Create the reactable table
+workshops_geocoded %>%
+  select(date, hosted_by, workshop, city, country, instructors) %>%
+  reactable(
+    columns = list(
+      date = colDef(name = "Date"),
+      hosted_by = colDef(
+        name = "Hosted By",
+        cell = function(value, index) {
+          # Check if the 'host_url' column exists and is not NA
+          if ("host_url" %in% names(workshops_geocoded) && !is.na(workshops_geocoded$host_url[index])) {
+            htmltools::tags$a(href = workshops_geocoded$host_url[index], target = "_blank", as.character(value))
+          } else {
+            as.character(value)
+          }
+        }
+      ),
+      workshop = colDef(
+        name = "Workshop",
+        cell = function(value, index) {
+          # Check if the 'workshop_url' column exists and is not NA
+          if ("workshop_url" %in% names(workshops_geocoded) && !is.na(workshops_geocoded$workshop_url[index])) {
+            htmltools::tags$a(href = workshops_geocoded$workshop_url[index], target = "_blank", as.character(value))
+          } else {
+            as.character(value)
+          }
+        }
+      ),
+      city = colDef(name = "City"),
+      country = colDef(name = "Country"),
+      instructors = colDef(name = "Instructors")
+    ),
+    defaultPageSize = 100
+  )
+```
