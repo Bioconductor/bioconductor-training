@@ -41,7 +41,7 @@ jobs:
           use-public-rspm: true
 
       - name: Install R dependencies
-        run: Rscript -e 'install.packages(c("evaluate", "rmarkdown", "readr", "tidyr", "reactable", "maps", "plotly", "ggplot2", "tidygeocoder", "rworldmap"))'
+        run: Rscript -e 'install.packages(c("evaluate", "rmarkdown", "readr", "tidyr", "reactable", "maps", "plotly", "ggplot2", "tidygeocoder", "countrycode"))'
 
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
