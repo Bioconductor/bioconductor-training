@@ -22,8 +22,42 @@ library(countrycode)
 ```
 
 ```{r}
+# Import data from the TSV file with enhanced error handling
+read_instructors <- function(file_path) {
+  tryCatch({
+    instructors <- read_delim(file_path, 
+                              delim = "\t", 
+                              trim_ws = TRUE,
+                              na = c("", "NA", "N/A"))
+    
+    # Check for required columns
+    required_columns <- c("name", "www", "institution", "city", "country", "status")
+    missing_columns <- setdiff(required_columns, names(instructors))
+    if (length(missing_columns) > 0) {
+      stop("Missing required columns: ", paste(missing_columns, collapse = ", "))
+    }
+    
+    # Check for missing key values in critical columns
+    if (any(is.na(instructors$name))) {
+      warning("Some entries have missing names. Please check the data.")
+    }
+    if (any(is.na(instructors$city))) {
+      warning("Some entries have missing city information. Please check the data.")
+    }
+    if (any(is.na(instructors$status))) {
+      warning("Some entries have missing status information. Please check the data.")
+    }
+    
+    instructors
+  }, error = function(e) {
+    stop("Error reading the TSV file: ", e$message)
+  })
+}
+```
+
+```{r}
 # Import data from the TSV file and format
-instructors <- read_delim("carpentries_instructors.tsv", delim = "\t", trim_ws = TRUE)
+instructors <- read_instructors("carpentries_instructors.tsv")
 
 # Add 'Location' by combining city and country for geocoding
 instructors <- instructors |> 
