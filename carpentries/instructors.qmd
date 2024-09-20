@@ -18,15 +18,54 @@ library(tidygeocoder)
 library(ggplot2)
 library(maps)
 library(plotly)
+library(countrycode)
+```
+
+```{r}
+# Import data from the TSV file with enhanced error handling
+read_instructors <- function(file_path) {
+  tryCatch({
+    instructors <- read_delim(file_path, 
+                              delim = "\t", 
+                              trim_ws = TRUE,
+                              na = c("", "NA", "N/A"))
+    
+    # Check for required columns
+    required_columns <- c("name", "www", "institution", "city", "country", "status")
+    missing_columns <- setdiff(required_columns, names(instructors))
+    if (length(missing_columns) > 0) {
+      stop("Missing required columns: ", paste(missing_columns, collapse = ", "))
+    }
+    
+    # Check for missing key values in critical columns
+    if (any(is.na(instructors$name))) {
+      warning("Some entries have missing names. Please check the data.")
+    }
+    if (any(is.na(instructors$city))) {
+      warning("Some entries have missing city information. Please check the data.")
+    }
+    if (any(is.na(instructors$status))) {
+      warning("Some entries have missing status information. Please check the data.")
+    }
+    
+    instructors
+  }, error = function(e) {
+    stop("Error reading the TSV file: ", e$message)
+  })
+}
 ```
 
 ```{r}
 # Import data from the TSV file and format
-instructors <- read_delim("carpentries_instructors.tsv", delim = "\t", trim_ws = TRUE)
+instructors <- read_instructors("carpentries_instructors.tsv")
 
 # Add 'Location' by combining city and country for geocoding
 instructors <- instructors |> 
   mutate(Location = paste(city, country, sep = ", "))
+
+# Use countrycode to map countries to World Bank regions
+instructors <- instructors |> 
+  mutate(region = countrycode(country, origin = "country.name", destination = "region"))
 ```
 
 Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the [Bioconductor Carpentries training program](https://blog.bioconductor.org/#category=Carpentries). If you are a certified Carpentries instructor and don't see your name listed, or if you wish to update your details, please submit a pull request to update the [instructors TSV here](https://github.com/Bioconductor/bioconductor-teaching/blob/devel/carpentries/carpentries_instructors.tsv).
@@ -40,7 +79,7 @@ instructors_geocoded <- instructors |>
 ```
 
 ```{r}
-# Combine geocoded data
+# Combine geocoded data and set status as factor
 all <- instructors_geocoded |> 
   mutate(Status = factor(status, levels = c(
     "Certified", 
@@ -159,15 +198,18 @@ interactive_map
 ```
 
 <br></br>
+The table below lists all instructors, including their institution, city, country, and region. The region column has been added to make it easier to find instructors in the same geographical area. These regions are based on the World Bank's classification system. The table is fully searchable and filterable, allowing you to quickly locate instructors by various criteria.
 
 ```{r}
 # Table of instructors
 table_data <- all |>   
-  select(name, institution, city, country, status)
+  select(name, institution, city, country, region, status)
 
 # Create the table
 reactable(
   table_data,
+  filterable = TRUE,
+  searchable = TRUE,
   columns = list(
     name = colDef(
       cell = function(value, index) {
@@ -182,9 +224,16 @@ reactable(
     institution = colDef(),
     city = colDef(),
     country = colDef(),
+    region = colDef(),
     status = colDef()
   ), 
   defaultSorted = "name",
   defaultPageSize = 100
 )
 ```
+
+::: {.footer-timestamp}
+  <div style="text-align: center; font-size: 0.9em; color: var(--neutral-n200); margin-top: 20px; padding-top: 10px;">
+    Last rendered on: `r format(Sys.Date(), "%Y-%m-%d")`
+  </div>
+:::
