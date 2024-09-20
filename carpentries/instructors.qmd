@@ -18,13 +18,10 @@ library(tidygeocoder)
 library(ggplot2)
 library(maps)
 library(plotly)
-library(rworldmap)
+library(countrycode)
 ```
 
 ```{r}
-# Load rworldmap data for region mapping
-data(countryExData)
-
 # Import data from the TSV file and format
 instructors <- read_delim("carpentries_instructors.tsv", delim = "\t", trim_ws = TRUE)
 
@@ -32,10 +29,9 @@ instructors <- read_delim("carpentries_instructors.tsv", delim = "\t", trim_ws =
 instructors <- instructors |> 
   mutate(Location = paste(city, country, sep = ", "))
 
-# Get country-specific regions using rworldmap's countryExData
+# Use countrycode to map countries to World Bank regions
 instructors <- instructors |> 
-  left_join(countryExData, by = c("country" = "Country")) |> 
-  mutate(region = EPI_regions)
+  mutate(region = countrycode(country, origin = "country.name", destination = "region"))
 ```
 
 Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the [Bioconductor Carpentries training program](https://blog.bioconductor.org/#category=Carpentries). If you are a certified Carpentries instructor and don't see your name listed, or if you wish to update your details, please submit a pull request to update the [instructors TSV here](https://github.com/Bioconductor/bioconductor-teaching/blob/devel/carpentries/carpentries_instructors.tsv).
@@ -168,6 +164,7 @@ interactive_map
 ```
 
 <br></br>
+The table below lists all instructors, including their institution, city, country, and region. The region column has been added to make it easier to find instructors in the same geographical area. These regions are based on the World Bank's classification system. The table is fully searchable and filterable, allowing you to quickly locate instructors by various criteria.
 
 ```{r}
 # Table of instructors
