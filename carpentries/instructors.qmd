@@ -177,6 +177,8 @@ table_data <- all |>
 # Create the table
 reactable(
   table_data,
+  filterable = TRUE,
+  searchable = TRUE,
   columns = list(
     name = colDef(
       cell = function(value, index) {
