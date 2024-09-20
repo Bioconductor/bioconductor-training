@@ -43,7 +43,6 @@ workshops_geocoded <- workshops_for_map %>%
 
 ```
 
-
 ```{r}
 # Calculate coordinate limits based on data to adjust map zoom
 lon_range <- range(workshops_geocoded$lon, na.rm = TRUE)
@@ -176,3 +175,9 @@ workshops %>%
   )
 
 ```
+
+::: {.footer-timestamp}
+  <div style="text-align: center; font-size: 0.9em; color: var(--neutral-n200); margin-top: 20px; padding-top: 10px;">
+    Last rendered on: `r format(Sys.Date(), "%Y-%m-%d")`
+  </div>
+:::
