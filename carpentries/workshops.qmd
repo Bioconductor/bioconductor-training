@@ -149,8 +149,8 @@ workshops %>%
         name = "Hosted By",
         cell = function(value, index) {
           # Check if the 'host_url' column exists and is not NA
-          if ("host_url" %in% names(workshops_geocoded) && !is.na(workshops_geocoded$host_url[index])) {
-            htmltools::tags$a(href = workshops_geocoded$host_url[index], target = "_blank", as.character(value))
+          if ("host_url" %in% names(workshops) && !is.na(workshops$host_url[index])) {
+            htmltools::tags$a(href = workshops$host_url[index], target = "_blank", as.character(value))
           } else {
             as.character(value)
           }
@@ -160,8 +160,8 @@ workshops %>%
         name = "Workshop",
         cell = function(value, index) {
           # Check if the 'workshop_url' column exists and is not NA
-          if ("workshop_url" %in% names(workshops_geocoded) && !is.na(workshops_geocoded$workshop_url[index])) {
-            htmltools::tags$a(href = workshops_geocoded$workshop_url[index], target = "_blank", as.character(value))
+          if ("workshop_url" %in% names(workshops) && !is.na(workshops$workshop_url[index])) {
+            htmltools::tags$a(href = workshops$workshop_url[index], target = "_blank", as.character(value))
           } else {
             as.character(value)
           }
