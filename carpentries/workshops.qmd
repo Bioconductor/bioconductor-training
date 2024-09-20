@@ -19,6 +19,7 @@ library(maps)
 library(htmltools)
 library(tidygeocoder)
 library(plotly)
+library(countrycode)
 ```
 
 Workshops using the [Bioconductor Carpentries training material](https://www.bioconductor.org/help/education-training/) are listed below. If you have taught a workshop using the Bioconductor Carpentries material, please submit a pull request to update the [workshops TSV here](https://github.com/Bioconductor/bioconductor-teaching/blob/devel/carpentries/carpentries_workshops.tsv).
@@ -26,12 +27,44 @@ Workshops using the [Bioconductor Carpentries training material](https://www.bio
 See [this page](instructors.html) for Bioconductor Carpentries Instructors.
 
 ```{r}
-# Read in the workshops data from the TSV file
-workshops <- read_delim("carpentries_workshops.tsv", delim = "\t", trim_ws = TRUE)
+# Import workshops data from the TSV file with basic error handling
+read_workshops <- function(file_path) {
+  tryCatch({
+    workshops <- read_delim(file_path, 
+                            delim = "\t", 
+                            trim_ws = TRUE,
+                            na = c("", "NA", "N/A"))
+    
+    # Check for required columns
+    required_columns <- c("date", "hosted_by", "host_url", "workshop", "workshop_url", "city", "country", "instructors")
+    missing_columns <- setdiff(required_columns, names(workshops))
+    if (length(missing_columns) > 0) {
+      stop("Missing required columns: ", paste(missing_columns, collapse = ", "))
+    }
+    
+    # Simple data validation
+    if (any(is.na(workshops$date))) {
+      warning("Some entries have missing dates. Please check the data.")
+    }
+    if (any(is.na(workshops$city))) {
+      warning("Some entries have missing city information. Please check the data.")
+    }
+    if (any(is.na(workshops$instructors))) {
+      warning("Some entries have missing instructor information. Please check the data.")
+    }
+    
+    workshops
+  }, error = function(e) {
+    stop("Error reading the TSV file: ", e$message)
+  })
+}
+```
 
-# Create 'Location' column by combining city and country for geocoding
-workshops <- workshops %>%
-  mutate(Location = paste(city, country, sep = ", "))
+```{r}
+# Add 'region' using countrycode for World Bank regions
+workshops <- read_workshops("carpentries_workshops.tsv") %>%
+  mutate(Location = paste(city, country, sep = ", ")) %>%
+  mutate(region = countrycode(country, origin = "country.name", destination = "region"))
 
 # Filter out workshops that are "Online" for mapping purposes only
 workshops_for_map <- workshops %>%
@@ -138,11 +171,15 @@ interactive_map <- ggplotly(gg, tooltip = "text") %>%
 interactive_map
 ```
 
+The table below lists all workshops, including the date, host institution, city, country, and region. The region column has been added to make it easier to find workshops in the same geographical area. These regions are based on the World Bank's classification system. The table is fully searchable and filterable, allowing you to quickly locate workshops by various criteria, such as location or instructors.
+
 ```{r}
 # Create the reactable table
 workshops %>%
-  select(date, hosted_by, workshop, city, country, instructors) %>%
+  select(date, hosted_by, workshop, city, country, region, instructors) %>%
   reactable(
+    filterable = TRUE,
+    searchable = TRUE,
     columns = list(
       date = colDef(name = "Date"),
       hosted_by = colDef(
@@ -176,8 +213,10 @@ workshops %>%
 
 ```
 
-::: {.footer-timestamp}
-  <div style="text-align: center; font-size: 0.9em; color: var(--neutral-n200); margin-top: 20px; padding-top: 10px;">
-    Last rendered on: `r format(Sys.Date(), "%Y-%m-%d")`
-  </div>
+::: footer-timestamp
+::: {style="text-align: center; font-size: 0.9em; color: var(--neutral-n200); margin-top: 20px; padding-top: 10px;"}
+```         
+Last rendered on: `r format(Sys.Date(), "%Y-%m-%d")`
+```
+:::
 :::
