@@ -18,15 +18,24 @@ library(tidygeocoder)
 library(ggplot2)
 library(maps)
 library(plotly)
+library(rworldmap)
 ```
 
 ```{r}
+# Load rworldmap data for region mapping
+data(countryExData)
+
 # Import data from the TSV file and format
 instructors <- read_delim("carpentries_instructors.tsv", delim = "\t", trim_ws = TRUE)
 
 # Add 'Location' by combining city and country for geocoding
 instructors <- instructors |> 
   mutate(Location = paste(city, country, sep = ", "))
+
+# Get country-specific regions using rworldmap's countryExData
+instructors <- instructors |> 
+  left_join(countryExData, by = c("country" = "Country")) |> 
+  mutate(region = EPI_regions)
 ```
 
 Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the [Bioconductor Carpentries training program](https://blog.bioconductor.org/#category=Carpentries). If you are a certified Carpentries instructor and don't see your name listed, or if you wish to update your details, please submit a pull request to update the [instructors TSV here](https://github.com/Bioconductor/bioconductor-teaching/blob/devel/carpentries/carpentries_instructors.tsv).
@@ -40,7 +49,7 @@ instructors_geocoded <- instructors |>
 ```
 
 ```{r}
-# Combine geocoded data
+# Combine geocoded data and set status as factor
 all <- instructors_geocoded |> 
   mutate(Status = factor(status, levels = c(
     "Certified", 
@@ -163,7 +172,7 @@ interactive_map
 ```{r}
 # Table of instructors
 table_data <- all |>   
-  select(name, institution, city, country, status)
+  select(name, institution, city, country, region, status)
 
 # Create the table
 reactable(
@@ -182,6 +191,7 @@ reactable(
     institution = colDef(),
     city = colDef(),
     country = colDef(),
+    region = colDef(),
     status = colDef()
   ), 
   defaultSorted = "name",
