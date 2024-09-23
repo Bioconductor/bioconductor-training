@@ -22,25 +22,32 @@ library(countrycode)
 ```
 
 ```{r}
-# Import data from the TSV file with enhanced error handling
+# Check for input file issues
 read_instructors <- function(file_path) {
   tryCatch({
+    # Read the TSV file
     instructors <- read_delim(file_path, 
                               delim = "\t", 
                               trim_ws = TRUE,
                               na = c("", "NA", "N/A"))
     
-    # Check for required columns
+    # Check for parsing problems
+    parsing_issues <- problems(instructors)
+    if (nrow(parsing_issues) > 0) {
+      issue_details <- parsing_issues |> 
+        mutate(problem_description = paste("Row", row, "has an issue with:", expected, "expected, but", actual, "columns found")) |>
+        pull(problem_description)
+      stop("Parsing issues detected:\n", paste(issue_details, collapse = "\n"))
+    }
+
+    # Check for missing required columns
     required_columns <- c("name", "www", "institution", "city", "country", "status")
     missing_columns <- setdiff(required_columns, names(instructors))
     if (length(missing_columns) > 0) {
       stop("Missing required columns: ", paste(missing_columns, collapse = ", "))
     }
-    
-    # Check for missing key values in critical columns
-    if (any(is.na(instructors$name))) {
-      warning("Some entries have missing names. Please check the data.")
-    }
+
+    # Simple data validation for missing key values
     if (any(is.na(instructors$city))) {
       warning("Some entries have missing city information. Please check the data.")
     }
@@ -197,8 +204,7 @@ interactive_map <- ggplotly(gg, tooltip = "text") %>%
 interactive_map
 ```
 
-<br></br>
-The table below lists all instructors, including their institution, city, country, and region. The region column has been added to make it easier to find instructors in the same geographical area. These regions are based on the World Bank's classification system. The table is fully searchable and filterable, allowing you to quickly locate instructors by various criteria.
+<br></br> The table below lists all instructors, including their institution, city, country, and region. The region column has been added to make it easier to find instructors in the same geographical area. These regions are based on the World Bank's classification system. The table is fully searchable and filterable, allowing you to quickly locate instructors by various criteria.
 
 ```{r}
 # Table of instructors
@@ -232,8 +238,10 @@ reactable(
 )
 ```
 
-::: {.footer-timestamp}
-  <div style="text-align: center; font-size: 0.9em; color: var(--neutral-n200); margin-top: 20px; padding-top: 10px;">
-    Last rendered on: `r format(Sys.Date(), "%Y-%m-%d")`
-  </div>
+::: footer-timestamp
+::: {style="text-align: center; font-size: 0.9em; color: var(--neutral-n200); margin-top: 20px; padding-top: 10px;"}
+```         
+Last rendered on: `r format(Sys.Date(), "%Y-%m-%d")`
+```
+:::
 :::

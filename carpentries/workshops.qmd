@@ -27,25 +27,32 @@ Workshops using the [Bioconductor Carpentries training material](https://www.bio
 See [this page](instructors.html) for Bioconductor Carpentries Instructors.
 
 ```{r}
-# Import workshops data from the TSV file with basic error handling
+# Check for input file issues
 read_workshops <- function(file_path) {
   tryCatch({
+    # Read the TSV file
     workshops <- read_delim(file_path, 
                             delim = "\t", 
                             trim_ws = TRUE,
                             na = c("", "NA", "N/A"))
     
-    # Check for required columns
+    # Check for parsing problems
+    parsing_issues <- problems(workshops)
+    if (nrow(parsing_issues) > 0) {
+      issue_details <- parsing_issues |> 
+        mutate(problem_description = paste("Row", row, "has an issue with:", expected, "expected, but", actual, "columns found")) |>
+        pull(problem_description)
+      stop("Parsing issues detected:\n", paste(issue_details, collapse = "\n"))
+    }
+
+    # Check for missing required columns
     required_columns <- c("date", "hosted_by", "host_url", "workshop", "workshop_url", "city", "country", "instructors")
     missing_columns <- setdiff(required_columns, names(workshops))
     if (length(missing_columns) > 0) {
       stop("Missing required columns: ", paste(missing_columns, collapse = ", "))
     }
-    
-    # Simple data validation
-    if (any(is.na(workshops$date))) {
-      warning("Some entries have missing dates. Please check the data.")
-    }
+
+    # Simple data validation for key values
     if (any(is.na(workshops$city))) {
       warning("Some entries have missing city information. Please check the data.")
     }
