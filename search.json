@@ -4,13 +4,20 @@
     "href": "carpentries/instructors.html",
     "title": "Instructors",
     "section": "",
-    "text": "Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the Bioconductor Carpentries training program. If you are a certified Carpentries instructor and don’t see your name listed, or if you wish to update your details, please submit a pull request to update the instructors TSV here.\nSee this page for Bioconductor Carpentries Workshops.\n\n\n\n\n\n\n The table below lists all instructors, including their institution, city, country, and region. The region column has been added to make it easier to find instructors in the same geographical area. These regions are based on the World Bank’s classification system. The table is fully searchable and filterable, allowing you to quickly locate instructors by various criteria.\n\n\n\n\n\n\n\n\nLast rendered on: 2024-09-21"
+    "text": "Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the Bioconductor Carpentries training program. If you are a certified Carpentries instructor and don’t see your name listed, or if you wish to update your details, please submit a pull request to update the instructors TSV here.\nSee this page for Bioconductor Carpentries Workshops.\n\n\n\n\n\n\n The table below lists all instructors, including their institution, city, country, and region. The region column has been added to make it easier to find instructors in the same geographical area. These regions are based on the World Bank’s classification system. The table is fully searchable and filterable, allowing you to quickly locate instructors by various criteria.\n\n\n\n\n\n\n\n\nLast rendered on: 2024-09-23"
+  },
+  {
+    "objectID": "carpentries/index.html",
+    "href": "carpentries/index.html",
+    "title": "Bioconductor Carpentries",
+    "section": "",
+    "text": "Bioconductor Carpentries\nBioconductor is a member of The Carpentries, a global community focused on teaching foundational coding and data science skills. Our membership supports the development of Bioconductor-specific training materials and enables our certified instructors to teach Carpentries workshops at Bioconductor events and beyond.\nFor more information, you can:\n\nVisit our Instructors and Workshops pages for current details.\nExplore the blog post that outlines Bioconductor’s Carpentries membership or browse other Carpentries-related posts."
   },
   {
     "objectID": "carpentries/workshops.html",
     "href": "carpentries/workshops.html",
     "title": "Workshops",
     "section": "",
-    "text": "Workshops using the Bioconductor Carpentries training material are listed below. If you have taught a workshop using the Bioconductor Carpentries material, please submit a pull request to update the workshops TSV here.\nSee this page for Bioconductor Carpentries Instructors.\n\n\n\n\n\n\nThe table below lists all workshops, including the date, host institution, city, country, and region. The region column has been added to make it easier to find workshops in the same geographical area. These regions are based on the World Bank’s classification system. The table is fully searchable and filterable, allowing you to quickly locate workshops by various criteria, such as location or instructors.\n\n\n\n\n\n\n\n\nLast rendered on: 2024-09-21"
+    "text": "Workshops using the Bioconductor Carpentries training material are listed below. If you have taught a workshop using the Bioconductor Carpentries material, please submit a pull request to update the workshops TSV here.\nSee this page for Bioconductor Carpentries Instructors.\n\n\n\n\n\n\nThe table below lists all workshops, including the date, host institution, city, country, and region. The region column has been added to make it easier to find workshops in the same geographical area. These regions are based on the World Bank’s classification system. The table is fully searchable and filterable, allowing you to quickly locate workshops by various criteria, such as location or instructors.\n\n\n\n\n\n\n\n\nLast rendered on: 2024-09-23"
   }
 ]
