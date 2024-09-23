@@ -10,43 +10,55 @@ env:
   cache-version: v1
 
 jobs:
-  build-and-test:
+  # Job to build and check PRs
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+
+      # Install system dependencies
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libudunits2-dev libgdal-dev libgeos-dev libproj-dev
-      - name: Cache R packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.R
-          key: ${{ env.cache-version }}-${{ runner.os }}-R
-          restore-keys: |
-            ${{ env.cache-version }}-${{ runner.os }}-R-
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
+
+      # Install R dependencies
       - name: Install R dependencies
-        run: Rscript -e 'install.packages(c("evaluate", "rmarkdown", "readr", "tidyr", "reactable", "maps", "plotly", "ggplot2", "tidygeocoder", "countrycode"))'
+        run: Rscript -e 'install.packages(c("evaluate", "rmarkdown", "knitr", "readr", "tidyr", "reactable", "maps", "plotly", "ggplot2", "tidygeocoder", "countrycode"))'
+
+      # Run Quarto render to check for PRs
       - name: Render Quarto Project
         run: quarto render
 
+  # Job to deploy only when merging to devel
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/devel'
-    needs: build-and-test
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+
+      # Install system dependencies for deployment
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+
+      # Install R dependencies
+      - name: Install R dependencies
+        run: Rscript -e 'install.packages(c("evaluate", "rmarkdown", "knitr", "readr", "tidyr", "reactable", "maps", "plotly", "ggplot2", "tidygeocoder", "countrycode"))'
+
+      # Deploy to GitHub Pages
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
         with:
