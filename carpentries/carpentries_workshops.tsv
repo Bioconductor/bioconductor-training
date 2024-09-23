@@ -4,9 +4,11 @@ date	hosted_by	host_url	workshop	workshop_url	city	country	instructors
 22-23 July 2024	BioC2024	https://www.bioc2024.bioconductor.org/	bioc-rnaseq	https://bioconductor.github.io/2024-07-22-BiocRnaseq-Bioc2024/	Grand Rapids	United States	"Jenny Drnevich, Tim Triche, Charlotte Hutchings"
 11-12 July 2024	Karolinska Institute	https://ki.se/en	bioc-rnaseq	https://rodrigarc.github.io/2024-07-11-bioconductor-rnaseq/	Stockholm	Sweden	Rodrigo Arcoverde Cerveira da Silva
 March 2024	University of Illinois	https://illinois.edu/	bioc-intro		Champaign	United States	"Jenny Drnevich, Negin Valizadegan, Yifei Kang"
+1-2 February 2024	Carnegie Institution	https://carnegiescience.edu/bse  bioc-rnaseq		Baltimore	United States	"Javier Carpinteyro-Ponce, Frederick Tan"
 November 2023	Instituto Evandro Chagas	https://www.gov.br/iec/pt-br	bioc-rnaseq		Belém	Brazil	Rodrigo Arcoverde Cerveira da Silva
+30-31 October 2023  Practical Genomics  https://sites.google.com/view/practicalgenomics  bioc-intro  Baltimore  United States  "Javier Carpinteyro-Ponce, Frederick Tan"
 15 October 2023	BioCAsia2023	https://biocasia2023.bioconductor.org	bioc-rnaseq		Hong Kong	China	David Shih
-12-13 October 2023	Carnegie Institution	https://bse.carnegiescience.edu	bioc-rnaseq		Baltimore	United States	"Javier Carpinteyro-Ponce, Frederick Tan"
+12-13 October 2023	Carnegie Institution	https://carnegiescience.edu/bse  bioc-intro		Baltimore	United States	"Javier Carpinteyro-Ponce, Frederick Tan"
 9-12 October 2023	University of Bergen	https://www.uib.no/en	bioc-intro		Bergen	Norway	Leo Lahti
 October 2023	University of Illinois	https://illinois.edu/	bioc-intro		Champaign	United States	"Jenny Drnevich, Jessica Holmes, Yifei Kang"
 18-19 September 2023	EuroBioC2023	https://eurobioc2023.bioconductor.org/	bioc-rnaseq	https://bioconductor.github.io/2023-09-18-RNASeq-EuroBioc/	Ghent	Belgium	"Soneson Charlotte, Almut Lütge, Fabricio Almeida-Silva"
@@ -19,6 +21,8 @@ October 2023	University of Illinois	https://illinois.edu/	bioc-intro		Champaign	
 March 2023	University of Illinois	https://illinois.edu/	bioc-intro		Champaign	United States	"Jenny Drnevich, Jessica Holmes, Negin Valizadegan"
 March 2023	UCLouvain	https://uclouvain.be	bioc-intro		Brussels	Belgium	Laurent Gatto
 21-24 Feb 2023	Savitribai Phule Pune University	http://www.unipune.ac.in/	bioc-intro		Pune	India	Leo Lahti
+5-6 December 2022  Practical Genomics  https://sites.google.com/view/practicalgenomics  bioc-intro  Baltimore  United States  "Javier Carpinteyro-Ponce, Frederick Tan"
+3-4 November 2022  Carnegie Institution  https://carnegiescience.edu/bse  bioc-intro  Baltimore  United States  "Javier Carpinteyro-Ponce, Frederick Tan"
 12-13 September 2022	EuroBioC2022	https://eurobioc2022.bioconductor.org/	bioc-intro	https://bioconductor.github.io/2022-09-12-BiocIntro-Heidelberg/	Heidelberg	Germany	"Charlotte Soneson, Laurent Gatto"
 "1, 8, 15, 22 June 2022"	Australian BioCommons	https://www.biocommons.org.au/	bioc-intro	https://zenodo.org/records/6766951	Online		"Saskia Freytag, Adele Barugahare, Maria Doyle, Brendan Ansell"
 2022	UCLouvain	https://uclouvain.be/	bioc-intro		Brussels	Belgium	Laurent Gatto
