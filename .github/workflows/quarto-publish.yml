@@ -1,6 +1,9 @@
 name: Render and Publish
 
 on:
+  # Run checks on PRs and deploy to GitHub Pages on push to devel
+  pull_request:
+    branches: [devel]
   push:
     branches: [devel]
 
@@ -8,10 +11,8 @@ env:
   cache-version: v1
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
       - name: Check out repository
@@ -19,7 +20,7 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        
+
       # Install necessary system dependencies
       - name: Install system dependencies
         run: |
@@ -42,6 +43,20 @@ jobs:
 
       - name: Install R dependencies
         run: Rscript -e 'install.packages(c("evaluate", "rmarkdown", "readr", "tidyr", "reactable", "maps", "plotly", "ggplot2", "tidygeocoder", "countrycode"))'
+
+  deploy:
+    if: github.ref == 'refs/heads/devel'
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
