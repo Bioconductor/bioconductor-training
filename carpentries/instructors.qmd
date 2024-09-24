@@ -76,9 +76,9 @@ instructors <- instructors |>
   mutate(region = countrycode(country, origin = "country.name", destination = "region"))
 ```
 
-Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the [Bioconductor Carpentries training program](https://blog.bioconductor.org/#category=Carpentries). If you are a certified Carpentries instructor and don't see your name listed, or if you wish to update your details, please submit a pull request to update the [instructors TSV here](https://github.com/Bioconductor/bioconductor-teaching/blob/devel/carpentries/carpentries_instructors.tsv).
+Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the [Bioconductor Carpentries training program](https://blog.bioconductor.org/#category=Carpentries). If you are a certified Carpentries instructor and don't see your name listed, or if you wish to update your details, please submit a pull request to update the [instructors TSV here](https://github.com/Bioconductor/bioconductor-training/blob/devel/carpentries/carpentries_instructors.tsv).
 
-See [this page](workshops.html) for Bioconductor Carpentries Workshops.
+See [this page](workshops.qmd) for Bioconductor Carpentries Workshops.
 
 ```{r}
 # Get coordinates for mapping using OpenStreetMap via tidygeocoder
