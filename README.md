@@ -1,24 +1,22 @@
-# The Bioconductor teaching and education committee
+# The Bioconductor training committee
 
-The Bioconductor teaching and education committee is a collaborative effort to
+The Bioconductor training committee is a collaborative effort to
 consolidate Bioconductor-focused training material and establish
 a community of Bioconductor trainers. We define a curriculum and
 implement online lessons for beginner and more advanced R users
 who want to learn to analyse their data with Bioconductor packages.
 
-The Bioconductor teaching committee reports to the Bioconductor
+The Bioconductor training committee reports to the Bioconductor
 [Community Advisory Board](http://bioconductor.org/about/community-advisory-board/).
 It is currently chaired by Charlotte Soneson and Laurent Gatto.
-Membership is open to everybody interested in contributing and
-joining the discussion during the monthly meetings (announced on
-the Google group, see below).
+There’s no formal joining process or minimum commitment required — simply attend one of the monthly meetings (announced on the Google group, see below) or engage in our discussions to become a part of our community.
 
 This meta-repository is used for general discussions. The respective
 lessons are developed as modules in their own repositories.
 
 ## Modules
 
-- [bioc-intro](https://github.com/carpentries-incubator/bioc-intro)
+- [bioc-intro](https://carpentries-incubator.github.io/bioc-intro/)
   The **Data science** lesson is based on the [Carpentries Ecology
   Curriculum](https://datacarpentry.org/lessons/#ecology-workshop). There
   are no pre-requisites for this module, and the materials assume no
@@ -27,19 +25,19 @@ lessons are developed as modules in their own repositories.
   introduces some Bioconductor concepts. Notes are collated in
   `bioc-intro.md` in this repo.
 
-- [bioc-project](https://github.com/carpentries-incubator/bioc-project)
+- [bioc-rnaseq](https://carpentries-incubator.github.io/bioc-rnaseq/)
+ **Analysis and interpretation of bulk RNA-Sequencing data using
+  Bioconductor** shows how to use Bioconductor packages to analyse
+  RNA-Seq data. It expects good familiarity with R and the
+  Bioconductor project.
+
+- [bioc-project](https://carpentries-incubator.github.io/bioc-project/)
   The **Bioconductor project** lesson provides an introduction to the
   Bioconductor project such as the Bioconductor home page, packages,
   package landing pages, and package vignettes, where to find help,
   Bioconductor workflows, Bioconductor release schedule and versions,
   some core infrastructure, ... It is meant to be use in combination
   with other modules as part of a wider workshop.
-
-- [bioc-rnaseq](https://github.com/carpentries-incubator/bioc-rnaseq)
-  **Analysis and interpretation of bulk RNA-Sequencing data using
-  Bioconductor** shows how to use Bioconductor packages to analyse
-  RNA-Seq data. It expects good familiarity with R and the
-  Bioconductor project.
 
 ### New lessons
 
@@ -79,7 +77,7 @@ typos or simple rephrasing can be submitted directly through a Github
 pull request. The lesson maintainer can assess the PR, ask for
 clarifications or amendments and eventually merge the pull request.
 
-**Contributing and handlin big changes** For more substantial changes,
+**Contributing and handling big changes** For more substantial changes,
 we advise to first open an issue to discuss these changes with the
 maintainer, the team that created the lesson, and other instructors
 that have experience teaching the episode. A pull request for such a
@@ -101,9 +99,13 @@ welcome to join the discussion.
 
 ## Discussions
 
-- The [Google group](https://groups.google.com/g/bioconductor-teaching/).
-- The `education-and-training` channel on the [Bioconductor comunity
+- The `education-and-training` channel on the [Bioconductor community
   slack](https://slack.bioconductor.org/).
+- The [Google group](https://groups.google.com/g/bioconductor-teaching/) (low-traffic, mainly used to send a reminder for the monthly meeting).  
+
+## Events
+
+Explore upcoming opportunities and past Bioconductor workshops and training sessions on our [events page](https://www.bioconductor.org/help/events/). Interested in sharing your own Bioconductor training event with the community? Learn how to add your event directly through this page.  
 
 ## Contact
 
