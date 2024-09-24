@@ -98,6 +98,21 @@ all <- instructors_geocoded |>
 ```
 
 ```{r}
+# Count total number of instructors (excluding NA in the name column)
+total_instructors <- instructors |> filter(!is.na(name)) |> nrow()
+
+# Display the total number of instructors with HTML styling
+htmltools::HTML(
+  paste0(
+    "<div class='instructor-count' style='text-align: center; font-size: 1.2em; font-weight: bold; color: var(--default-body); margin-bottom: 20px; background-color: var(--neutral-n50); padding: 10px; border-radius: 5px;'>",
+    "Total number of instructors: ", total_instructors, 
+    "</div>"
+  )
+)
+
+```
+
+```{r}
 # Map of instructors
 lon_limits <- c(-180, 180)
 lat_limits <- c(-60, 90)

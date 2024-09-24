@@ -83,6 +83,20 @@ workshops_geocoded <- workshops_for_map %>%
   geocode(Location, method = 'osm', lat = lat, long = lon)
 
 ```
+```{r}
+# Count total number of workshops (excluding NA in the date column)
+total_workshops <- workshops |> filter(!is.na(date)) |> nrow()
+
+# Display the total number of workshops with HTML styling
+htmltools::HTML(
+  paste0(
+    "<div class='workshop-count' style='text-align: center; font-size: 1.2em; font-weight: bold; color: var(--default-body); margin-bottom: 20px; background-color: var(--neutral-n50); padding: 10px; border-radius: 5px;'>",
+    "Total number of workshops: ", total_workshops, 
+    "</div>"
+  )
+)
+
+```
 
 ```{r}
 # Define explicit coordinate limits for a consistent world view
