@@ -85,16 +85,9 @@ workshops_geocoded <- workshops_for_map %>%
 ```
 
 ```{r}
-# Calculate coordinate limits based on data to adjust map zoom
-lon_range <- range(workshops_geocoded$lon, na.rm = TRUE)
-lat_range <- range(workshops_geocoded$lat, na.rm = TRUE)
-
-# Increase padding to zoom out
-lon_pad <- diff(lon_range) * 0.5  # 50% padding
-lat_pad <- diff(lat_range) * 0.5  
-
-lon_limits <- c(lon_range[1] - lon_pad, lon_range[2] + lon_pad)
-lat_limits <- c(lat_range[1] - lat_pad, lat_range[2] + lat_pad)
+# Define explicit coordinate limits for a consistent world view
+lon_limits <- c(-180, 180)
+lat_limits <- c(-60, 90)
 
 # Prepare the world map data
 world_map <- map_data("world") %>%
@@ -131,7 +124,7 @@ gg <- ggplot() +
   scale_colour_brewer(palette = "Set2") +
   scale_fill_brewer(palette = "Set2") +
   scale_shape_manual(values = 21:25) +  # Adjust number of shapes as needed
-  scale_size_manual(values = rep(3, length(unique(workshops_geocoded$workshop)))) +
+  scale_size_manual(values = rep(2, length(unique(workshops_geocoded$workshop)))) +
   coord_fixed(
     ratio = 1.3,
     xlim = lon_limits,

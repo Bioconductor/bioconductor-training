@@ -99,19 +99,11 @@ all <- instructors_geocoded |>
 
 ```{r}
 # Map of instructors
-world_map <- map_data("world") |> 
+lon_limits <- c(-180, 180)
+lat_limits <- c(-60, 90)
+
+world_map <- map_data("world") %>%
   filter(region != "Antarctica")
-
-# Calculate coordinate limits based on data
-lon_range <- range(all$lon, na.rm = TRUE)
-lat_range <- range(all$lat, na.rm = TRUE)
-
-# Increase padding to zoom out by about 20%
-lon_pad <- diff(lon_range) * 0.2
-lat_pad <- diff(lat_range) * 0.2  
-
-lon_limits <- c(lon_range[1] - lon_pad, lon_range[2] + lon_pad)
-lat_limits <- c(lat_range[1] - lat_pad, lat_range[2] + lat_pad)
 
 gg <- ggplot() +
   geom_polygon(
@@ -178,6 +170,7 @@ gg <- ggplot() +
 interactive_map <- ggplotly(gg, tooltip = "text") %>%
   layout(
     margin = list(l = 20, r = 20, t = 20, b = 50),
+    hoverlabel = list(align = "left"),
     legend = list(
       orientation = "h",       
       x = 0.5,
@@ -187,8 +180,7 @@ interactive_map <- ggplotly(gg, tooltip = "text") %>%
     xaxis = list(
       showline = FALSE,
       showticklabels = FALSE,
-      zeroline = FALSE,
-      title_standoff = 5
+      zeroline = FALSE
     ),
     yaxis = list(
       showline = FALSE,
