@@ -224,6 +224,7 @@ reactable(
   table_data,
   filterable = TRUE,
   searchable = TRUE,
+  compact = TRUE,
   columns = list(
     name = colDef(
       name = "Name",
@@ -242,8 +243,15 @@ reactable(
     region = colDef(name = "Region"),
     status = colDef(name = "Status")
   ), 
-  defaultSorted = "Name",
-  defaultPageSize = 100
+  defaultSorted = "name",
+  defaultPageSize = 100,
+  striped = TRUE,
+  bordered = TRUE,
+  style = list(
+    border = "1px solid #ccc",
+    stripedColor = "#f0f0f0",
+    fontSize = "0.875rem"
+  )
 )
 ```
 

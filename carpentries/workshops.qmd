@@ -195,6 +195,7 @@ workshops %>%
   reactable(
     filterable = TRUE,
     searchable = TRUE,
+    compact = TRUE,
     columns = list(
       date = colDef(name = "Date"),
       hosted_by = colDef(
@@ -224,9 +225,15 @@ workshops %>%
       region = colDef(name = "Region"),
       instructors = colDef(name = "Instructors")
     ),
-    defaultPageSize = 100
+    defaultPageSize = 100,
+    striped = TRUE,
+    bordered = TRUE,
+    style = list(
+      border = "1px solid #ccc",
+      stripedColor = "#f0f0f0",
+      fontSize = "0.875rem"
+    )
   )
-
 ```
 
 ::: footer-timestamp
