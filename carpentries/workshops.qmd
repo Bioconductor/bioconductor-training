@@ -1,6 +1,7 @@
 ---
 title: "Workshops"
 format: html
+page-layout: full
 editor: visual
 execute:
   message: false
