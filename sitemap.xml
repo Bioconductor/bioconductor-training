@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/carpentries/instructors.html</loc>
-    <lastmod>2024-09-24T15:55:14.525Z</lastmod>
+    <loc>https://training.bioconductor.org/carpentries/instructors.html</loc>
+    <lastmod>2024-09-24T16:30:35.232Z</lastmod>
   </url>
   <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/carpentries/index.html</loc>
-    <lastmod>2024-09-24T15:55:14.525Z</lastmod>
+    <loc>https://training.bioconductor.org/carpentries/index.html</loc>
+    <lastmod>2024-09-24T16:30:35.232Z</lastmod>
   </url>
   <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/carpentries/workshops.html</loc>
-    <lastmod>2024-09-24T15:55:14.525Z</lastmod>
+    <loc>https://training.bioconductor.org/carpentries/workshops.html</loc>
+    <lastmod>2024-09-24T16:30:35.232Z</lastmod>
   </url>
 </urlset>
