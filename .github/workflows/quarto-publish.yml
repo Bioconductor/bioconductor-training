@@ -76,6 +76,10 @@ jobs:
       # Install R dependencies
       - name: Install R dependencies
         run: Rscript -e 'install.packages(c("evaluate", "rmarkdown", "knitr", "readr", "tidyr", "reactable", "maps", "plotly", "ggplot2", "tidygeocoder", "countrycode"))'
+        
+      # Add the CNAME file for the custom domain
+      - name: Add CNAME for custom domain
+        run: echo "training.bioconductor.org" > CNAME  
 
       # Deploy to GitHub Pages
       - name: Publish to GitHub Pages (and render)
