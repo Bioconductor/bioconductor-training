@@ -25,7 +25,7 @@ library(countrycode)
 
 Workshops using the [Bioconductor Carpentries training material](https://www.bioconductor.org/help/education-training/) are listed below. If you have taught a workshop using the Bioconductor Carpentries material, please submit a pull request to update the [workshops TSV here](https://github.com/Bioconductor/bioconductor-training/blob/devel/carpentries/carpentries_workshops.tsv).
 
-See [this page](instructors.qmd) for Bioconductor Carpentries Instructors.
+See [this page](instructors.qmd) for Carpentries instructors in the Bioconductor community.
 
 ```{r}
 # Check for input file issues
