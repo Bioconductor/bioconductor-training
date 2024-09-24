@@ -221,6 +221,7 @@ workshops %>%
       ),
       city = colDef(name = "City"),
       country = colDef(name = "Country"),
+      region = colDef(name = "Region"),
       instructors = colDef(name = "Instructors")
     ),
     defaultPageSize = 100

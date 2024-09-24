@@ -226,6 +226,7 @@ reactable(
   searchable = TRUE,
   columns = list(
     name = colDef(
+      name = "Name",
       cell = function(value, index) {
         url <- all$www[index]
         if (!is.na(url) && url != "") {
@@ -235,13 +236,13 @@ reactable(
         }
       }
     ),
-    institution = colDef(),
-    city = colDef(),
-    country = colDef(),
-    region = colDef(),
-    status = colDef()
+    institution = colDef(name = "Institution"),
+    city = colDef(name = "City"),
+    country = colDef(name = "Country"),
+    region = colDef(name = "Region"),
+    status = colDef(name = "Status")
   ), 
-  defaultSorted = "name",
+  defaultSorted = "Name",
   defaultPageSize = 100
 )
 ```
