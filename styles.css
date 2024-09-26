@@ -8,6 +8,7 @@
 :root {
   --gradient-brand: linear-gradient(to right, #0087af, #0484a9, #18a603);
   --primary: #3792ad;
+  --primary-p500: #003242;
   --neutral-n50: #f9f9f9;
   --default-body: #070707;
   /* Add other colors as needed */
@@ -30,6 +31,19 @@ body {
 body a {
   color: black;
   text-decoration: underline;
+}
+
+body a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+body a:visited {
+  color: var(--primary-p400);
+}
+
+body a:visited:hover {
+  color: var(--primary-p200);
 }
 
 /* Heading styles */
