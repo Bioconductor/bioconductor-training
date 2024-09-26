@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="https://bioconductor.org/help/education-training/" class="navbar-brand navbar-brand-logo">
+    <a href="https://bioconductor.org" class="navbar-brand navbar-brand-logo">
     <img src="../images/bioconductor-logo.svg" alt="" class="navbar-logo">
     </a>
   </div>
@@ -89,16 +89,32 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../carpentries/instructors.html"> 
-<span class="menu-text">Instructors</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../carpentries/workshops.html"> 
-<span class="menu-text">Workshops</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-carpentries" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Carpentries</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-carpentries">    
+        <li>
+    <a class="dropdown-item" href="../carpentries/index.html">
+ <span class="dropdown-text">Overview</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../carpentries/instructors.html">
+ <span class="dropdown-text">Instructors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../carpentries/workshops.html">
+ <span class="dropdown-text">Workshops</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+    <a href="https://github.com/Bioconductor/bioconductor-training" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
