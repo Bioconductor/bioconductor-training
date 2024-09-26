@@ -23,7 +23,7 @@ library(plotly)
 library(countrycode)
 ```
 
-Workshops using the [Bioconductor Carpentry training material](https://www.bioconductor.org/help/education-training/) are listed below. If you have taught a workshop using the Bioconductor Carpentry material, please submit a pull request to update the [workshops TSV here](https://github.com/Bioconductor/bioconductor-training/blob/devel/carpentry/carpentry_workshops.tsv).
+Workshops using the [Bioconductor Carpentry training material](https://www.bioconductor.org/help/education-training/) are listed below. If you have taught a workshop using the Bioconductor Carpentry material, please submit a pull request to update the [workshops TSV here](https://github.com/Bioconductor/bioconductor-training/blob/devel/carpentry/carpentries_workshops.tsv).
 
 See [this page](instructors.qmd) for Carpentry instructors in the Bioconductor community.
 
