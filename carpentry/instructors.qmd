@@ -65,7 +65,7 @@ read_instructors <- function(file_path) {
 
 ```{r}
 # Import data from the TSV file and format
-instructors <- read_instructors("carpentries_instructors.tsv")
+instructors <- read_instructors("carpentry_instructors.tsv")
 
 # Add 'Location' by combining city and country for geocoding
 instructors <- instructors |> 
@@ -76,9 +76,9 @@ instructors <- instructors |>
   mutate(region = countrycode(country, origin = "country.name", destination = "region"))
 ```
 
-Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the [Bioconductor Carpentries training program](https://blog.bioconductor.org/#category=Carpentries). If you are a certified Carpentries instructor and don't see your name listed, or if you wish to update your details, please submit a pull request to update the [instructors TSV here](https://github.com/Bioconductor/bioconductor-training/blob/devel/carpentries/carpentries_instructors.tsv).
+Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the [Bioconductor Carpentry training program](https://blog.bioconductor.org/#category=Carpentries). If you are a certified Carpentries instructor and don't see your name listed, or if you wish to update your details, please submit a pull request to update the [instructors TSV here](https://github.com/Bioconductor/bioconductor-training/blob/devel/carpentry/carpentry_instructors.tsv).
 
-See [this page](workshops.qmd) for workshops using Bioconductor Carpentries material.
+See [this page](workshops.qmd) for workshops using Bioconductor Carpentry material.
 
 ```{r}
 # Get coordinates for mapping using OpenStreetMap via tidygeocoder
@@ -255,10 +255,10 @@ reactable(
 )
 ```
 
-::: footer-timestamp
+:::: footer-timestamp
 ::: {style="text-align: center; font-size: 0.9em; color: var(--neutral-n200); margin-top: 20px; padding-top: 10px;"}
 ```         
 Last rendered on: `r format(Sys.Date(), "%Y-%m-%d")`
 ```
 :::
-:::
+::::

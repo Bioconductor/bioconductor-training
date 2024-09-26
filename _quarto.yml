@@ -15,14 +15,14 @@ website:
         href: index.qmd
       - text: "Resources"
         href: resources/resources.qmd
-      - text: "Carpentries"
+      - text: "Carpentry"
         menu:
           - text: "Overview"
-            href: carpentries/index.qmd
+            href: carpentry/index.qmd
           - text: "Instructors"
-            href: carpentries/instructors.qmd
+            href: carpentry/instructors.qmd
           - text: "Workshops"
-            href: carpentries/workshops.qmd
+            href: carpentry/workshops.qmd
 format:
   html:
     embed-resources: false

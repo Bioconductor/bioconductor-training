@@ -23,9 +23,9 @@ library(plotly)
 library(countrycode)
 ```
 
-Workshops using the [Bioconductor Carpentries training material](https://www.bioconductor.org/help/education-training/) are listed below. If you have taught a workshop using the Bioconductor Carpentries material, please submit a pull request to update the [workshops TSV here](https://github.com/Bioconductor/bioconductor-training/blob/devel/carpentries/carpentries_workshops.tsv).
+Workshops using the [Bioconductor Carpentry training material](https://www.bioconductor.org/help/education-training/) are listed below. If you have taught a workshop using the Bioconductor Carpentry material, please submit a pull request to update the [workshops TSV here](https://github.com/Bioconductor/bioconductor-training/blob/devel/carpentry/carpentry_workshops.tsv).
 
-See [this page](instructors.qmd) for Carpentries instructors in the Bioconductor community.
+See [this page](instructors.qmd) for Carpentry instructors in the Bioconductor community.
 
 ```{r}
 # Check for input file issues
@@ -70,7 +70,7 @@ read_workshops <- function(file_path) {
 
 ```{r}
 # Add 'region' using countrycode for World Bank regions
-workshops <- read_workshops("carpentries_workshops.tsv") %>%
+workshops <- read_workshops("carpentry_workshops.tsv") %>%
   mutate(Location = paste(city, country, sep = ", ")) %>%
   mutate(region = countrycode(country, origin = "country.name", destination = "region"))
 
@@ -83,6 +83,7 @@ workshops_geocoded <- workshops_for_map %>%
   geocode(Location, method = 'osm', lat = lat, long = lon)
 
 ```
+
 ```{r}
 # Count total number of workshops (excluding NA in the date column)
 total_workshops <- workshops |> filter(!is.na(date)) |> nrow()
@@ -236,10 +237,10 @@ workshops %>%
   )
 ```
 
-::: footer-timestamp
+:::: footer-timestamp
 ::: {style="text-align: center; font-size: 0.9em; color: var(--neutral-n200); margin-top: 20px; padding-top: 10px;"}
 ```         
 Last rendered on: `r format(Sys.Date(), "%Y-%m-%d")`
 ```
 :::
-:::
+::::
