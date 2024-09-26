@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://training.bioconductor.org/carpentries/instructors.html</loc>
-    <lastmod>2024-09-26T20:31:23.805Z</lastmod>
+    <loc>https://training.bioconductor.org/carpentry/instructors.html</loc>
+    <lastmod>2024-09-26T20:55:52.590Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/index.html</loc>
-    <lastmod>2024-09-26T20:31:24.062Z</lastmod>
+    <lastmod>2024-09-26T20:55:52.848Z</lastmod>
   </url>
   <url>
-    <loc>https://training.bioconductor.org/carpentries/index.html</loc>
-    <lastmod>2024-09-26T20:31:23.805Z</lastmod>
+    <loc>https://training.bioconductor.org/carpentry/index.html</loc>
+    <lastmod>2024-09-26T20:55:52.590Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/resources/resources.html</loc>
-    <lastmod>2024-09-26T20:31:24.062Z</lastmod>
+    <lastmod>2024-09-26T20:55:52.848Z</lastmod>
   </url>
   <url>
-    <loc>https://training.bioconductor.org/carpentries/workshops.html</loc>
-    <lastmod>2024-09-26T20:31:23.806Z</lastmod>
+    <loc>https://training.bioconductor.org/carpentry/workshops.html</loc>
+    <lastmod>2024-09-26T20:55:52.590Z</lastmod>
   </url>
 </urlset>
