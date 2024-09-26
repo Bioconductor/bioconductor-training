@@ -1,7 +1,7 @@
 Category	Resource	Acquire the Fundamentals (novice R)	Acquire the Fundamentals (experienced R)	Analyze Your Data	Connect with the Community	Train Others	Develop a Package
-[Bioconductor Carpentry](https://training.bioconductor.org/carpentries/)	[bioc-intro](https://carpentries-incubator.github.io/bioc-intro)	X			X	X	
-[Bioconductor Carpentry](https://training.bioconductor.org/carpentries/)	Topic specific (e.g. [bioc-rnaseq](https://carpentries-incubator.github.io/bioc-rnaseq))			X	X	X	
-[Bioconductor Carpentry](https://training.bioconductor.org/carpentries/)	[bioc-project](https://carpentries-incubator.github.io/bioc-project)		X		X	X	X
+[Bioconductor Carpentry](https://training.bioconductor.org/carpentry/)	[bioc-intro](https://carpentries-incubator.github.io/bioc-intro)	X			X	X	
+[Bioconductor Carpentry](https://training.bioconductor.org/carpentry/)	Topic specific (e.g. [bioc-rnaseq](https://carpentries-incubator.github.io/bioc-rnaseq))			X	X	X	
+[Bioconductor Carpentry](https://training.bioconductor.org/carpentry/)	[bioc-project](https://carpentries-incubator.github.io/bioc-project)		X		X	X	X
 Bioconductor Conferences	Keynotes/Talks			X	X		X
 Bioconductor Conferences	Package Demos/Workshops	X	X	X	X	X	X
 Bioconductor Conferences	Networking				X		
