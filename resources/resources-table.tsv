@@ -1,0 +1,23 @@
+Category	Resource	Acquire the Fundamentals (novice R)	Acquire the Fundamentals (experienced R)	Analyze Your Data	Connect with the Community	Train Others	Develop a Package	URL
+Bioconductor Carpentry	bioc-intro	X			X	X		https://carpentries-incubator.github.io/bioc-intro
+Bioconductor Carpentry	Topic specific (e.g. *bioc-rnaseq*)			X	X	X		https://carpentries-incubator.github.io/bioc-rnaseq
+Bioconductor Carpentry	bioc-project		X		X	X	X	https://carpentries-incubator.github.io/bioc-project
+Bioconductor Conferences	Keynotes/Talks			X	X		X	
+Bioconductor Conferences	Package Demos/Workshops	X	X	X	X	X	X	
+Bioconductor Conferences	Networking				X			
+Other Workshops	Longer courses (e.g. CSAMA, CSHL)		X	X	X			https://csama2024.bioconductor.eu
+Other Workshops	Everything else (e.g. local, GTN, Carpentries, commercial offerings)	X	X	X	X			
+Packages	Help pages		X	X				
+Packages	Vignettes	X	X	X				
+Packages	Workflows		X	X				https://www.bioconductor.org/packages/release/workflows
+Packages	Datasets		X			X	X	
+Packages	GitHub Issues			X			X	
+Books	R for Data Science	X				X		https://r4ds.hadley.nz
+Books	Bioconductor Books			X		X		https://bioconductor.org/help/bioconductor-books
+Books	R packages/Advanced R		X				X	https://adv-r.hadley.nz/
+Books	Bioconductor contributor guide						X	https://contributions.bioconductor.org
+Community	Support Site	X	X	X	X	X		https://support.bioconductor.org
+Community	Slack	X	X	X	X	X	X	https://slack.bioconductor.org
+Community	Developer Mailing List				X		X	https://stat.ethz.ch/mailman/listinfo/bioc-devel
+Community	Bioconductor YouTube channel			X		X		https://www.youtube.com/user/bioconductor
+Community	Special Interest Groups (e.g. R-Ladies, R User Groups)				X

@@ -13,6 +13,8 @@ website:
     left:
       - text: "Home"
         href: index.qmd
+      - text: "Resources"
+        href: resources/resources.qmd
       - text: "Carpentries"
         menu:
           - text: "Overview"
