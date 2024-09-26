@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-Bioconductor is a member of [The Carpentries](https://carpentries.org/), a global community focused on teaching foundational coding and data science skills. Our membership supports the development of Bioconductor-specific training materials and enables our certified instructors to teach Carpentry workshops at Bioconductor events and beyond.
+Bioconductor is a member of [The Carpentries](https://carpentries.org/), a global community focused on teaching foundational coding and data science skills. Our membership supports community members in earning Carpentries instructor certification, the development of Bioconductor-specific training materials, and enables our certified instructors to teach Carpentry workshops at Bioconductor events and beyond. While not an official Carpentries program like Software, Data, or Library Carpentry, Bioconductor Carpentry is aligned in spirit with The Carpentries and benefits from a close association.
 
 For more information, you can:
 
