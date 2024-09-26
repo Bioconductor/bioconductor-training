@@ -76,7 +76,10 @@ html_table <- paste0(
   colgroup_html,  # Insert the colgroup here
   "<thead>",
   "<tr style='background-color: #f6f8fa; font-weight: bold; border-bottom: 2px solid #ddd; font-size: 12px;'>",  # Reduced font size for headers
-  "<th style='border-right: 1px solid #ddd; padding: 4px;'>Resource</th>",
+  "<th rowspan='2' style='border-right: 1px solid #ddd; padding: 4px;'>Resource</th>",
+  "<th colspan='6' style='padding: 4px; text-align: center;'>Goals</th>",
+  "</tr>",
+  "<tr style='background-color: #f6f8fa; font-weight: bold; border-bottom: 2px solid #ddd; font-size: 12px;'>",
   "<th style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>Acquire the Fundamentals (novice R)</th>",
   "<th style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>Acquire the Fundamentals (experienced R)</th>",
   "<th style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>Analyze Your Data</th>",
