@@ -6,12 +6,21 @@ project:
 website:
   navbar:
     logo: "images/bioconductor-logo.svg"
-    logo-href: "https://bioconductor.org/help/education-training/"
+    logo-href: "https://bioconductor.org"
+    tools:
+      - icon: github
+        href: https://github.com/Bioconductor/bioconductor-training
     left:
-      - text: "Instructors"
-        href: carpentries/instructors.qmd
-      - text: "Workshops"
-        href: carpentries/workshops.qmd
+      - text: "Home"
+        href: index.qmd
+      - text: "Carpentries"
+        menu:
+          - text: "Overview"
+            href: carpentries/index.qmd
+          - text: "Instructors"
+            href: carpentries/instructors.qmd
+          - text: "Workshops"
+            href: carpentries/workshops.qmd
 format:
   html:
     embed-resources: false
