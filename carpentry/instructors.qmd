@@ -65,7 +65,7 @@ read_instructors <- function(file_path) {
 
 ```{r}
 # Import data from the TSV file and format
-instructors <- read_instructors("carpentry_instructors.tsv")
+instructors <- read_instructors("carpentries_instructors.tsv")
 
 # Add 'Location' by combining city and country for geocoding
 instructors <- instructors |> 

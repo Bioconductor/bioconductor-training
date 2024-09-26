@@ -70,7 +70,7 @@ read_workshops <- function(file_path) {
 
 ```{r}
 # Add 'region' using countrycode for World Bank regions
-workshops <- read_workshops("carpentry_workshops.tsv") %>%
+workshops <- read_workshops("carpentries_workshops.tsv") %>%
   mutate(Location = paste(city, country, sep = ", ")) %>%
   mutate(region = countrycode(country, origin = "country.name", destination = "region"))
 
