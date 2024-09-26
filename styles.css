@@ -27,8 +27,8 @@ body {
   color: var(--default-body);
 }
 
-a {
-  color: var(--primary);
+body a {
+  color: black;
   text-decoration: underline;
 }
 
