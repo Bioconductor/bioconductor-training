@@ -63,6 +63,13 @@
     "text": "Bioconductor Carpentries\nBioconductor is a member of The Carpentries, a global community focused on teaching foundational coding and data science skills. Our membership supports the development of Bioconductor-specific training materials and enables our certified instructors to teach Carpentries workshops at Bioconductor events and beyond.\nFor more information, you can:\n\nVisit our Instructors and Workshops pages for current details.\nExplore the blog post that outlines Bioconductor’s Carpentries membership or browse other Carpentries-related posts."
   },
   {
+    "objectID": "resources/resources.html",
+    "href": "resources/resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "The table below lists various resources for learning and teaching Bioconductor. If you’re looking for more information or have updates, feel free to suggest changes via issues or contact us as described here.\n\n\nResourceAcquire the Fundamentals (novice R)Acquire the Fundamentals (experienced R)Analyze Your DataConnect with the CommunityTrain OthersDevelop a PackageBioconductor Carpentrybioc-introXXXTopic specific (e.g. *bioc-rnaseq*)XXXbioc-projectXXXXBioconductor ConferencesKeynotes/TalksXXXPackage Demos/WorkshopsXXXXXXNetworkingXBooksR for Data ScienceXXBioconductor BooksXXR packages/Advanced RXXBioconductor contributor guideXCommunitySupport SiteXXXXXSlackXXXXXXDeveloper Mailing ListXXBioconductor YouTube channelXXOther WorkshopsLonger courses (e.g. CSAMA, CSHL)XXXEverything else (e.g. local, GTN, Carpentries, commercial offerings)XXXXPackagesHelp pagesXXVignettesXXXWorkflowsXXDatasetsXXXGitHub IssuesXX"
+  },
+  {
     "objectID": "carpentries/workshops.html",
     "href": "carpentries/workshops.html",
     "title": "Workshops",
