@@ -1,0 +1,50 @@
+---
+title: "Bioconductor Course in Nairobi, Kenya"
+description: | 
+  Join us for a comprehensive week-long Bioconductor in-person course covering genomic data analysis and RNA-seq using R and Bioconductor.
+page-layout: full
+---
+
+![](nairobi.jpg){style="width:100%; max-height:450px; object-fit:cover; display:block; margin:0 auto;"}
+
+## Event Details
+
+- 📅 **Dates:** March 24 - 28, 2025
+- 📍 **Location:** International Institute of Tropical Agriculture (IITA), Nairobi, Kenya
+- 📘 **Format:** Week-long course (single registration covering all sessions)
+
+## Overview
+
+This intensive week-long Bioconductor course is designed to build bioinformatics capacity in Africa, focusing on practical skills in genomic data analysis and RNA-seq. Participants will gain hands-on experience with R and Bioconductor, guided by expert instructors from both local and international bioinformatics communities.
+
+## Course Structure
+
+- **March 24-25:** Introduction to R/Bioconductor for Genomic Data Analysis  
+  Develop foundational skills in R and Bioconductor, including data handling, visualisation, and reproducible research practices tailored for genomic data analysis.
+
+- **March 26-27:** RNA-seq Data Analysis and Interpretation  
+  Dive into RNA-seq workflows, from preprocessing to differential expression analysis, and gain practical experience with real-world datasets.
+
+- **March 28:** Bring Your Own Data (BYO) Day  
+  Apply your skills to your own data or explore additional datasets, with personalised guidance and collaborative support from instructors.
+
+## 🎓 Instructors
+
+The workshop will be led by a team of certified-Carpentries instructors from the Bioconductor community, including both local bioinformatics experts and experienced international instructors. This blend ensures a diversity of perspectives and expertise, fostering a strong collaborative learning environment.
+
+## Registration
+
+A single registration covers the full week of sessions. Registration details, including the application form, will be posted soon. We welcome participants who are keen to develop their bioinformatics skills with a focus on genomic data analysis.
+
+## Funding and Support
+
+This workshop is part of Bioconductor’s expanded global training program, supported by the Chan Zuckerberg Initiative (CZI) through an EOSS Cycle 6 grant. You can read more about this and related projects [here](https://blog.bioconductor.org/posts/2024-07-12-czi-eoss6-grants/).
+
+## Contact
+
+For questions, please email maria.doyle [at] ul.ie.
+
+## 🌍 Join the Bioconductor Africa Community
+
+<iframe src="biocafrica-mailing-list.html" width="100%" height="400" style="border:none;"></iframe>
+
