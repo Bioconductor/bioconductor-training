@@ -1,31 +1,59 @@
 [
   {
-    "objectID": "resources/resources.html",
-    "href": "resources/resources.html",
-    "title": "Resources",
-    "section": "",
-    "text": "The table below lists various resources for learning and teaching Bioconductor. If you’re looking for more information or have updates, feel free to suggest changes via issues or contact us as described here.\n\n\nResourceGoalsAcquire the Fundamentals (novice R)Acquire the Fundamentals (experienced R)Analyze Your DataConnect with the CommunityTrain OthersDevelop a PackageBioconductor Carpentrybioc-introXXXTopic specific (e.g. bioc-rnaseq)XXXbioc-projectXXXXBioconductor ConferencesKeynotes/TalksXXXPackage Demos/WorkshopsXXXXXXNetworkingXOther WorkshopsLonger courses (e.g. CSAMA, CSHL)XXXLocal workshops, Galaxy Training Network, commercial offerings, etcXXXXPackagesHelp pagesXXVignettesXXXWorkflowsXXDatasetsXXXGitHub IssuesXXBooksR for Data ScienceXXBioconductor BooksXXR packages/Advanced RXXBioconductor contributor guideXCommunitySupport SiteXXXXXSlackXXXXXXDeveloper Mailing ListXXBioconductor YouTube channelXXSpecial Interest Groups (e.g. R-Ladies, R User Groups)X"
+    "objectID": "workshops/2025-03-Nairobi/index.html#event-details",
+    "href": "workshops/2025-03-Nairobi/index.html#event-details",
+    "title": "Bioconductor Course in Nairobi, Kenya",
+    "section": "Event Details",
+    "text": "Event Details\n\n📅 Dates: March 24 - 28, 2025\n📍 Location: International Institute of Tropical Agriculture (IITA), Nairobi, Kenya\n📘 Format: Week-long course (single registration covering all sessions)"
   },
   {
-    "objectID": "carpentry/workshops.html",
-    "href": "carpentry/workshops.html",
-    "title": "Workshops",
-    "section": "",
-    "text": "Workshops using the Bioconductor Carpentry training material are listed below. If you have taught a workshop using the Bioconductor Carpentry material, please submit a pull request to update the workshops TSV here.\n\nIf you would like to request a Bioconductor Carpentry workshop at your institution, please fill out our workshop request form.\nSee this page for Carpentry instructors in the Bioconductor community.\n\n\nTotal number of workshops: 28\n\n\n\n\n\n\n\n\nThe table below lists all workshops, including the date, host institution, city, country, and region. The region column has been added to make it easier to find workshops in the same geographical area. These regions are based on the World Bank’s classification system. The table is fully searchable and filterable, allowing you to quickly locate workshops by various criteria, such as location or instructors.\n\n\n\n\n\n\n\n\nLast rendered on: 2024-12-04"
+    "objectID": "workshops/2025-03-Nairobi/index.html#overview",
+    "href": "workshops/2025-03-Nairobi/index.html#overview",
+    "title": "Bioconductor Course in Nairobi, Kenya",
+    "section": "Overview",
+    "text": "Overview\nThis intensive week-long Bioconductor course is designed to build bioinformatics capacity in Africa, focusing on practical skills in genomic data analysis and RNA-seq. Participants will gain hands-on experience with R and Bioconductor, guided by expert instructors from both local and international bioinformatics communities."
   },
   {
-    "objectID": "carpentry/index.html",
-    "href": "carpentry/index.html",
-    "title": "Bioconductor Carpentry",
-    "section": "",
-    "text": "Bioconductor is a member of The Carpentries, a global community focused on teaching foundational coding and data science skills. Our membership supports community members in earning Carpentries instructor certification, developing Bioconductor-specific training materials, and enabling our certified instructors to teach Carpentry workshops at Bioconductor events and beyond. While not an official Carpentries program like Software, Data, or Library Carpentry, Bioconductor Carpentry is aligned in spirit with The Carpentries and benefits from a close association.\nCoordinated through the University of Limerick (UL) by Dr. Maria Doyle, Bioconductor Community Manager and ELIXIR Ireland Training Coordinator, this program organises workshops — including upcoming initiatives planned for Africa and Latin America — supports instructors, and manages logistics to foster essential data science skills and collaborative learning opportunities across the life sciences community.\nFor more information, you can:\n\nExpress interest in becoming a certified Carpentries instructor through our Train-the-Trainer program (when places are available).\n\nRequest a Bioconductor workshop at your institute; please note that instructor expenses will typically be required unless local instructors are available and willing to volunteer.\n\nVisit our Instructors and Workshops pages for current details.\nExplore the blog post that outlines Bioconductor’s Carpentries membership or browse other Carpentries-related posts."
+    "objectID": "workshops/2025-03-Nairobi/index.html#course-structure",
+    "href": "workshops/2025-03-Nairobi/index.html#course-structure",
+    "title": "Bioconductor Course in Nairobi, Kenya",
+    "section": "Course Structure",
+    "text": "Course Structure\n\nMarch 24-25: Introduction to R/Bioconductor for Genomic Data Analysis\nDevelop foundational skills in R and Bioconductor, including data handling, visualisation, and reproducible research practices tailored for genomic data analysis.\nMarch 26-27: RNA-seq Data Analysis and Interpretation\nDive into RNA-seq workflows, from preprocessing to differential expression analysis, and gain practical experience with real-world datasets.\nMarch 28: Bring Your Own Data (BYO) Day\nApply your skills to your own data or explore additional datasets, with personalised guidance and collaborative support from instructors."
   },
   {
-    "objectID": "carpentry/instructors.html",
-    "href": "carpentry/instructors.html",
-    "title": "Instructors",
-    "section": "",
-    "text": "Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the Bioconductor Carpentry training program. If you are a certified Carpentries instructor and don’t see your name listed, or if you wish to update your details, please submit a pull request to update the instructors TSV here.\nIf you’re interested in becoming a certified Carpentries instructor, please fill out our expression of interest form. Opportunities are limited and offered as places become available.\nSee this page for workshops using Bioconductor Carpentry material.\n\n\nTotal number of instructors: 55\n\n\n\n\n\n\n\n\n The table below lists all instructors, including their institution, city, country, and region. The region column has been added to make it easier to find instructors in the same geographical area. These regions are based on the World Bank’s classification system. The table is fully searchable and filterable, allowing you to quickly locate instructors by various criteria.\n\n\n\n\n\n\n\n\nLast rendered on: 2024-12-04"
+    "objectID": "workshops/2025-03-Nairobi/index.html#instructors",
+    "href": "workshops/2025-03-Nairobi/index.html#instructors",
+    "title": "Bioconductor Course in Nairobi, Kenya",
+    "section": "🎓 Instructors",
+    "text": "🎓 Instructors\nThe workshop will be led by a team of certified-Carpentries instructors from the Bioconductor community, including both local bioinformatics experts and experienced international instructors. This blend ensures a diversity of perspectives and expertise, fostering a strong collaborative learning environment."
+  },
+  {
+    "objectID": "workshops/2025-03-Nairobi/index.html#registration",
+    "href": "workshops/2025-03-Nairobi/index.html#registration",
+    "title": "Bioconductor Course in Nairobi, Kenya",
+    "section": "Registration",
+    "text": "Registration\nA single registration covers the full week of sessions. Registration details, including the application form, will be posted soon. We welcome participants who are keen to develop their bioinformatics skills with a focus on genomic data analysis."
+  },
+  {
+    "objectID": "workshops/2025-03-Nairobi/index.html#funding-and-support",
+    "href": "workshops/2025-03-Nairobi/index.html#funding-and-support",
+    "title": "Bioconductor Course in Nairobi, Kenya",
+    "section": "Funding and Support",
+    "text": "Funding and Support\nThis workshop is part of Bioconductor’s expanded global training program, supported by the Chan Zuckerberg Initiative (CZI) through an EOSS Cycle 6 grant. You can read more about this and related projects here."
+  },
+  {
+    "objectID": "workshops/2025-03-Nairobi/index.html#contact",
+    "href": "workshops/2025-03-Nairobi/index.html#contact",
+    "title": "Bioconductor Course in Nairobi, Kenya",
+    "section": "Contact",
+    "text": "Contact\nFor questions, please email maria.doyle [at] ul.ie."
+  },
+  {
+    "objectID": "workshops/2025-03-Nairobi/index.html#join-the-bioconductor-africa-community",
+    "href": "workshops/2025-03-Nairobi/index.html#join-the-bioconductor-africa-community",
+    "title": "Bioconductor Course in Nairobi, Kenya",
+    "section": "🌍 Join the Bioconductor Africa Community",
+    "text": "🌍 Join the Bioconductor Africa Community"
   },
   {
     "objectID": "index.html",
@@ -75,5 +103,33 @@
     "title": "The Bioconductor training committee",
     "section": "",
     "text": "If you are interested in this project and want to get in touch or participate, please contact the group via the Google group or individual members on slack or by email."
+  },
+  {
+    "objectID": "carpentry/instructors.html",
+    "href": "carpentry/instructors.html",
+    "title": "Instructors",
+    "section": "",
+    "text": "Map and table showing people in the Bioconductor community who are certified Carpentries instructors or in the process of obtaining certification, such as those in the Bioconductor Carpentry training program. If you are a certified Carpentries instructor and don’t see your name listed, or if you wish to update your details, please submit a pull request to update the instructors TSV here.\nIf you’re interested in becoming a certified Carpentries instructor, please fill out our expression of interest form. Opportunities are limited and offered as places become available.\nSee this page for workshops using Bioconductor Carpentry material.\n\n\nTotal number of instructors: 55\n\n\n\n\n\n\n\n\n The table below lists all instructors, including their institution, city, country, and region. The region column has been added to make it easier to find instructors in the same geographical area. These regions are based on the World Bank’s classification system. The table is fully searchable and filterable, allowing you to quickly locate instructors by various criteria.\n\n\n\n\n\n\n\n\nLast rendered on: 2024-12-20"
+  },
+  {
+    "objectID": "carpentry/index.html",
+    "href": "carpentry/index.html",
+    "title": "Bioconductor Carpentry",
+    "section": "",
+    "text": "Bioconductor is a member of The Carpentries, a global community focused on teaching foundational coding and data science skills. Our membership supports community members in earning Carpentries instructor certification, developing Bioconductor-specific training materials, and enabling our certified instructors to teach Carpentry workshops at Bioconductor events and beyond. While not an official Carpentries program like Software, Data, or Library Carpentry, Bioconductor Carpentry is aligned in spirit with The Carpentries and benefits from a close association.\nCoordinated through the University of Limerick (UL) by Dr. Maria Doyle, Bioconductor Community Manager and ELIXIR Ireland Training Coordinator, this program organises workshops — including upcoming initiatives planned for Africa and Latin America — supports instructors, and manages logistics to foster essential data science skills and collaborative learning opportunities across the life sciences community.\nFor more information, you can:\n\nExpress interest in becoming a certified Carpentries instructor through our Train-the-Trainer program (when places are available).\n\nRequest a Bioconductor workshop at your institute; please note that instructor expenses will typically be required unless local instructors are available and willing to volunteer.\n\nVisit our Instructors and Workshops pages for current details.\nExplore the blog post that outlines Bioconductor’s Carpentries membership or browse other Carpentries-related posts."
+  },
+  {
+    "objectID": "carpentry/workshops.html",
+    "href": "carpentry/workshops.html",
+    "title": "Workshops",
+    "section": "",
+    "text": "Workshops using the Bioconductor Carpentry training material are listed below. If you have taught a workshop using the Bioconductor Carpentry material, please submit a pull request to update the workshops TSV here.\n\nIf you would like to request a Bioconductor Carpentry workshop at your institution, please fill out our workshop request form.\nSee this page for Carpentry instructors in the Bioconductor community.\n\n\nTotal number of workshops: 28\n\n\n\n\n\n\n\n\nThe table below lists all workshops, including the date, host institution, city, country, and region. The region column has been added to make it easier to find workshops in the same geographical area. These regions are based on the World Bank’s classification system. The table is fully searchable and filterable, allowing you to quickly locate workshops by various criteria, such as location or instructors.\n\n\n\n\n\n\n\n\nLast rendered on: 2024-12-20"
+  },
+  {
+    "objectID": "resources/resources.html",
+    "href": "resources/resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "The table below lists various resources for learning and teaching Bioconductor. If you’re looking for more information or have updates, feel free to suggest changes via issues or contact us as described here.\n\n\nResourceGoalsAcquire the Fundamentals (novice R)Acquire the Fundamentals (experienced R)Analyze Your DataConnect with the CommunityTrain OthersDevelop a PackageBioconductor Carpentrybioc-introXXXTopic specific (e.g. bioc-rnaseq)XXXbioc-projectXXXXBioconductor ConferencesKeynotes/TalksXXXPackage Demos/WorkshopsXXXXXXNetworkingXOther WorkshopsLonger courses (e.g. CSAMA, CSHL)XXXLocal workshops, Galaxy Training Network, commercial offerings, etcXXXXPackagesHelp pagesXXVignettesXXXWorkflowsXXDatasetsXXXGitHub IssuesXXBooksR for Data ScienceXXBioconductor BooksXXR packages/Advanced RXXBioconductor contributor guideXCommunitySupport SiteXXXXXSlackXXXXXXDeveloper Mailing ListXXBioconductor YouTube channelXXSpecial Interest Groups (e.g. R-Ladies, R User Groups)X"
   }
 ]
