@@ -1,0 +1,110 @@
+.white-button {
+  background: var(--neutral-n50);
+  color: var(--primary-p400);
+  min-height: 20px;
+  max-height: 20px;
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+  transition: 0.3s;
+  padding: 0.1rem 0.8rem;
+  border-radius: 8rem;
+  text-decoration: none;
+}
+
+.white-button:hover {
+  background: var(--primary-p50);
+}
+
+.white-button:active {
+  background: var(--primary-p200);
+}
+
+.white-button * {
+  vertical-align: middle;
+}
+
+.white-button svg {
+  margin-bottom: 1px;
+}
+
+.white-button svg:hover {
+  background: var(--primary-p50);
+  stroke: black;
+}
+
+.button-hero {
+  padding: 1rem 1.625rem;
+  border-radius: 16rem;
+  background: var(--gradient-brandreverse);
+  margin: auto auto 0.3rem;
+  transition: 0.3s;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+}
+
+.button-hero img {
+  width: 1rem;
+  height: 1rem;
+  vertical-align: middle;
+}
+
+.button-hero:hover {
+  background: var(--gradient-brand);
+  box-shadow: 0 5px 4px 0 rgba(0 0 0 / 18%) inset;
+}
+
+.brand-border-button {
+  background-image: var(--gradient-brand);
+  border-radius: 8rem;
+  box-sizing: border-box;
+  color: var(--primary-p400);
+  display: flex;
+  padding: 1px;
+  text-decoration: none;
+}
+
+.brand-border-button svg path {
+  transition: stroke 0.5s ease;
+}
+
+.brand-border-button:hover {
+  color: #fff;
+}
+
+.brand-border-button:hover svg path {
+  stroke: #fff;
+}
+
+.span-brand {
+  align-items: center;
+  border-radius: 4rem;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  color: var(--primary-p400);
+  transition: background 0.5s ease;
+  width: 100%;
+  gap: 5px;
+  margin: 1px;
+  padding-left: 0.75rem;
+  padding-right: 0.4rem;
+  line-height: 100%;
+}
+
+.brand-border-button:hover span {
+  background: var(--primary-p400);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button-hero,
+  .white-button,
+  .brand-border-button,
+  .brand-border-button svg path,
+  .brand-border-button span {
+    transition: none;
+  }
+}

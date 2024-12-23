@@ -1,0 +1,48 @@
+td {
+  padding: 1rem;
+  border: 1px solid var(--neutral-n75);
+  vertical-align: top;
+}
+
+table {
+  border-spacing: 0;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+}
+
+table.full-width {
+  width: 100%;
+}
+
+.dataTables_scrollHead {
+  background: var(--neutral-n75);
+  padding-top: 10px;
+}
+
+tr:first-of-type *:first-child {
+  border-top-left-radius: 3px;
+}
+
+tr:first-of-type *:last-child {
+  border-top-right-radius: 3px;
+}
+
+tr:last-of-type *:first-child {
+  border-bottom-left-radius: 3px;
+}
+
+tr:last-of-type *:last-child {
+  border-bottom-right-radius: 3px;
+}
+
+table.full-width tr *:first-child {
+  width: 15.5rem;
+}
+
+.sorting { background: url('https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/images/sort_both.png') no-repeat center right; }
+.sorting_asc { background: url('https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/images/sort_asc.png') no-repeat center right; }
+.sorting_desc { background: url('https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/images/sort_desc.png') no-repeat center right; }
+
+.sorting_asc_disabled { background: url('https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/images/sort_asc_disabled.png') no-repeat center right; }
+.sorting_desc_disabled { background: url('https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/images/sort_asc_disabled.png') no-repeat center right; }
+ 

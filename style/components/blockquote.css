@@ -1,0 +1,24 @@
+blockquote {
+  margin: 1rem 0;
+  box-sizing: border-box;
+  border-left: 2px solid var(--primary);
+  padding: 1.25em 2em;
+  background-color: var(--neutral-n50);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.two-col img {
+  max-height: 100%;
+  margin: 1rem 0;
+}
+
+@media (max-device-width: 1250px), (width <= 1250px) {
+  .two-col {
+    display: block;
+  }
+}

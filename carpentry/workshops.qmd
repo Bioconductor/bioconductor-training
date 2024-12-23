@@ -1,5 +1,5 @@
 ---
-title: "Workshops"
+title: ""
 format: html
 page-layout: full
 editor: visual
@@ -7,7 +7,10 @@ execute:
   message: false
   warning: false
   echo: false
+  cache: true
 ---
+
+# Workshops
 
 ```{r}
 # Load necessary libraries
@@ -240,7 +243,7 @@ workshops %>%
 ```
 
 :::: footer-timestamp
-::: {style="text-align: center; font-size: 0.9em; color: var(--neutral-n200); margin-top: 20px; padding-top: 10px;"}
+::: {style="text-align: center; font-size: 0.9em; color: var(--neutral-n50); margin-top: 20px; padding-top: 10px;"}
 ```         
 Last rendered on: `r format(Sys.Date(), "%Y-%m-%d")`
 ```

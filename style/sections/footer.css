@@ -1,0 +1,111 @@
+footer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%; /* 1400px */
+  background-color: #121212;
+  padding: 2.5rem 6.25rem; /* 40px, 100px */
+  border-style: solid;
+  border-width: 0.625rem 0 0; /* 10px */
+  border-image: var(--gradient-brandreverse) 1;
+  color: #fff;
+  font-size: 1rem;
+  height: auto;
+  box-sizing: border-box;
+  text-align: center; /* Horizontally centre inline content */
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Centre horizontally */
+  justify-content: center; /* Centre vertically */
+}
+
+.link-container {
+  display: flex;
+  flex-direction: column; /* Stack links vertically */
+  align-items: center; /* Centre horizontally */
+  margin-bottom: 3.5rem;
+}
+
+.link-container-inner {
+  display: flex;
+  flex-direction: column; /* Stack links */
+  align-items: center; /* Centre horizontally */
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.logo-contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre horizontally */
+  gap: 1rem; /* Add spacing */
+}
+
+.socials-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre icons horizontally */
+  gap: 2rem; /* Adjust spacing between socials */
+}
+
+.socials img {
+  padding-right: 0;
+  margin-bottom: 0.5rem; /* Adjust spacing if needed */
+}
+
+.footer-logo {
+  width: 12rem;
+  height: auto; /* Maintain aspect ratio */
+  padding-top: 1rem;
+}
+
+.footer-socials {
+  display: flex; /* Ensures the icons are laid out in a row */
+  gap: 2.5rem; /* Adjust this value to control the space between icons */
+  justify-content: center; /* Centers the icons within the footer */
+  align-items: center; /* Aligns icons vertically if they vary in size */
+}
+
+.footer-socials a img {
+  max-width: 2rem; /* Optional: Ensures consistent icon size */
+  height: auto; /* Maintains aspect ratio */
+  margin: 0; /* Reset any additional margin on images */
+  padding: 0; /* Reset padding */
+}
+
+@media (max-device-width: 768px), (width <= 768px) {
+  footer {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center; /* Centre content for mobile */
+  }
+
+  .link-container {
+    display: flex;
+    flex-direction: column; /* Stack links for mobile */
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-contact-container {
+    align-items: center; /* Centre content */
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .socials-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre icons for mobile */
+    padding: 1rem 0;
+  }
+
+  .socials {
+    margin: auto;
+  }
+}
