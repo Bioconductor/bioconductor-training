@@ -1,0 +1,76 @@
+/* Css global color variables */
+
+/* You can use `var(--variable-name)` to get the value. */
+
+:root {
+  /* primary colors */
+  --primary-p50: #ebf4f7;
+  --primary-p75: #add2dd;
+  --primary-p100: #8bc0cf;
+  --primary-p200: #59a5bb;
+  --primary: #3792ad;
+  --primary-p400: #035771;
+  --primary-p500: #003242;
+  --default-body: #070707;
+
+  /* secondary colors */
+  --secondary-s50: #f3fae9;
+  --secondary-s75: #cfe9a6;
+  --secondary-s100: #bbe081;
+  --secondary-s200: #9ed34a;
+  --secondary: #8aca25;
+  --secondary-s400: #618d1a;
+  --secondary-s500: #547b17;
+
+  /* warning colors */
+  --warning-w50: #fef9eb;
+  --warning-w75: #f9e8ad;
+  --warning-w100: #f7df8a;
+  --warning-w200: #f3d158;
+  --warning: #f1c736;
+  --warning-w400: #a98b26;
+  --warning-w500: #937921;
+
+  /* error colors */
+  --error-e50: #feebeb;
+  --error-e75: #f9adad;
+  --error-e100: #f78a8a;
+  --error-e200: #f35858;
+  --error: #f13636;
+  --error-e400: #f13636;
+  --error-e500: #932121;
+
+  /* neutral colors */
+  --neutral-n50: #f9f9f9;
+  --neutral-n75: #e7e8ea;
+  --neutral-n100: #a1a6b3;
+  --neutral-n200: #797f92;
+  --neutral: #5d657c;
+  --neutral-n400: #414757;
+  --neutral-n500: #393e4c;
+
+  /* Miscellaneous colors */
+  --misc-positive: #008a00;
+  --misc-neutral: #007a9f;
+  --misc-warning: #ffc600;
+  --misc-annotations: #ff8a00;
+  --misc-error: #a92626;
+  --misc-dark: #070707;
+  --misc-purple: #a333f1;
+  --misc-pink: #ce3c7d;
+
+  /* Gradients */
+  --gradient-warmcool: linear-gradient(to right, #ff2f4b, #4e5cff);
+  --gradient-reversewarmcool: linear-gradient(to right, #4e5cff, #ff2f4b);
+  --gradient-brand: linear-gradient(to right, #0087af, #0484a9, #18a603);
+  --gradient-brandreverse: linear-gradient(to right, #18a603, #0484a9, #0087af);
+  --gradient-purpleblue: linear-gradient(to right, #445cf3, #a333f1);
+
+  /* Code blocks */
+  --code-blocks-dark: #3d4049;
+  --code-dark-string: #f1c736;
+  --code-light-string: #800;
+  --code-light-literal: #008a00;
+  --code-dark-literal: #13cd13;
+  --code-dark-operator: #ff8a8a;
+}

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bioconductor Carpentry</title>
+<title>index</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,136 +20,85 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html-5276476b5bdb9cfe1f92c505466e0bf3.min.css" rel="stylesheet" append-hash="true" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-41ce87c438ccaeb35f64ae41c48547a8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../style/base/colors.css">
+<link rel="stylesheet" href="../style/base/fonts.css">
+<link rel="stylesheet" href="../style/base/layout.css">
+<link rel="stylesheet" href="../style/base/typography.css">
+<link rel="stylesheet" href="../style/components/blockquote.css">
+<link rel="stylesheet" href="../style/components/breadcrumbs.css">
+<link rel="stylesheet" href="../style/components/buttons.css">
+<link rel="stylesheet" href="../style/components/code.css">
+<link rel="stylesheet" href="../style/components/dropdown.css">
+<link rel="stylesheet" href="../style/components/gallery.css">
+<link rel="stylesheet" href="../style/components/lists.css">
+<link rel="stylesheet" href="../style/components/tables.css">
+<link rel="stylesheet" href="../style/sections/announcement.css">
+<link rel="stylesheet" href="../style/sections/header.css">
+<link rel="stylesheet" href="../style/sections/footer.css">
+<link rel="stylesheet" href="../style/sections/sidebar.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body>
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="https://bioconductor.org" class="navbar-brand navbar-brand-logo">
-    <img src="../images/bioconductor-logo.svg" alt="" class="navbar-logo">
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../resources/resources.html"> 
-<span class="menu-text">Resources</span></a>
-  </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-carpentry" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Carpentry</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-carpentry">    
-        <li>
-    <a class="dropdown-item" href="../carpentry/index.html">
- <span class="dropdown-text">Overview</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../carpentry/instructors.html">
- <span class="dropdown-text">Instructors</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../carpentry/workshops.html">
- <span class="dropdown-text">Workshops</span></a>
-  </li>  
-    </ul>
-  </li>
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-    <a href="https://github.com/Bioconductor/bioconductor-training" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+<div class="announcement announcement-brand">
 </div>
-      </div> <!-- /container-fluid -->
+<header id="site-masthead" class="site-masthead">
+  <div class="header-size">
+    <!-- Logo Section -->
+    <div class="header-logo">
+      <a href="https://bioconductor.org">
+        <img src="../images/bioconductor-logo.svg" class="masthead-logo" alt="Bioconductor Training Home">
+      </a>
+    </div>
+
+    <!-- Navigation Section -->
+    <nav class="header-nav">
+      <div class="nav-links">
+        <a class="format-bold mobile-link" href="../">Home</a>
+        <a class="format-bold mobile-link" href="../resources/resources.html">Resources</a>
+        <a class="format-bold mobile-link" href="../workshops/2025-03-Nairobi/index.html">Workshops</a>
+        <div class="dropdown">
+          <a class="format-bold mobile-link" href="../carpentry/index.html">Carpentry</a>
+          <div class="dropdown-content">
+            <a href="../carpentry/instructors.html">Instructors</a>
+            <a href="../carpentry/workshops.html">Workshops</a>
+          </div>
+        </div>
+      </div>
     </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    
-<!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Bioconductor Carpentry</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
+    <!-- Mobile Navigation -->
+    <div class="nav-mobile">
+      <h6 class="anchored">Menu</h6>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
   </div>
-  
-
-
 </header>
+<div class="container">
 
 
+
+
+<h1 id="bioconductor-carpentry">Bioconductor Carpentry</h1>
 <p>Bioconductor is a member of <a href="https://carpentries.org/">The Carpentries</a>, a global community focused on teaching foundational coding and data science skills. Our membership supports community members in earning Carpentries instructor certification, developing Bioconductor-specific training materials, and enabling our certified instructors to teach Carpentry workshops at Bioconductor events and beyond. While not an official Carpentries program like Software, Data, or Library Carpentry, Bioconductor Carpentry is aligned in spirit with The Carpentries and benefits from a close association.</p>
 <p>Coordinated through the University of Limerick (UL) by Dr.&nbsp;Maria Doyle, Bioconductor Community Manager and <a href="https://elixir-ireland.ie/">ELIXIR Ireland</a> Training Coordinator, this program organises workshops — including upcoming initiatives planned for Africa and Latin America — supports instructors, and manages logistics to foster essential data science skills and collaborative learning opportunities across the life sciences community.</p>
 <p>For more information, you can:</p>
@@ -163,8 +112,22 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 
 
-
-</main> <!-- /main -->
+</div>
+<footer>
+  <div class="footer-container">
+    <div class="footer-content">
+      <p>© 2003 - 2024 Bioconductor | Join the Bioconductor Community</p>
+      <div class="footer-socials">
+        <a href="https://slack.bioconductor.org/" target="_blank"><img alt="Slack Logo" src="../images/icons/slack.png"></a>
+        <a href="https://www.youtube.com/user/bioconductor" target="_blank"><img alt="YouTube Logo" src="../images/icons/svgs/youtube.svg"></a>
+        <a href="https://www.linkedin.com/company/bioconductor/" target="_blank"><img alt="LinkedIn Logo" src="../images/icons/svgs/linkedin.svg"></a>
+        <a href="https://bsky.app/profile/bioconductor.bsky.social" target="_blank"><img alt="Bluesky Logo" src="../images/icons/svgs/bluesky.svg"></a>
+        <a href="https://genomic.social/@bioconductor" target="_blank"><img alt="Mastodon Logo" src="../images/icons/svgs/mastodon.svg"></a>
+        <a href="https://blog.bioconductor.org/" target="_blank"><img alt="Blog Logo" src="../images/icons/svgs/arrow-circle-right-white.svg"></a>
+      </div>
+    </div>
+  </div>
+</footer>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -185,6 +148,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -282,7 +249,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       },
       interactive: true,
       interactiveBorder: 10,
-      theme: 'quarto',
+      theme: 'light-border',
       placement: 'bottom-start',
     };
     if (contentFn) {
@@ -582,7 +549,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-</div> <!-- /content -->
 
 
 

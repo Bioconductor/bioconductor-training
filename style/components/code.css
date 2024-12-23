@@ -1,0 +1,116 @@
+pre:has(code) {
+  border-radius: 5px;
+  padding: 2px;
+  background: var(--gradient-brandreverse);
+  white-space: normal;
+  margin-bottom: 2rem;
+}
+
+code * {
+  font-family: Courier, monospace;
+}
+
+pre code,
+pre code.hljs {
+  border-radius: 3px;
+  background: none;
+  background-color: var(--code-blocks-dark);
+  overflow-x: auto;
+  display: block;
+  padding: 1rem;
+  white-space: pre;
+  font-family: Courier, monospace;
+}
+
+pre code,
+pre code.hljs,
+.hljs-punctuation {
+  color: white;
+  font-size: 1rem;
+  line-height: 1.3rem;
+}
+
+
+.hljs-selector-tag,
+.hljs-attribute,
+.hljs-keyword {
+  color: white;
+  font-weight: 1;
+}
+
+.hljs-operator {
+  color: white;
+}
+
+.hljs-meta,
+.hljs-regexp,
+.hljs-variable,
+.hljs-varable.constant_ {
+  color: white;
+}
+
+.hljs-symbol {
+  color: white;
+}
+
+.hljs-comment {
+    color: lightgrey;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-number,
+.hljs-selector-class,
+.hljs-selector-attr{
+    color: white;
+    font-weight: normal;
+}
+
+.hljs-literal,
+.hljs-built_in,
+.hljs-tag{
+  color: white;
+}
+
+.hljs-tag .hljs-attr,
+.hljs-tag .hljs-name{
+    color: white;
+    font-weight: 1;
+}
+
+
+pre code.light .hljs-literal,
+pre code.light .hljs-built_in {
+  color: white;
+}
+
+pre code.dark .hljs-operator {
+  color: white;
+}
+
+pre code.light {
+  background-color: white;
+}
+
+.hljs.light,
+pre code.light .hljs-punctuation,
+pre code.light {
+  color: var(--default-body);
+}
+
+pre code.light .hljs-string,
+pre code.light .hljs-title {
+  color: var(--code-light-string);
+}
+
+.code_box { 
+  background-color: var(--code-blocks-dark);
+  color: white;  
+  padding: 1rem;
+  border:1px #aaaaaa;
+  font-family:'Lucida Console',monaco,monospace;
+  margin-top:1em;
+  margin-bottom:1em;
+  overflow-x:auto;
+  white-space:pre;
+}
