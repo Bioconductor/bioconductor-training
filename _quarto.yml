@@ -3,27 +3,33 @@ project:
   output-dir: docs
   render:
     - "*.qmd"
-website:
-  navbar:
-    logo: "images/bioconductor-logo.svg"
-    logo-href: "https://bioconductor.org"
-    tools:
-      - icon: github
-        href: https://github.com/Bioconductor/bioconductor-training
-    left:
-      - text: "Home"
-        href: index.qmd
-      - text: "Resources"
-        href: resources/resources.qmd
-      - text: "Carpentry"
-        menu:
-          - text: "Overview"
-            href: carpentry/index.qmd
-          - text: "Instructors"
-            href: carpentry/instructors.qmd
-          - text: "Workshops"
-            href: carpentry/workshops.qmd
+    
 format:
   html:
     embed-resources: false
-    css: styles.css
+    theme: none
+    page-layout: custom
+    include-before-body:
+      - layouts/components/announcement.html
+      - layouts/components/header.html
+      - layouts/components/container-start.html
+    include-after-body:
+      - layouts/components/container-end.html
+      - layouts/components/footer.html
+    css: 
+      - "style/base/colors.css"
+      - "style/base/fonts.css"
+      - "style/base/layout.css"
+      - "style/base/typography.css"
+      - "style/components/blockquote.css"
+      - "style/components/breadcrumbs.css"
+      - "style/components/buttons.css"
+      - "style/components/code.css"
+      - "style/components/dropdown.css"
+      - "style/components/gallery.css"
+      - "style/components/lists.css"
+      - "style/components/tables.css"
+      - "style/sections/announcement.css"
+      - "style/sections/header.css"
+      - "style/sections/footer.css"
+      - "style/sections/sidebar.css"

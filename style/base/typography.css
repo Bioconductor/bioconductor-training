@@ -1,0 +1,135 @@
+/* CSS global styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.text-h1,
+.text-h2,
+.text-h3,
+.text-h4,
+.text-h5,
+.text-h6 {
+  line-height: 120%;
+  margin: 0 0 1rem;
+  width: fit-content;
+}
+
+h1,
+.text-h1 {
+  font-size: 2.25rem;
+  border-image: var(--gradient-brandreverse) 1;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  display: inline-block;
+}
+
+h2,
+.text-h2 {
+  font-size: 2rem;
+}
+
+h3,
+.text-h3 {
+  font-size: 1.6rem;
+}
+
+h4,
+.text-h4 {
+  font-size: 1.5rem;
+}
+
+h5,
+.text-h5 {
+  font-size: 1.4rem;
+}
+
+h6,
+.text-h6 {
+  font-size: 1.2rem;
+}
+
+.text-hero {
+  font-size: 5rem;
+  line-height: 105%;
+  border: none;
+}
+
+a {
+  color: black;
+}
+
+@media (max-device-width: 768px),(width <= 768px){
+  h1,
+  .text-h1 {
+    font-size: 2.1rem;
+  }
+
+  h2,
+  .text-h2 {
+    font-size: 1.5rem;
+  }
+
+  h3,
+  .text-h3 {
+    font-size: 1.4rem;
+  }
+
+  h4,
+  .text-h4 {
+    font-size: 1.25rem;
+  }
+
+  h5,
+  .text-h5 {
+    font-size: 1.125rem;
+  }
+
+  h6,
+  .text-h6 {
+    font-size: 1.1rem;
+  }
+
+  .text-hero {
+    font-size: 2.5rem;
+  }
+}
+
+
+p {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 130%;
+}
+
+.format-bold {
+  font-weight: bold;
+}
+
+.format-boldunderline {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.format-underline {
+  text-decoration: underline;
+}
+
+.text-xsmall {
+  font-size: 0.6rem;
+  line-height: 120%;
+}
+
+.text-small {
+  font-size: 0.8rem;
+  line-height: 120%;
+}
+
+.text-large {
+  font-size: 1.25rem;
+}
+
+.text-underline {
+  text-decoration: underline;
+}

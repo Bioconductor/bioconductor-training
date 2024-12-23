@@ -1,11 +1,13 @@
 ---
-title: "Bioconductor Course in Nairobi, Kenya"
+title: ""
 description: | 
   Join us for a comprehensive week-long Bioconductor in-person course covering genomic data analysis and RNA-seq using R and Bioconductor.
-page-layout: full
 ---
 
-![](nairobi.jpg){style="width:100%; max-height:450px; object-fit:cover; display:block; margin:0 auto;"}
+# Bioconductor Course | Nairobi, Kenya | March 2025
+
+![](nairobi.jpg){style="width:100%; max-height:500px; object-fit:cover; object-position:50% 40%; display:block; margin:0 auto;"}
+
 
 ## Event Details
 
@@ -30,7 +32,7 @@ This intensive week-long Bioconductor course is designed to build bioinformatics
 
 ## 🎓 Instructors
 
-The workshop will be led by a team of certified-Carpentries instructors from the Bioconductor community, including both local bioinformatics experts and experienced international instructors. This blend ensures a diversity of perspectives and expertise, fostering a strong collaborative learning environment.
+The workshop will be led by a team of Carpentries-certified instructors from the Bioconductor community, including both local bioinformatics experts and experienced international instructors. This blend ensures a diversity of perspectives and expertise, fostering a strong collaborative learning environment.
 
 ## Registration
 
@@ -44,7 +46,34 @@ This workshop is part of Bioconductor’s expanded global training program, supp
 
 For questions, please email maria.doyle [at] ul.ie.
 
-## 🌍 Join the Bioconductor Africa Community
+<style>
+.call-to-action {
+  background-color: var(--neutral-n10);
+  border: 2px solid var(--primary);
+  padding: 1.5rem;
+  padding-bottom: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
-<iframe src="biocafrica-mailing-list.html" width="100%" height="400" style="border:none;"></iframe>
+.call-to-action h2 {
+  margin-top: 1rem; /* Reduce space above */
+  margin-bottom: 0.5rem; /* Space below heading */
+  text-align: center; 
+  display: block; /* Ensures proper block-level alignment */
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.call-to-action p {
+  margin-bottom: 1.5rem; /* Space before iframe */
+}
+
+</style>
+
+<div class="call-to-action">
+  <h2>🌍 Join the Bioconductor Africa Community</h2>
+  <p>Stay informed about course registration opening, news, projects, and events in Africa.</p>
+  <iframe src="biocafrica-mailing-list.html" width="100%" height="400" style="border:none;"></iframe>
+</div>

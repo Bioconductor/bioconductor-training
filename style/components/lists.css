@@ -1,0 +1,43 @@
+ul {
+  padding: 0;
+  list-style: none;
+  padding-left: 10px;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  padding-left: 8px;
+}
+
+li::marker {
+  content: "•";
+  color: var(--primary);
+  display: inline;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  width: 0.25rem;
+  height: 0.25rem;
+}
+
+li:has(p) {
+  margin-left: 1rem;
+}
+
+li:has(p)::before {
+  margin-left: -1.1rem;
+}
+
+.inline_list ul {
+  list-style: none;
+  padding: 0;
+  padding-left: 10px;
+}
+
+.inline_list li {
+  display: inline-block;
+}
+
+.inline_list li::before {
+  content: "•";
+  margin-right: 0.5rem;
+}

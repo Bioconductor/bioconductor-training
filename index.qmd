@@ -1,7 +1,6 @@
 ---
 title: ""
 format: html
-page-layout: full
 ---
 
 {{< include README.md >}}

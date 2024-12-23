@@ -1,5 +1,5 @@
 ---
-title: "Resources"
+title: ""
 format: html
 editor: visual
 execute:
@@ -7,6 +7,8 @@ execute:
   warning: false
   echo: false
 ---
+
+# Resources
 
 The table below lists various resources for learning and teaching Bioconductor. If you're looking for more information or have updates, feel free to suggest changes via issues or contact us as described [here](../index.qmd).
 
@@ -30,16 +32,13 @@ read_resources <- function(file_path) {
 
 # Function to convert all markdown links in a string to HTML links
 convert_markdown_links <- function(text) {
-  # Replace all [text](url) with <a href='url' target='_blank'>text</a>
-  # Ensure that the URL doesn't capture trailing characters like parentheses
   gsub("\\[(.*?)\\]\\((https?://[a-zA-Z0-9./?=_-]+)\\)", "<a href='\\2' target='_blank'>\\1</a>", text)
 }
 
 # Function to clean text by removing surrounding quotes
 clean_text <- function(text) {
   text <- replace_na_with_empty(text)
-  # Remove starting and ending double quotes if present
-  text <- gsub('^"(.*)"$', '\\1', text)
+  text <- gsub('^"(.*)"$', '\\1', text) # Remove starting and ending double quotes if present
   return(text)
 }
 
@@ -51,13 +50,10 @@ replace_na_with_empty <- function(x) {
 # Load the data from the TSV file
 resources_data <- read_resources("resources-table.tsv")
 
-# Define styles for category and resource rows with reduced padding and smaller font
-category_style <- "background-color: #f0f0f0; font-weight: bold; border-bottom: 2px solid #ddd; font-size: 12px;"  # Lighter grey and smaller font
-resource_style <- "background-color: #ffffff !important; border-bottom: 1px solid #ddd; font-size: 12px;"  # Smaller font size for rows
+# Simplified styles for category rows
+category_style <- "background-color: #f0f0f0; font-weight: bold;"
 
 # Define column widths using <colgroup>
-# First column (Resource): 25%
-# Remaining 6 columns: (75% / 6) = 12.5% each
 colgroup_html <- paste0(
   "<colgroup>",
   "<col style='width: 25%;'>",      # Resource column
@@ -72,20 +68,20 @@ colgroup_html <- paste0(
 
 # Initialize HTML table with <colgroup> and headers
 html_table <- paste0(
-  "<table data-quarto-disable-processing='true' style='border-collapse: collapse; width: 100%; border: 1px solid #ddd;'>", # Add data-quarto-disable-processing attribute
+  "<table data-quarto-disable-processing='true' class='full-width'>", # Use class 'full-width' from tables.css
   colgroup_html,  # Insert the colgroup here
   "<thead>",
-  "<tr style='background-color: #f6f8fa; font-weight: bold; border-bottom: 2px solid #ddd; font-size: 12px;'>",  # Reduced font size for headers
-  "<th rowspan='2' style='border-right: 1px solid #ddd; padding: 4px;'>Resource</th>",
-  "<th colspan='6' style='padding: 4px; text-align: center;'>Goals</th>",
+  "<tr>",
+  "<th rowspan='2'>Resource</th>",
+  "<th colspan='6'>Goals</th>",
   "</tr>",
-  "<tr style='background-color: #f6f8fa; font-weight: bold; border-bottom: 2px solid #ddd; font-size: 12px;'>",
-  "<th style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>Acquire the Fundamentals (novice R)</th>",
-  "<th style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>Acquire the Fundamentals (experienced R)</th>",
-  "<th style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>Analyze Your Data</th>",
-  "<th style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>Connect with the Community</th>",
-  "<th style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>Train Others</th>",
-  "<th style='padding: 4px; text-align: center;'>Develop a Package</th>",
+  "<tr>",
+  "<th>Acquire the Fundamentals (novice R)</th>",
+  "<th>Acquire the Fundamentals (experienced R)</th>",
+  "<th>Analyze Your Data</th>",
+  "<th>Connect with the Community</th>",
+  "<th>Train Others</th>",
+  "<th>Develop a Package</th>",
   "</tr>",
   "</thead><tbody>"
 )
@@ -107,7 +103,7 @@ for (i in 1:nrow(resources_data)) {
     html_table <- paste0(
       html_table,
       "<tr style='", category_style, "'>",
-      "<td colspan='7' style='padding: 4px;'>", 
+      "<td colspan='7'>", 
       category_display, 
       "</td></tr>"
     )
@@ -122,14 +118,14 @@ for (i in 1:nrow(resources_data)) {
   
   # Construct the resource row with styles and aligned cells
   resource_row <- paste0(
-    "<tr style='", resource_style, "'>",
-    "<td style='border-right: 1px solid #ddd; padding: 4px;'>", resource_display, "</td>",
-    "<td style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>", replace_na_with_empty(row[[3]]), "</td>",
-    "<td style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>", replace_na_with_empty(row[[4]]), "</td>",
-    "<td style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>", replace_na_with_empty(row[[5]]), "</td>",
-    "<td style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>", replace_na_with_empty(row[[6]]), "</td>",
-    "<td style='border-right: 1px solid #ddd; padding: 4px; text-align: center;'>", replace_na_with_empty(row[[7]]), "</td>",
-    "<td style='padding: 4px; text-align: center;'>", replace_na_with_empty(row[[8]]), "</td>",
+    "<tr>",
+    "<td>", resource_display, "</td>",
+    "<td>", replace_na_with_empty(row[[3]]), "</td>",
+    "<td>", replace_na_with_empty(row[[4]]), "</td>",
+    "<td>", replace_na_with_empty(row[[5]]), "</td>",
+    "<td>", replace_na_with_empty(row[[6]]), "</td>",
+    "<td>", replace_na_with_empty(row[[7]]), "</td>",
+    "<td>", replace_na_with_empty(row[[8]]), "</td>",
     "</tr>"
   )
   
