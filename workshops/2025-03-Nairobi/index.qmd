@@ -36,7 +36,7 @@ The workshop will be led by a team of Carpentries-certified instructors from the
 
 ## Registration
 
-A single registration covers the full week of sessions. Registration details, including the application form, will be posted soon. We welcome participants who are keen to develop their bioinformatics skills with a focus on genomic data analysis.
+Participation in this week-long workshop is free, but places are limited. Applicants will be selected based on how well their background and interests align with the course goals of building foundational skills in R and Bioconductor and fostering the Bioconductor community in Africa. To apply, please complete the [application form](https://forms.gle/7ofqnEy6jD95dPV66). Applications will be reviewed on a rolling basis starting February 5, 2025.
 
 ## Funding and Support
 
