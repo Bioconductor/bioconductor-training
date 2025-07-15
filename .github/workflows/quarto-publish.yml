@@ -45,7 +45,7 @@ jobs:
 
       # Install R dependencies
       - name: Install R dependencies
-        run: Rscript -e 'install.packages(c("evaluate", "rmarkdown", "knitr", "readr", "tidyr", "reactable", "maps", "plotly", "ggplot2", "tidygeocoder", "countrycode"))'
+        run: Rscript -e 'install.packages(c("evaluate", "rmarkdown", "knitr", "readr", "tidyr", "lubridate", "reactable", "maps", "plotly", "ggplot2", "tidygeocoder", "countrycode"))'
 
       # Run Quarto render to check for PRs
       - name: Render Quarto Project
