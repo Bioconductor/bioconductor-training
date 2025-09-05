@@ -2,54 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://training.bioconductor.org/workshops/index.html</loc>
-    <lastmod>2025-08-20T14:20:25.249Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.426Z</lastmod>
+  </url>
+  <url>
+    <loc>https://training.bioconductor.org/workshops/2025-09-EuroBioC/rna-seq/index.html</loc>
+    <lastmod>2025-09-05T16:39:02.426Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/workshops/2025-03-Nairobi/index.html</loc>
-    <lastmod>2025-08-20T14:20:25.240Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.414Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/index.html</loc>
-    <lastmod>2025-08-20T14:20:25.235Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.407Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/collaborations/index.html</loc>
-    <lastmod>2025-08-20T14:20:24.999Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.169Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/collaborations/carpentries/instructors.html</loc>
-    <lastmod>2025-08-20T14:20:24.999Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.169Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/carpentry/workshops.html</loc>
-    <lastmod>2025-08-20T14:20:24.998Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.169Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/carpentry/index.html</loc>
-    <lastmod>2025-08-20T14:20:24.998Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.169Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/carpentry/instructors.html</loc>
-    <lastmod>2025-08-20T14:20:24.998Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.169Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/collaborations/carpentries/index.html</loc>
-    <lastmod>2025-08-20T14:20:24.999Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.169Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/collaborations/carpentries/workshops.html</loc>
-    <lastmod>2025-08-20T14:20:24.999Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.169Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/collaborations/physalia/index.html</loc>
-    <lastmod>2025-08-20T14:20:24.999Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.169Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/resources/resources.html</loc>
-    <lastmod>2025-08-20T14:20:25.235Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.408Z</lastmod>
   </url>
   <url>
     <loc>https://training.bioconductor.org/workshops/2025-08-Addis-Ababa/index.html</loc>
-    <lastmod>2025-08-20T14:20:25.249Z</lastmod>
+    <lastmod>2025-09-05T16:39:02.425Z</lastmod>
+  </url>
+  <url>
+    <loc>https://training.bioconductor.org/workshops/2025-09-EuroBioC/scrna-seq/index.html</loc>
+    <lastmod>2025-09-05T16:39:02.426Z</lastmod>
   </url>
 </urlset>
