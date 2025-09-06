@@ -1,0 +1,100 @@
+/* ==== Workshop page template ==== */
+
+/* Page-level tweaks (optional) */
+.workshop .page-title { margin-bottom: .5rem; }
+.workshop .meta { font-size: .95rem; color: var(--bs-gray-700); margin-bottom: 1rem; }
+
+/* ---- Two-day schedule (component) ---- */
+.workshop .schedule .quarto-layout-panel,
+.schedule .quarto-layout-panel,
+#schedule ~ .quarto-layout-panel {
+  gap: 0.9rem;
+}
+
+/* Base table look */
+.workshop .schedule table,
+.schedule table,
+#schedule ~ .quarto-layout-panel table {
+  width: 100%;
+  font-size: 0.94rem;
+  line-height: 1.25;
+  border: 1px solid var(--bs-border-color, rgba(0,0,0,.12));
+  border-radius: .5rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bs-body-bg, #fff);
+  overflow: hidden;
+  table-layout: fixed; /* allow <colgroup> width overrides to take effect */
+}
+
+/* Header row */
+.workshop .schedule thead th,
+.schedule thead th,
+#schedule ~ .quarto-layout-panel thead th {
+  background: var(--bs-gray-100, #f8f9fa);
+  font-weight: 600;
+  border-bottom: 1px solid var(--bs-border-color, rgba(0,0,0,.12));
+}
+
+/* Cell padding */
+.workshop .schedule th, .workshop .schedule td,
+.schedule th, .schedule td,
+#schedule ~ .quarto-layout-panel th, #schedule ~ .quarto-layout-panel td {
+  padding: .35rem .55rem;
+  vertical-align: middle;
+}
+
+/* Column widths via <colgroup>: Time / Session / Instructor(s) */
+.workshop .schedule colgroup col:first-child,
+.schedule colgroup col:first-child,
+#schedule ~ .quarto-layout-panel colgroup col:first-child {
+  width: 7.6rem !important;   /* keep times on one line */
+}
+.workshop .schedule colgroup col:nth-child(2),
+.schedule colgroup col:nth-child(2),
+#schedule ~ .quarto-layout-panel colgroup col:nth-child(2) {
+  width: auto !important;
+}
+.workshop .schedule colgroup col:last-child,
+.schedule colgroup col:last-child,
+#schedule ~ .quarto-layout-panel colgroup col:last-child {
+  width: 9rem !important;
+}
+
+/* Time column: nowrap + centred + tabular numerals */
+.workshop .schedule th:first-child, .workshop .schedule td:first-child,
+.schedule th:first-child, .schedule td:first-child,
+#schedule ~ .quarto-layout-panel th:first-child, #schedule ~ .quarto-layout-panel td:first-child {
+  white-space: nowrap !important;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle zebra striping */
+.workshop .schedule tbody tr:nth-child(odd),
+.schedule tbody tr:nth-child(odd),
+#schedule ~ .quarto-layout-panel tbody tr:nth-child(odd) {
+  background: rgba(0,0,0,.02);
+}
+
+/* Tighter heading spacing inside columns */
+.workshop .schedule h4,
+.schedule h4,
+#schedule ~ .quarto-layout-panel h4 {
+  margin-top: 0;
+  margin-bottom: .4rem;
+}
+
+/* Very narrow screens: allow horizontal scroll */
+@media (max-width: 576px) {
+  .workshop .schedule table,
+  .schedule table,
+  #schedule ~ .quarto-layout-panel table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/* ---- Placeholders can be fleshed out later ---- */
+.workshop .instructors { margin-block: 1rem; }
+.workshop .downloads a.btn { margin-right:.5rem; margin-bottom:.5rem; }
