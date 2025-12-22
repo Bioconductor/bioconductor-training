@@ -1,1 +1,1 @@
-Sitemap: https://training.bioconductor.org/sitemap.xml
+Sitemap: https://Bioconductor.github.io/bioconductor-training/sitemap.xml
