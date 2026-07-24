@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -35,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html-640605f58ae58ee79329c070719e555b.min.css" rel="stylesheet" append-hash="true" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 
 
 <link rel="stylesheet" href="../../style/base/colors.css">
@@ -105,10 +108,57 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<style>
+.bioc-africa-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  column-gap: 4rem;
+  align-items: center;
+  width: 85%;
+}
+
+.bioc-africa-overview-text {
+  max-width: 78ch;
+}
+
+.bioc-africa-overview-logo {
+  justify-self: end;
+}
+
+.bioc-africa-overview-logo p {
+  margin: 0;
+}
+
+.bioc-africa-overview-logo img {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .bioc-africa-overview {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 1.5rem;
+  }
+
+  .bioc-africa-overview-logo img {
+    max-width: 160px;
+  }
+}
+</style>
 <h2 id="overview" class="anchored">Overview</h2>
+<div class="bioc-africa-overview">
+<div class="bioc-africa-overview-text">
 <p>The Bioconductor Africa Seminar Series is an online seminar series highlighting the use of Bioconductor for biological data analysis, with a focus on topics relevant to researchers across Africa and beyond.</p>
 <p>The series includes introductory and thematic sessions led by members of the Bioconductor community, and is open to anyone interested in Bioconductor and related workflows.</p>
 <p><strong>Series coordination:</strong> Laurah Nyasita Ondari (IITA, Kenya)</p>
+</div>
+<div class="bioc-africa-overview-logo">
+<p><img src="images/BiocAfrica.png" class="img-fluid" alt="Bioconductor Africa logo"></p>
+</div>
+</div>
 <h2 id="upcoming-seminars" class="anchored">Upcoming seminars</h2>
 <h3 id="featured-seminar" class="anchored">Featured seminar</h3>
 <p><img src="images/gwas-stephanie-updated.png" class="img-fluid" style="width:85.0%" alt="GWAS data analysis using the GENESIS package seminar poster"></p>
@@ -135,7 +185,7 @@ Sign up to receive seminar links, reminders, and announcements about future Bioc
 <p>Curious what the Bioconductor Africa seminars are like?<br>
 Recordings from previous sessions are available below.<br>
 If you’re new to Bioconductor, you may want to start with the introductory session.</p>
-<h3 id="gwas-datya-analysis-series" class="anchored">GWAS datya analysis series</h3>
+<h3 id="gwas-data-analysis-series" class="anchored">GWAS data analysis series</h3>
 <p>A two-part series exploring GWAS data analysis with the GENESIS package.</p>
 <h4 id="gwas-data-analysis-with-genesis-part-1" class="anchored">GWAS data analysis with GENESIS (Part 1)</h4>
 <ul>
