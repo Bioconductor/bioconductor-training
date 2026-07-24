@@ -87,6 +87,9 @@ ul.task-list li input[type="checkbox"] {
         <a class="format-bold mobile-link" href="./workshops/index.html">
           Workshops
         </a>
+        <a class="format-bold mobile-link" href="./seminars/index.html">
+          Seminars
+        </a>
 
         <div class="dropdown">
           <a class="format-bold mobile-link" href="./collaborations/index.html">
@@ -123,26 +126,81 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<style>
+.seminar-feature {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  max-width: 900px;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  border: 1px solid var(--neutral-n75);
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.seminar-feature-image img {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+}
+
+.seminar-feature-text h3 {
+  margin-top: 0;
+}
+
+.seminar-feature-text > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .seminar-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .seminar-feature-image img {
+    max-width: 150px;
+    margin: 0 auto;
+  }
+}
+</style>
 <h1 id="the-bioconductor-training-committee">The Bioconductor Training Committee</h1>
-<p>The Bioconductor Training Committee is a collaborative effort to consolidate Bioconductor-focused training material and build a global community of instructors. We define curricula and develop lessons for both beginner and more advanced R users who want to analyse their data with Bioconductor packages.</p>
+<p>The Bioconductor Training Committee is a collaborative effort to consolidate Bioconductor-focused training materials and build a global community of instructors. We define curricula and develop lessons for beginner and more advanced R users who want to analyse their data with Bioconductor packages.</p>
 <p>The committee reports to the Bioconductor <a href="https://bioconductor.org/about/community-advisory-board/">Community Advisory Board</a> and is currently chaired by <a href="https://csoneson.github.io/">Charlotte Soneson</a> and <a href="https://biotech.illinois.edu/hpcbio-core/the-hpcbio-team/">Jenny Drnevich</a>.</p>
-<p>There’s no formal joining process and no minimum commitment required - simply attend one of our monthly meetings (announced on the Google group below) or join the conversation to become part of the community.</p>
+<p>There is no formal joining process or minimum commitment. Simply attend one of our monthly meetings or join the conversation to become part of the community.</p>
 <ul>
 <li><a href="https://meet.jit.si/BioconductorTeaching">Monthly meeting link</a></li>
-<li><a href="https://docs.google.com/document/d/1s2QMk5XA-uhBVprAO3ZDk1Yfv1cnUWLp9zdvYq9Feu4/edit#">Rolling agenda &amp; notes (Google Doc)</a></li>
-<li><a href="https://groups.google.com/g/bioconductor-teaching/">Google group</a> (announcements &amp; reminders)</li>
-<li><a href="https://chat.bioconductor.org">Bioconductor Chat</a>: <code>#education-and-training</code> channel</li>
+<li><a href="https://docs.google.com/document/d/1s2QMk5XA-uhBVprAO3ZDk1Yfv1cnUWLp9zdvYq9Feu4/edit#">Rolling agenda and notes</a></li>
+<li><a href="https://groups.google.com/g/bioconductor-teaching/">Google group</a> for announcements and meeting reminders</li>
+<li>The <code>#education-and-training</code> channel on <a href="https://chat.bioconductor.org">Bioconductor Chat</a></li>
 </ul>
-<h3 id="previous-co-chairs" class="anchored">Previous co-chairs</h3>
-<ul>
-<li><a href="https://lgatto.codeberg.page/">Laurent Gatto</a>, 2020-2026</li>
-</ul>
-<h2 id="publications" class="anchored">Publications</h2>
-<p><strong>Learning and teaching biological data science in the Bioconductor community</strong><br>
-Drnevich, Tan et al.&nbsp;(2025)<br>
-Published in <em>PLOS Computational Biology</em></p>
-<p>👉 <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012925">Read the full paper</a></p>
-<h2 id="training-modules" class="anchored">Training Modules</h2>
+<h2 id="seminar-series" class="anchored">Seminar series</h2>
+<p>Bioconductor community seminar series bring together researchers, software developers and educators to share practical approaches to biological data analysis with Bioconductor.</p>
+<div class="seminar-feature">
+<div class="seminar-feature-image">
+<p><a href="seminars/bioc-africa/"> <img src="seminars/bioc-africa/images/BiocAfrica.png" alt="Bioconductor Africa"> </a></p>
+</div>
+<div class="seminar-feature-text">
+<h3 class="anchored">
+Bioconductor Africa Seminar Series
+</h3>
+<p>
+An online seminar series highlighting the use of Bioconductor for biological data analysis, with a focus on topics relevant to researchers across Africa and beyond.
+</p>
+<p>
+The series includes introductory and thematic sessions led by members of the Bioconductor community and is open to anyone interested in Bioconductor and related workflows.
+</p>
+<p>
+<a href="seminars/bioc-africa/"> Explore the Bioconductor Africa Seminar Series </a>
+</p>
+</div>
+</div>
+<p><a href="seminars/">View all seminar series</a></p>
+<h2 id="events" class="anchored">Events</h2>
+<p>Explore upcoming and past Bioconductor <a href="workshops/">workshops</a>, <a href="seminars/">seminars</a> and other activities on the <a href="https://www.bioconductor.org/help/events/">Bioconductor events page</a>.</p>
+<h2 id="training-modules" class="anchored">Training modules</h2>
 <p>Bioconductor Carpentry lessons developed by the training committee are organised into modules, each designed for specific audiences and skill levels.</p>
 <ul>
 <li><p><a href="https://carpentries-incubator.github.io/bioc-intro/">bioc-intro</a> An introduction to R, RStudio, data cleaning, management, analysis, and visualisation, based on the Carpentries Ecology curriculum. No prior experience required. Includes introductory Bioconductor concepts.</p></li>
@@ -150,27 +208,30 @@ Published in <em>PLOS Computational Biology</em></p>
 <li><p><a href="https://carpentries-incubator.github.io/bioc-scrnaseq/">bioc-scrnaseq</a> Single-cell RNA-seq analysis with Bioconductor, covering QC, cell type annotation, multi-sample workflows, large datasets, and integration with public data. Requires R/Bioconductor familiarity; bulk RNA-seq experience helpful but optional.</p></li>
 <li><p><a href="https://carpentries-incubator.github.io/bioc-project/">bioc-project</a> An overview of the Bioconductor project: website, packages, landing pages, vignettes, workflows, release cycles, and infrastructure. Designed to be combined with other modules during workshops.</p></li>
 </ul>
-<h3 id="new-lessons" class="anchored">New lessons</h3>
-<p>Interested in contributing a new lesson or adapting a Carpentry-style module? We’d be happy to discuss ideas, lesson design, long-term maintenance, dissemination, or any support you may need.</p>
+<h2 id="contribute-a-lesson" class="anchored">Contribute a lesson</h2>
+<p>Interested in developing a new lesson or adapting a Carpentry-style module? We would be happy to discuss lesson design, long-term maintenance, dissemination and other support you may need.</p>
 <ul>
-<li>Contact us via <a href="https://chat.bioconductor.org/">Bioconductor Chat</a></li>
-<li>View our contributor documentation: <a href="./collaborations/carpentries/lesson-guidelines.html">Lesson Design &amp; Maintenance Guidelines</a></li>
+<li>Contact us through the <code>#education-and-training</code> channel on <a href="https://chat.bioconductor.org/">Bioconductor Chat</a></li>
+<li>Read the <a href="./collaborations/carpentries/lesson-guidelines.html">Lesson Design and Maintenance Guidelines</a></li>
 </ul>
-<h2 id="notes-and-meetings" class="anchored">Notes and meetings</h2>
+<h2 id="publications" class="anchored">Publications</h2>
+<p><strong>Learning and teaching biological data science in the Bioconductor community</strong><br>
+Drnevich, Tan et al.&nbsp;(2025)<br>
+Published in <em>PLOS Computational Biology</em></p>
+<p><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012925">Read the full paper</a></p>
+<h2 id="committee-history" class="anchored">Committee history</h2>
+<h3 id="previous-co-chairs" class="anchored">Previous co-chairs</h3>
 <ul>
-<li><a href="resources/bioc-training-governance-v1.0.0.pdf">Governance document</a></li>
-<li>Community discussions: education-and-training channel on <a href="https://chat.bioconductor.org/">Bioconductor Chat</a>.</li>
-<li><a href="https://groups.google.com/g/bioconductor-teaching/">Google group</a>: low-traffic, used for monthly meeting reminders</li>
+<li><a href="https://lgatto.codeberg.page/">Laurent Gatto</a>, 2020–2026</li>
 </ul>
-<h2 id="events" class="anchored">Events</h2>
-<p>Explore upcoming and past Bioconductor workshops on our <a href="https://training.bioconductor.org/workshops/index.html">workshops</a> and <a href="https://www.bioconductor.org/help/events/">events</a> pages.</p>
 <h2 id="contact" class="anchored">Contact</h2>
-<p>If you’re interested in joining, contributing, or simply learning more, please contact us via:</p>
+<p>To join the committee, contribute to its work or learn more:</p>
 <ul>
-<li>The <code>#education-and-training</code> channel, or committee co-chairs on <a href="https://chat.bioconductor.org">Bioconductor Chat</a> or by email</li>
-<li>Or drop into one of our monthly meetings</li>
+<li>Join the <code>#education-and-training</code> channel on <a href="https://chat.bioconductor.org/">Bioconductor Chat</a></li>
+<li>Contact one of the committee co-chairs</li>
+<li>Attend one of our monthly meetings</li>
 </ul>
-<p>We look forward to welcoming you into the Bioconductor training community!</p>
+<p>We look forward to welcoming you to the Bioconductor training community.</p>
 
 
 </div>
