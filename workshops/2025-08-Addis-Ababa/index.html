@@ -65,40 +65,62 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="announcement announcement-brand">
 </div>
+<script src="{{ " js="" header.js"="" |="" relurl="" }}"="" defer=""></script>
+
 <header id="site-masthead" class="site-masthead">
   <div class="header-size">
-    <!-- Logo Section -->
+
+    <!-- Logo -->
     <div class="header-logo">
       <a href="https://bioconductor.org">
-        <img src="../../images/bioconductor-logo.svg" class="masthead-logo" alt="Bioconductor Training Home">
+        <img src="{{ " images="" bioconductor-logo.svg"="" |="" relurl="" }}"="" class="masthead-logo" alt="Bioconductor home">
       </a>
     </div>
 
-    <!-- Navigation Section -->
-    <nav class="header-nav">
+    <!-- Main navigation -->
+    <nav id="site-navigation" class="header-nav" aria-label="Main navigation">
       <div class="nav-links">
-        <a class="format-bold mobile-link" href="../../">Home</a>
-        <a class="format-bold mobile-link" href="../../resources/resources.html">Resources</a>
-        <a class="format-bold mobile-link" href="../../workshops/index.html">Workshops</a>
+        <a class="format-bold mobile-link" href="{{ " "="" |="" relurl="" }}"="">
+          Home
+        </a>
+
+        <a class="format-bold mobile-link" href="{{ " resources="" resources.html"="" |="" relurl="" }}"="">
+          Resources
+        </a>
+
+        <a class="format-bold mobile-link" href="{{ " workshops="" index.html"="" |="" relurl="" }}"="">
+          Workshops
+        </a>
+
         <div class="dropdown">
-          <a class="format-bold mobile-link" href="../../collaborations/index.html">Collaborations</a>
+          <a class="format-bold mobile-link" href="{{ " collaborations="" index.html"="" |="" relurl="" }}"="">
+            Collaborations
+          </a>
+
           <div class="dropdown-content">
-            <a href="../../collaborations/carpentries/index.html">Carpentries</a>
-            <a href="../../collaborations/physalia/index.html">Physalia</a>
+            <a class="mobile-link" href="{{ " collaborations="" carpentries="" index.html"="" |="" relurl="" }}"="">
+              Carpentries
+            </a>
+
+            <a class="mobile-link" href="{{ " collaborations="" physalia="" index.html"="" |="" relurl="" }}"="">
+              Physalia
+            </a>
           </div>
         </div>
       </div>
     </nav>
 
-    <!-- Mobile Navigation -->
+    <!-- Mobile menu control -->
     <div class="nav-mobile">
-      <h6 class="anchored">Menu</h6>
-      <div class="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
+      <span class="format-bold menu-label">Menu</span>
+
+      <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="site-navigation" aria-expanded="false">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
     </div>
+
   </div>
 </header>
 <div class="container">
