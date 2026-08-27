@@ -4,7 +4,7 @@ description: |
   Join us for a comprehensive week-long Bioconductor in-person course covering microbiome data analysis using R and Bioconductor.
 ---
 
-# Bioconductor Microbiome Course | Addis Ababa, Ethiopia | September 2026
+# Bioconductor Microbiome Course | Addis Ababa, Ethiopia | November 2026
 
 ![](images/addis_image.png){style="width:100%; height:calc(60vh + 50px); object-fit:cover; object-position:50% 5%; display:block; margin:0 auto;"}
 
