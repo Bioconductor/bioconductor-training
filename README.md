@@ -6,11 +6,27 @@ The committee reports to the Bioconductor [Community Advisory Board](https://bio
 
 There is no formal joining process or minimum commitment. Simply attend one of our monthly meetings or join the conversation to become part of the community.
 
-- [Monthly meeting link](https://meet.jit.si/BioconductorTeaching) (generally 2nd Monday, 3-4 pm CEST)
+### Monthly meetings
+
+Training Committee meetings are generally held on the second Monday of each month, 15:00-16:00 CET/CEST.
+
+- [Join the monthly meeting](https://meet.jit.si/BioconductorTeaching)
+- [View upcoming Training Committee meetings in Bioconductor TeSS](https://bioconductor.tesshub.org/events?q=training+committee)
 - [Rolling agenda and notes](https://docs.google.com/document/d/1s2QMk5XA-uhBVprAO3ZDk1Yfv1cnUWLp9zdvYq9Feu4/edit#)
-- [Google group](https://groups.google.com/g/bioconductor-teaching/) for announcements and meeting reminders
-- The `#education-and-training` channel on [Bioconductor Chat](https://chat.bioconductor.org)
-- [Governance document](resources/bioc-training-governance-v1.0.0.pdf)
+- [Google Group](https://groups.google.com/g/bioconductor-teaching/) for announcements and meeting reminders
+
+#### Add meetings to your calendar
+
+Subscribe to the [Training Committee calendar](https://bioconductor.tesshub.org/events.ics?q=training+committee) so that future meetings and updates appear automatically in your calendar.
+
+- **Google Calendar:** use `Other calendars → From URL` and paste the calendar URL above.
+- **Outlook:** in Outlook on the web, select `Calendar → Add calendar → Subscribe from web` and paste the calendar URL above. The subscribed calendar should then sync to Outlook for Mac when using the same Microsoft account.
+
+### Community and governance
+
+- Join the `#education-and-training` channel on [Bioconductor Chat](https://chat.bioconductor.org)
+- Read the [governance document](resources/bioc-training-governance-v1.0.0.pdf)
+
 
 ## Seminar series
 
