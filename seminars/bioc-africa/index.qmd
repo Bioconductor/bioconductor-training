@@ -92,6 +92,15 @@ This series of sessions explore how to analyse single-cell RNA sequencing data u
 [Register to attend](https://us06web.zoom.us/meeting/register/J8zlMhDfRuWCTBT0Fv7fNg) 
 
 
+### Bioconductor Africa calendar
+
+View upcoming Bioconductor Africa seminars in [Bioconductor TeSS](https://bioconductor.tesshub.org/events?q=Bioconductor+Africa+Seminar+Series).
+
+You can also subscribe to the [Bioconductor Africa seminar calendar](https://bioconductor.tesshub.org/events.ics?q=Bioconductor+Africa+Seminar+Series) so that future seminars and updates appear automatically in your calendar.
+
+- **Google Calendar:** use `Other calendars → From URL` and paste the calendar URL above.
+- **Outlook:** in Outlook on the web, select `Calendar → Add calendar → Subscribe from web` and paste the calendar URL above.
+
 
 <div class="call-to-action">
   <h2>Stay connected with Bioconductor Africa</h2>
