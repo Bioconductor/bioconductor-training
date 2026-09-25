@@ -80,16 +80,16 @@ The series includes introductory and thematic sessions led by members of the Bio
 
 ### Featured seminar
 
-![](images/Jacques.png){width="85%" fig-alt="Multiomics data integration with Bioconductor poster"}
+![](images/fabricio.png){width="85%" fig-alt="How to develop and submit a package to Bioconductor poster"}
 
 
-- Date: 16 September and 23 September 2026  
+- Date: 28 October 2026  
 - Time: 4 PM EAT / 3 PM CAT / 2 PM WAT  
-- Presenters: Dr Jacques Serizay (CNRS)
+- Presenters: Dr Fabricio Almeida-Silva (Ghent University,  Belgium)
 
-This series of sessions explore how to analyse single-cell RNA sequencing data using Bioconductor.
+This session will explore how to develop and submit a package to Bioconductor.
 
-[Register to attend](https://us06web.zoom.us/meeting/register/J8zlMhDfRuWCTBT0Fv7fNg) 
+[Register to attend](https://us06web.zoom.us/meeting/register/HXnVPaMwT4qbtiydBDyR-w) 
 
 
 ### Bioconductor Africa calendar
@@ -115,6 +115,49 @@ Curious what the Bioconductor Africa seminars are like?
 Recordings from previous sessions are available below.  
 If you're new to Bioconductor, you may want to start with the introductory session.
 
+### Single-cell data analysis series
+
+A two-part series exploring Single-cell tarnscriptomics data analysis with Bioconductor.
+
+#### Single-cell data analysis (Part 2)
+
+- Date: 23 September 2026  
+- Presenter: Jacques Serizay (Institut Pasteur, Paris)
+
+In this second session, Jacques introduced clustering, visualising and sanity-checking clusters, annotating by hand, with known markers, annotating automatically, against a public reference and real differential expression: pseudobulk and DESeq2
+
+<div style="max-width: 900px;">
+  <iframe
+    width="100%"
+    style="aspect-ratio: 16 / 9;"
+    src="https://www.youtube.com/embed/18N5UlAF8j4?si=LbuyhPosZfQo1Kk5" 
+    title="Single-cell data analysis with Bioconductor"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
+
+Session notes: [Single-cell data analysis part 2](https://annuel.framapad.org/p/02gxs9zb4x-anp0?lang=en)
+
+#### Single-cell data analysis (Part 1)
+
+- Date: 16 September 2026  
+- Presenter: Jacques Serizay (Institut Pasteur, Paris)
+
+In this first session, Jacques introduced the standard Bioconductor single-cell RNA-seq workflow, taking participants from a raw count matrix to a map of cells and ultimately to cell type identification. The session covered the key steps in analysing single-cell data using the SingleCellExperiment framework in R and Bioconductor, including understanding and reading a single-cell count matrix, building a SingleCellExperiment object, quality control and filtering, normalisation and feature selection, dimensionality reduction using PCA, UMAP and t-SNE, and saving and working with the resulting SingleCellExperiment object.
+
+<div style="max-width: 900px;">
+  <iframe
+    width="100%"
+    style="aspect-ratio: 16 / 9;"
+    src="https://www.youtube.com/embed/6ANiy9PtKYc?si=fDZR4O033Ll0_N0R" 
+    title="GWAS data analysis with GENESIS"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
+
+Session notes: [Single-cell data analysis part 1](https://annuel.framapad.org/p/biocafrica-single-cell-rna-seq-analysis-pt-1-ankb?lang=en)
 
 ### Multi-omics data integration with Bioconductor
 
