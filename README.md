@@ -17,10 +17,14 @@ Training Committee meetings are generally held on the second Monday of each mont
 
 #### Add meetings to your calendar
 
-Subscribe to the [Training Committee calendar](https://bioconductor.tesshub.org/events.ics?q=training+committee) so that future meetings and updates appear automatically in your calendar.
+To receive future Training Committee meetings and updates automatically, subscribe using the calendar URL below.
 
-- **Google Calendar:** use `Other calendars → From URL` and paste the calendar URL above.
-- **Outlook:** in Outlook on the web, select `Calendar → Add calendar → Subscribe from web` and paste the calendar URL above. The subscribed calendar should then sync to Outlook for Mac when using the same Microsoft account.
+Copy the calendar subscription URL:
+
+`https://bioconductor.tesshub.org/events.ics?q=training+committee`
+
+- **Google Calendar:** go to `Other calendars → From URL`, paste the URL above, and select `Add calendar`.
+- **Outlook:** in Outlook on the web, select `Calendar → Add calendar → Subscribe from web` and paste the URL above, and save. The subscribed calendar should then sync to Outlook for Mac when using the same Microsoft account.
 
 ### Community and governance
 
