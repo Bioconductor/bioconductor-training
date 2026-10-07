@@ -2,70 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://Bioconductor.github.io/bioconductor-training/workshops/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.576Z</lastmod>
+    <lastmod>2026-10-07T13:37:00.308Z</lastmod>
   </url>
   <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2025-11-Abomey-Calavi/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.560Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2025-09-EuroBioC/rna-seq/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.555Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2025-03-Nairobi/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.545Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/seminars/bioc-africa/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.541Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.534Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.312Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/carpentries/lesson-guidelines.html</loc>
-    <lastmod>2026-10-06T09:01:04.312Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/carpentries/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.312Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/carpentries/instructors.html</loc>
-    <lastmod>2026-10-06T09:01:04.312Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/carpentries/workshops.html</loc>
-    <lastmod>2026-10-06T09:01:04.312Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/physalia/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.312Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/resources/resources.html</loc>
-    <lastmod>2026-10-06T09:01:04.535Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/seminars/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.541Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2025-08-Addis-Ababa/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.554Z</lastmod>
+    <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2026-10-20-Limerick/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.293Z</lastmod>
   </url>
   <url>
     <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2025-09-EuroBioC/scrna-seq/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.555Z</lastmod>
+    <lastmod>2026-10-07T13:37:00.287Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2025-08-Addis-Ababa/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.285Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/seminars/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.271Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/resources/resources.html</loc>
+    <lastmod>2026-10-07T13:37:00.266Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/physalia/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/carpentries/workshops.html</loc>
+    <lastmod>2026-10-07T13:37:00.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/carpentries/instructors.html</loc>
+    <lastmod>2026-10-07T13:37:00.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/carpentries/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/carpentries/lesson-guidelines.html</loc>
+    <lastmod>2026-10-07T13:37:00.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/collaborations/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.265Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/seminars/bioc-africa/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.271Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2025-03-Nairobi/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.276Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2025-09-EuroBioC/rna-seq/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.286Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2025-11-Abomey-Calavi/index.html</loc>
+    <lastmod>2026-10-07T13:37:00.291Z</lastmod>
   </url>
   <url>
     <loc>https://Bioconductor.github.io/bioconductor-training/workshops/2026-11-Addis-Ababa/index.html</loc>
-    <lastmod>2026-10-06T09:01:04.576Z</lastmod>
+    <lastmod>2026-10-07T13:37:00.308Z</lastmod>
   </url>
 </urlset>
