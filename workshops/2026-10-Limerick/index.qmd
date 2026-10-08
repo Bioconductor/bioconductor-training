@@ -6,17 +6,21 @@ description: |
 
 # Bioconductor for Data Science Workshop | Limerick, Ireland | 20 October 2026
 
-![](images/logos/CRT-Logo-1-500.png){width=350}
+![](images/logos/CRT-Logo-1-500.png){width=220}
 
 *Delivered in partnership with the [Research Ireland Centre for Research Training in Foundations of Data Science](https://www.data-science.ie/the-crt-programme/).*
 
 ## Event Details
 
-- 📅 **Date:** 20 October 2026
-- 📍 **Location:** Castletroy Park Hotel, Limerick
-- 🕐 **Time:** 11:00–16:00
-- 🎓 **Audience:** [Research Ireland CRT in Foundations of Data Science](https://www.data-science.ie/the-crt-programme/) students, alumni and invited participants
-- 💻 **Format:** In-person with hybrid participation available
+📅 **Date:** 20 October 2026
+
+📍 **Location:** Castletroy Park Hotel, Limerick
+
+🕐 **Time:** 11:00–16:00
+
+🎓 **Audience:** CRT students, alumni and invited participants
+
+💻 **Format:** In-person with hybrid participation available
 
 ## Overview
 
@@ -49,7 +53,7 @@ Topics include:
 
 Materials will be added here before the workshop.
 
-### Installation
+### Setup Instructions
 
 - Instructions (coming soon).
 
