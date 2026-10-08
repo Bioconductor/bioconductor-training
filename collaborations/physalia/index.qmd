@@ -7,10 +7,31 @@ execute:
 
 ![](/images/collaborations/Physalia-Logo-1000x358.png){width="35%" fig-alt="Physalia Courses logo"}
 
-Bioconductor has partnered with [Physalia Courses](https://www.physalia-courses.org/) to offer co-branded training in bioinformatics and computational biology. These courses are taught by experienced instructors from the Bioconductor community and hosted by Physalia. Only the courses listed below are part of the Bioconductor–Physalia collaboration and eligible for free seats.
+Bioconductor partners with [Physalia Courses](https://www.physalia-courses.org/) to support training in bioinformatics and computational biology using Bioconductor.
+
+Courses listed here fall into two categories:
+
+- **Bioconductor-Physalia**: co-branded courses led by instructors with established teaching experience within the Bioconductor/Carpentries training community.
+- **Bioconductor-associated**: Physalia courses with substantial Bioconductor content that are supported through the collaboration. This provides a route for additional instructors and courses to engage with the Bioconductor training community.
+
+All courses listed below offer two free places for participants from low- and middle-income countries.
+
+<style>
+.course-type {
+  display: inline-block;
+  margin-top: 0.25rem;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid #777;
+  border-radius: 999px;
+  font-size: 0.78em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+</style>
 
 ```{r}
 #| echo: false
+
 library(tidyverse)
 library(reactable)
 library(htmltools)
@@ -19,67 +40,137 @@ library(stringr)
 
 workshops <- read_tsv("../../data/workshops.tsv")
 
-# ---- Date parsing (same as main Workshops page) ----
+# ---- Date parsing ----
 determine_status_and_date <- function(date_str) {
-  parsed_date <- NA_real_
 
   if (grepl("TBD|Early|Late", date_str, ignore.case = TRUE)) {
     parsed_date <- as.Date("2099-12-31")
   } else {
-    if (grepl("-\\s*\\d{1,2}\\s+[A-Za-z]+\\s+\\d{4}", date_str)) {
-      # For ranges such as "24–28 March 2025"
-      end_date_str <- str_extract(date_str, "\\d{1,2}\\s+[A-Za-z]+\\s+\\d{4}$")
-      parsed_date <- dmy(end_date_str, quiet = TRUE)
+
+    # Extract the final date where possible.
+    # Handles ranges such as "5-8 October 2026" and
+    # lists such as "16, 17, 18 & 20 November 2026".
+    end_date_str <- str_extract(
+      date_str,
+      "\\d{1,2}\\s+[A-Za-z]+\\s+\\d{4}$"
+    )
+
+    parsed_date <- dmy(end_date_str, quiet = TRUE)
+
+    if (is.na(parsed_date)) {
+      parsed_date <- dmy(date_str, quiet = TRUE)
     }
-    if (is.na(parsed_date)) parsed_date <- dmy(date_str, quiet = TRUE)
-    if (is.na(parsed_date)) parsed_date <- my(date_str, quiet = TRUE)
-    if (is.na(parsed_date)) parsed_date <- as.Date("2099-12-31")
+
+    if (is.na(parsed_date)) {
+      parsed_date <- my(date_str, quiet = TRUE)
+    }
+
+    if (is.na(parsed_date)) {
+      parsed_date <- as.Date("2099-12-31")
+    }
   }
 
   status <- if (parsed_date >= today()) "upcoming" else "past"
 
-  return(list(status = status, parsed_date = parsed_date))
+  list(
+    status = status,
+    parsed_date = parsed_date
+  )
 }
 
-# ---- Filter Physalia first (important!) ----
+# ---- Physalia courses ----
 physalia_raw <- workshops %>%
   filter(initiative == "Physalia")
 
-# Parse only Physalia rows → prevents length mismatch
-parsed <- mapply(determine_status_and_date, physalia_raw$date, SIMPLIFY = FALSE)
+# Require an explicit collaboration type for every Physalia course
+allowed_types <- c(
+  "bioconductor-physalia",
+  "bioconductor-associated"
+)
 
-# Build Physalia table
+if (
+  any(
+    is.na(physalia_raw$collaboration_type) |
+      physalia_raw$collaboration_type == "" |
+      !physalia_raw$collaboration_type %in% allowed_types
+  )
+) {
+  stop(
+    "Every Physalia course must have collaboration_type set to ",
+    "'bioconductor-physalia' or 'bioconductor-associated'."
+  )
+}
+
+parsed <- mapply(
+  determine_status_and_date,
+  physalia_raw$date,
+  SIMPLIFY = FALSE
+)
+
 physalia <- physalia_raw %>%
   mutate(
     status = map_chr(parsed, "status"),
-    sort_date = map(parsed, "parsed_date") |> unlist() |> as.Date(),
+
+    sort_date = as.Date(
+      map_chr(parsed, ~ as.character(.x$parsed_date))
+    ),
+
+    type_label = recode(
+      collaboration_type,
+      "bioconductor-physalia" = "Bioconductor-Physalia",
+      "bioconductor-associated" = "Bioconductor-associated"
+    ),
+
+    title_html = sprintf(
+      '%s<br><span class="course-type">%s</span>',
+      htmlEscape(title),
+      htmlEscape(type_label)
+    ),
+
     link_html = case_when(
       !is.na(workshop_url) & workshop_url != "" ~
-        sprintf('<a href="%s" target="_blank">View Course</a>', workshop_url),
+        sprintf(
+          '<a href="%s" target="_blank">View Course</a>',
+          workshop_url
+        ),
+
       !is.na(previous_edition_url) & previous_edition_url != "" ~
-        sprintf('<a href="%s" target="_blank">View Previous Edition</a>', previous_edition_url),
+        sprintf(
+          '<a href="%s" target="_blank">View Previous Edition</a>',
+          previous_edition_url
+        ),
+
       TRUE ~ "New Course"
     )
   )
 
-# Split into Upcoming / Past
+# ---- Upcoming / Past ----
 upcoming <- physalia %>%
   filter(status == "upcoming") %>%
   arrange(sort_date) %>%
-  select(date, title, instructors, link_html)
+  select(date, title_html, instructors, link_html)
 
 past <- physalia %>%
   filter(status == "past") %>%
   arrange(desc(sort_date)) %>%
-  select(date, title, instructors, link_html)
+  select(date, title_html, instructors, link_html)
 
-# Build tables
+# ---- Tables ----
 upcoming_table <- reactable(
   upcoming,
   compact = TRUE,
   striped = TRUE,
   bordered = TRUE,
-  columns = list(link_html = colDef(name = "Workshop Link", html = TRUE))
+  columns = list(
+    title_html = colDef(
+      name = "title",
+      html = TRUE
+    ),
+    link_html = colDef(
+      name = "Workshop Link",
+      html = TRUE
+    )
+  )
 )
 
 past_table <- reactable(
@@ -87,10 +178,18 @@ past_table <- reactable(
   compact = TRUE,
   striped = TRUE,
   bordered = TRUE,
-  columns = list(link_html = colDef(name = "Workshop Link", html = TRUE))
+  columns = list(
+    title_html = colDef(
+      name = "title",
+      html = TRUE
+    ),
+    link_html = colDef(
+      name = "Workshop Link",
+      html = TRUE
+    )
+  )
 )
 
-# ---- Combine like the main Workshops page ----
 htmltools::tagList(
   htmltools::h2("Upcoming"),
   upcoming_table,
@@ -98,13 +197,3 @@ htmltools::tagList(
   past_table
 )
 ```
-
-## Free Seats for Underrepresented Countries
-
-Two free seats are available for each of the Bioconductor–Physalia courses listed above for participants based in low- or middle-income countries, as defined by the [World Bank's income classification](https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html).
-
-[Apply here to be considered](https://forms.gle/w4UEBu3VrJXemtTN9)
-
-## Learn More
-
-Read the [blog post](https://blog.bioconductor.org/posts/2025-06-20-physalia-collaboration/) announcing the collaboration to learn more about how it came together and what it aims to achieve.
