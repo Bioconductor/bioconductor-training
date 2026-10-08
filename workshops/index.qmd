@@ -5,11 +5,11 @@ execute:
   warning: false
 ---
 
-This page lists Bioconductor workshops, including community-run workshops and external training opportunities.
+This page lists Bioconductor training events, including workshops delivered directly by the Bioconductor community, community-run Carpentries workshops, and selected external training opportunities.
 
-For more information on our Carpentry workshops, see [this page](/collaborations/carpentries/workshops.qmd). For more information on Physalia workshops and how to apply for free places, see [this page](/collaborations/physalia/index.qmd).
+For more information on our [Carpentries programme](/collaborations/carpentries/workshops.qmd), see the Carpentries workshop page. For Bioconductor-Physalia courses and information on free places for participants from low- and middle-income countries, see the [Physalia collaboration page](/collaborations/physalia/index.qmd).
 
-New workshops can be added by submitting a pull request to update the [workshops TSV here](https://github.com/Bioconductor/bioconductor-training/blob/devel/data/workshops.tsv).
+New workshops can be added by submitting a pull request to update the [workshops TSV](https://github.com/Bioconductor/bioconductor-training/blob/devel/data/workshops.tsv).
 
 ```{r}
 #| echo: false
@@ -112,6 +112,7 @@ workshops <- workshops %>%
     country = if_else(initiative == "Physalia", "Online", country),
     region = if_else(initiative == "Physalia", "Online", countrycode(country, origin = "country.name", destination = "region")),
     initiative_html = case_when(
+      initiative == "Bioconductor" ~ "Bioconductor",
       initiative == "Carpentries" ~ '<a href="/collaborations/carpentries/index.html">Carpentries</a>',
       initiative == "Physalia" ~ '<a href="/collaborations/physalia/index.html">Physalia</a>',
       TRUE ~ initiative
@@ -123,7 +124,7 @@ common_columns <- list(
   date = colDef(name = "Date"),
   title_html = colDef(name = "Workshop", html = TRUE),
   initiative_html = colDef(name = "Initiative", html = TRUE),
-  location_name_html = colDef(name = "Hosted By", html = TRUE),
+  location_name_html = colDef(name = "Host / Partner", html = TRUE),
   city = colDef(name = "City"),
   country = colDef(name = "Country"),
   region = colDef(name = "Region"),
