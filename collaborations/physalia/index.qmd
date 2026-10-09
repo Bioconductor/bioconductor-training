@@ -294,9 +294,15 @@ upcoming_table <- reactable(
   striped = TRUE,
   bordered = TRUE,
   columns = list(
+    date = colDef(
+      name = "Date"
+    ),
     title_html = colDef(
       name = "Title",
       html = TRUE
+    ),
+    instructors = colDef(
+      name = "Instructors"
     ),
     link_html = colDef(
       name = "Workshop Link",
@@ -311,9 +317,15 @@ past_table <- reactable(
   striped = TRUE,
   bordered = TRUE,
   columns = list(
+    date = colDef(
+      name = "Date"
+    ),
     title_html = colDef(
       name = "Title",
       html = TRUE
+    ),
+    instructors = colDef(
+      name = "Instructors"
     ),
     link_html = colDef(
       name = "Workshop Link",
