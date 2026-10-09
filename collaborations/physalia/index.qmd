@@ -40,46 +40,155 @@ library(stringr)
 
 workshops <- read_tsv("../../data/workshops.tsv")
 
-# ---- Date parsing ----
-determine_status_and_date <- function(date_str) {
+# ---- Date parsing helpers ----
 
+parse_start_date <- function(date_str) {
+
+  # Put vague/TBD dates at the end of the upcoming list
   if (grepl("TBD|Early|Late", date_str, ignore.case = TRUE)) {
-    parsed_date <- as.Date("2099-12-31")
-  } else {
-
-    # Extract the final date where possible.
-    # Handles ranges such as "5-8 October 2026" and
-    # lists such as "16, 17, 18 & 20 November 2026".
-    end_date_str <- str_extract(
-      date_str,
-      "\\d{1,2}\\s+[A-Za-z]+\\s+\\d{4}$"
-    )
-
-    parsed_date <- dmy(end_date_str, quiet = TRUE)
-
-    if (is.na(parsed_date)) {
-      parsed_date <- dmy(date_str, quiet = TRUE)
-    }
-
-    if (is.na(parsed_date)) {
-      parsed_date <- my(date_str, quiet = TRUE)
-    }
-
-    if (is.na(parsed_date)) {
-      parsed_date <- as.Date("2099-12-31")
-    }
+    return(as.Date("2099-12-31"))
   }
 
-  status <- if (parsed_date >= today()) "upcoming" else "past"
+  # Date ranges, e.g. "9-18 November 2026"
+  if (grepl(
+    "^\\d{1,2}\\s*[-–]\\s*\\d{1,2}\\s+[A-Za-z]+\\s+\\d{4}$",
+    date_str
+  )) {
+    start_day <- str_extract(date_str, "^\\d{1,2}")
+    month_year <- str_extract(
+      date_str,
+      "[A-Za-z]+\\s+\\d{4}$"
+    )
 
-  list(
-    status = status,
-    parsed_date = parsed_date
+    return(
+      dmy(
+        paste(start_day, month_year),
+        quiet = TRUE
+      )
+    )
+  }
+
+  # Multiple dates, e.g. "16, 17, 18 & 20 November 2026"
+  if (grepl("[,&]", date_str)) {
+    start_day <- str_extract(date_str, "^\\d{1,2}")
+    month_year <- str_extract(
+      date_str,
+      "[A-Za-z]+\\s+\\d{4}$"
+    )
+
+    return(
+      dmy(
+        paste(start_day, month_year),
+        quiet = TRUE
+      )
+    )
+  }
+
+  # Year only, e.g. "2027"
+  if (grepl("^[0-9]{4}$", date_str)) {
+    return(
+      ymd(
+        paste0(date_str, "-01-01"),
+        quiet = TRUE
+      )
+    )
+  }
+
+  # Single date, e.g. "27 January 2027"
+  parsed_date <- dmy(
+    date_str,
+    quiet = TRUE
   )
+
+  # Month/year, e.g. "January 2027"
+  if (is.na(parsed_date)) {
+    parsed_date <- my(
+      date_str,
+      quiet = TRUE
+    )
+  }
+
+  # Fall back to end of list if parsing fails
+  if (is.na(parsed_date)) {
+    parsed_date <- as.Date("2099-12-31")
+  }
+
+  parsed_date
+}
+
+
+parse_end_date <- function(date_str) {
+
+  # Treat vague/TBD dates as upcoming
+  if (grepl("TBD|Early|Late", date_str, ignore.case = TRUE)) {
+    return(as.Date("2099-12-31"))
+  }
+
+  # Extract final explicit date where possible.
+  # Handles:
+  # "9-18 November 2026"
+  # "16, 17, 18 & 20 November 2026"
+  end_date_str <- str_extract(
+    date_str,
+    "\\d{1,2}\\s+[A-Za-z]+\\s+\\d{4}$"
+  )
+
+  parsed_date <- dmy(
+    end_date_str,
+    quiet = TRUE
+  )
+
+  # Single date
+  if (is.na(parsed_date)) {
+    parsed_date <- dmy(
+      date_str,
+      quiet = TRUE
+    )
+  }
+
+  # Month/year
+  if (is.na(parsed_date)) {
+    parsed_date <- my(
+      date_str,
+      quiet = TRUE
+    )
+  }
+
+  # Year only
+  if (
+    is.na(parsed_date) &&
+      grepl("^[0-9]{4}$", date_str)
+  ) {
+    parsed_date <- ymd(
+      paste0(date_str, "-12-31"),
+      quiet = TRUE
+    )
+  }
+
+  # Fall back to upcoming if parsing fails
+  if (is.na(parsed_date)) {
+    parsed_date <- as.Date("2099-12-31")
+  }
+
+  parsed_date
+}
+
+
+determine_status <- function(date_str) {
+
+  end_date <- parse_end_date(date_str)
+
+  if (end_date >= today()) {
+    "upcoming"
+  } else {
+    "past"
+  }
 }
 
 # ---- Physalia courses ----
+
 physalia_raw <- workshops %>%
+  mutate(tsv_row = row_number() + 1) %>%
   filter(initiative == "Physalia")
 
 # Require an explicit collaboration type for every Physalia course
@@ -88,31 +197,42 @@ allowed_types <- c(
   "bioconductor-associated"
 )
 
-if (
-  any(
-    is.na(physalia_raw$collaboration_type) |
-      physalia_raw$collaboration_type == "" |
-      !physalia_raw$collaboration_type %in% allowed_types
+invalid_physalia <- physalia_raw %>%
+  filter(
+    is.na(collaboration_type) |
+      collaboration_type == "" |
+      !collaboration_type %in% allowed_types
   )
-) {
+
+if (nrow(invalid_physalia) > 0) {
   stop(
-    "Every Physalia course must have collaboration_type set to ",
-    "'bioconductor-physalia' or 'bioconductor-associated'."
+    paste0(
+      "Invalid or missing collaboration_type in Physalia row(s):\n",
+      paste(
+        sprintf(
+          "Row %s: %s",
+          invalid_physalia$tsv_row,
+          invalid_physalia$title
+        ),
+        collapse = "\n"
+      )
+    )
   )
 }
 
-parsed <- mapply(
-  determine_status_and_date,
-  physalia_raw$date,
-  SIMPLIFY = FALSE
-)
-
 physalia <- physalia_raw %>%
   mutate(
-    status = map_chr(parsed, "status"),
+    status = map_chr(
+      date,
+      determine_status
+    ),
 
+    # Sort courses by START date
     sort_date = as.Date(
-      map_chr(parsed, ~ as.character(.x$parsed_date))
+      map_chr(
+        date,
+        ~ as.character(parse_start_date(.x))
+      )
     ),
 
     type_label = recode(
@@ -145,17 +265,29 @@ physalia <- physalia_raw %>%
   )
 
 # ---- Upcoming / Past ----
+
 upcoming <- physalia %>%
   filter(status == "upcoming") %>%
   arrange(sort_date) %>%
-  select(date, title_html, instructors, link_html)
+  select(
+    date,
+    title_html,
+    instructors,
+    link_html
+  )
 
 past <- physalia %>%
   filter(status == "past") %>%
   arrange(desc(sort_date)) %>%
-  select(date, title_html, instructors, link_html)
+  select(
+    date,
+    title_html,
+    instructors,
+    link_html
+  )
 
 # ---- Tables ----
+
 upcoming_table <- reactable(
   upcoming,
   compact = TRUE,
@@ -163,7 +295,7 @@ upcoming_table <- reactable(
   bordered = TRUE,
   columns = list(
     title_html = colDef(
-      name = "title",
+      name = "Title",
       html = TRUE
     ),
     link_html = colDef(
@@ -180,7 +312,7 @@ past_table <- reactable(
   bordered = TRUE,
   columns = list(
     title_html = colDef(
-      name = "title",
+      name = "Title",
       html = TRUE
     ),
     link_html = colDef(
@@ -197,3 +329,13 @@ htmltools::tagList(
   past_table
 )
 ```
+
+## Free Seats for Participants from Low- and Middle-Income Countries
+
+Two free seats are available for each course listed above for participants based in low- or middle-income countries, as defined by the [World Bank's income classification](https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html).
+
+[Apply here to be considered](https://forms.gle/w4UEBu3VrJXemtTN9)
+
+## Learn More
+
+Read the [blog post](https://blog.bioconductor.org/posts/2025-06-20-physalia-collaboration/) announcing the collaboration to learn more about how it came together and what it aims to achieve.
