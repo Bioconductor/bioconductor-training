@@ -55,7 +55,13 @@ Materials will be added here before the workshop.
 
 ### Setup Instructions
 
-- Instructions (coming soon).
+This is a hands-on workshop. Please bring a laptop and, where possible, have the following installed before the workshop:
+
+- [A recent version of R](https://cran.r-project.org/)  
+- [RStudio](https://posit.co/downloads)  
+- Please also follow the setup instructions for the [Single-Cell and Complex Data Analysis session](https://michaelplynch.github.io/foundations-of-single-cell-data-science/index.html#installation).  
+
+Any additional setup required for the wastewater analysis session will be added here before the workshop.
 
 ### Workshop Resources
 
