@@ -51,22 +51,45 @@ Topics include:
 
 ## Workshop Materials
 
-Materials will be added here before the workshop.
-
 ### Setup Instructions
 
-This is a hands-on workshop. Please bring a laptop and, where possible, have the following installed before the workshop:
+This is a hands-on workshop. Please bring a laptop. You can use
+Orchestra in your browser or install the software on your own
+computer. You only need to choose one option.
 
-- [A recent version of R](https://cran.r-project.org/)  
-- [RStudio](https://posit.co/downloads)  
-- Please also follow the setup instructions for the [Single-Cell and Complex Data Analysis session](https://michaelplynch.github.io/foundations-of-single-cell-data-science/index.html#installation).  
+#### Option 1: Use Orchestra in your browser
 
-Any additional setup required for the wastewater analysis session will be added here before the workshop.
+Both workshops are available on Orchestra, with the required packages
+and data already installed. You will need a Google account, but you
+do not need to install R or RStudio.
+
+1. Go to [Orchestra workshop templates](https://app.orchestraplatform.org/templates)
+   and sign in with your Google account.
+2. Find the template for your session:
+   - **Wastewater Analysis:** Metagenomics with Bioconductor
+   - **Single-Cell and Complex Data Analysis:** Foundations of Data Science CRT Bioconductor Single-cell
+3. Click **Launch** to start your session, or **Connect** if you
+   already have a session running.
+
+If you use Orchestra, you can skip the local installation instructions below.
+
+#### Option 2: Use R on your own computer
+
+Please complete the setup before the workshop, as installing packages
+can take some time.
+
+- Install [R 4.6.x](https://cran.r-project.org/) and
+  [RStudio](https://posit.co/downloads/).
+- Follow the setup instructions for both sessions:
+  - [Wastewater Analysis](https://npcooley.github.io/MetagenomicsWithBioconductor/index.html#setup)
+  - [Single-Cell and Complex Data Analysis](https://michaelplynch.github.io/foundations-of-single-cell-data-science/index.html#installation)
+
+Both sessions use Bioconductor release 3.23.
 
 ### Workshop Resources
 
-- Introduction to Bioconductor (coming soon)
-- Wastewater Analysis (coming soon)
+- Introduction to Bioconductor slides (coming soon)
+- [Wastewater Analysis](https://npcooley.github.io/MetagenomicsWithBioconductor/articles/MetagenomicsWithBioconductor.html)
 - [Single-Cell and Complex Data Analysis](https://michaelplynch.github.io/foundations-of-single-cell-data-science/index.html)
 
 ## Instructors
