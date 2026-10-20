@@ -51,6 +51,12 @@ Topics include:
 
 ## Workshop Materials
 
+[**Shared notes and questions**](https://docs.google.com/document/d/1dGYZAAbqlu9J-wd_9o9sOdHpf3bQEaVFLLBiD5ymNHE/edit?usp=sharing)
+
+Our shared notebook for participants in the room and online. Add
+questions, troubleshooting details, useful links and notes throughout
+the workshop. Adding your name is optional.
+
 ### Setup Instructions
 
 This is a hands-on workshop. Please bring a laptop. You can use
@@ -88,7 +94,7 @@ Both sessions use Bioconductor release 3.23.
 
 ### Workshop Resources
 
-- Introduction to Bioconductor slides (coming soon)
+- [Introduction to Bioconductor slides (PDF)](Bioconductor-for-Data-Science-Limerick.pdf)
 - [Wastewater Analysis](https://npcooley.github.io/MetagenomicsWithBioconductor/articles/MetagenomicsWithBioconductor.html)
 - [Single-Cell and Complex Data Analysis](https://michaelplynch.github.io/foundations-of-single-cell-data-science/index.html)
 
