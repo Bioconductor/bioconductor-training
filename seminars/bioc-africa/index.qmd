@@ -80,16 +80,16 @@ The series includes introductory and thematic sessions led by members of the Bio
 
 ### Featured seminar
 
-![](images/fabricio.png){width="85%" fig-alt="How to develop and submit a package to Bioconductor poster"}
+![](images/artur.png){width="85%" fig-alt="Promotional graphic for a Bioconductor Africa seminar on reproducible workflows with R, Bioconductor and Quarto, featuring speaker Artur Sannikov. Scheduled for 25 November 2026."}
 
 
-- Date: 28 October 2026  
+- Date: 25 November 2026  
 - Time: 4 PM EAT / 3 PM CAT / 2 PM WAT  
-- Presenters: Dr Fabricio Almeida-Silva (Ghent University,  Belgium)
+- Presenters: Artur Sannikov (University of Turku)
 
-This session will explore how to develop and submit a package to Bioconductor.
+This session will cover the key steps involved in creating reproducible analyses, from organising and documenting code to integrating data, results and visualisations into dynamic reports using R/Bioconductor and Quarto.
 
-[Register to attend](https://us06web.zoom.us/meeting/register/HXnVPaMwT4qbtiydBDyR-w) 
+[Register to attend](https://us06web.zoom.us/meeting/register/zxDSQ9DXQNeIl5o6E6EBsQ#/registration) 
 
 
 ### Bioconductor Africa calendar
@@ -118,6 +118,26 @@ Copy the calendar subscription URL:
 Curious what the Bioconductor Africa seminars are like?  
 Recordings from previous sessions are available below.  
 If you're new to Bioconductor, you may want to start with the introductory session.
+
+### How to develop and submit a package to Bioconductor
+
+- Date: 28 October 2026
+- Presenter: Dr Fabricio Almeida-Silva (Ghent University, Belgium)
+
+This session covered the key steps involved in building a Bioconductor package, from structuring and documenting R code to testing, checking, and preparing a package for submission. 
+
+<div style="max-width: 900px;">
+  <iframe
+    width="100%"
+    style="aspect-ratio: 16 / 9;"
+    src="https://www.youtube.com/embed/lixxfz8AiRs?si=SSZ3CyNeoYjMgj85" 
+    title="How to develop and submit a package to Bioconductor"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
+
+Session notes: [Multi-omics data integration notes](https://annuel2.framapad.org/p/multiomics-12-08-2026)
 
 ### Single-cell data analysis series
 
