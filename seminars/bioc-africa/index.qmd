@@ -80,7 +80,7 @@ The series includes introductory and thematic sessions led by members of the Bio
 
 ### Featured seminar
 
-![](images/artur.png){width="85%" fig-alt="Promotional graphic for a Bioconductor Africa seminar on reproducible workflows with R, Bioconductor and Quarto, featuring speaker Artur Sannikov. Scheduled for 25 November 2026."}
+![](images/artur.png){width="85%" fig-alt="Promotional graphic for a Bioconductor Africa seminar on reproducible workflows with R/Bioconductor and Quarto, featuring speaker Artur Sannikov. Scheduled for 25 November 2026."}
 
 
 - Date: 25 November 2026  
@@ -137,7 +137,7 @@ This session covered the key steps involved in building a Bioconductor package, 
   </iframe>
 </div>
 
-Session notes: [Multi-omics data integration notes](https://annuel2.framapad.org/p/multiomics-12-08-2026)
+Session notes: [Developing and submitting Bioconductor packages notes](https://mensuel.framapad.org/p/creating_and_submitting_bioconductor_packages-aoc7?lang=en)
 
 ### Single-cell data analysis series
 
