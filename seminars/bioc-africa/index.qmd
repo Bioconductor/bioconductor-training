@@ -80,16 +80,7 @@ The series includes introductory and thematic sessions led by members of the Bio
 
 ### Featured seminar
 
-![](images/artur.png){width="85%" fig-alt="Promotional graphic for a Bioconductor Africa seminar on reproducible workflows with R/Bioconductor and Quarto, featuring speaker Artur Sannikov. Scheduled for 25 November 2026."}
-
-
-- Date: 25 November 2026  
-- Time: 4 PM EAT / 3 PM CAT / 2 PM WAT  
-- Presenters: Artur Sannikov (University of Turku)
-
-This session will cover the key steps involved in creating reproducible analyses, from organising and documenting code to integrating data, results and visualisations into dynamic reports using R/Bioconductor and Quarto.
-
-[Register to attend](https://us06web.zoom.us/meeting/register/zxDSQ9DXQNeIl5o6E6EBsQ#/registration) 
+![](images/2027.png){width="85%" fig-alt="Promotional graphic for a Bioconductor Africa seminar showing sessions in 2026 are done and more will be coming in 2027."}
 
 
 ### Bioconductor Africa calendar
@@ -118,6 +109,27 @@ Copy the calendar subscription URL:
 Curious what the Bioconductor Africa seminars are like?  
 Recordings from previous sessions are available below.  
 If you're new to Bioconductor, you may want to start with the introductory session.
+
+### Reproducible workflows with R/Bioconductor and Quarto
+
+- Date: 25 November 2026
+- Presenter: Artur Sannikov (University of Turku)
+
+This session introduced attendees to developing reproducible research workflows using R, Bioconductor, and Quarto. It covered the key steps involved in creating reproducible analyses, from organising and documenting code to integrating data, results, and visualisations into dynamic reports using Quarto. 
+
+<div style="max-width: 900px;">
+  <iframe
+    width="100%"
+    style="aspect-ratio: 16 / 9;"
+    src="https://www.youtube.com/embed/gcgq3nw-S2s?si=A4pq5L8kUm-L2Ts2" 
+    title="Reproducible workflows with R/Bioconductor and Quarto"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
+
+Session notes: [Quarto notes](https://github.com/artur-sannikov/2026-11-25-bioconductor-africa-quarto-presentation/blob/main/slides.pdf)
+
 
 ### How to develop and submit a package to Bioconductor
 
